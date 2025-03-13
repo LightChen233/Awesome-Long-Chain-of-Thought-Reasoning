@@ -5,7 +5,7 @@
 [![Last Commit](https://img.shields.io/github/last-commit/LightChen233/Awesome-Long-Chain-of-Thought-Reasoning)](https://github.com/LightChen233/Awesome-Long-Chain-of-Thought-Reasoning)
 [![Contribution Welcome](https://img.shields.io/badge/Contributions-welcome-blue)]()
 
-![image](./assets/images/develop.jpg)
+![image](./assets/images/develop.png)
 
 
 <!-- omit in toc -->
