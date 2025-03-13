@@ -851,7 +851,7 @@ If you find this work useful, welcome to cite us.
 ```bib
 @misc{chen2025reasoning,
       title={Towards Reasoning Era: A Survey of Long Chain-of-Thought for Reasoning Large Language Models}, 
-      author={Qiguang Chen and Libo Qin and Jinhao Liu and Dengyun Peng and Jiannan Guan and Peng Wang and Mengkang Hu and Yuhang Zhou and Te Gao and Wangxiang Che},
+      author={Qiguang Chen and Libo Qin and Jinhao Liu and Dengyun Peng and Jiannan Guan and Peng Wang and Mengkang Hu and Yuhang Zhou and Te Gao and Wanxiang Che},
       year={2025},
       eprint={2503.09567},
       archivePrefix={arXiv},
