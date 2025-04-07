@@ -822,6 +822,7 @@ Recent advancements in reasoning with large language models (RLLMs), such as Ope
 
 <h3>Safety for Long CoT</h3>
 <ul>
+<li><i><b>GuardReasoner: Towards Reasoning-based LLM Safeguards</b></i>, Liu et al., <a href="https://arxiv.org/abs/2501.18492" target="_blank"><img src="https://img.shields.io/badge/PDF-2025.00-blue" alt="PDF Badge"></a></li>
 <li><i><b>Larger and more instructable language models become less reliable</b></i>, Zhou et al., <img src="https://img.shields.io/badge/No Link-2024.00-lightgrey" alt="No Link Badge"></li>
 <li><i><b>The Impact of Reasoning Step Length on Large Language Models</b></i>, Jin et al., <a href="https://aclanthology.org/2024.findings-acl.108/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.00-blue" alt="PDF Badge"></a></li>
 <li><i><b>Unlocking the Capabilities of Thought: A Reasoning Boundary Framework to Quantify and Optimize Chain-of-Thought</b></i>, Chen et al., <a href="https://openreview.net/forum?id=pC44UMwy2v" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.00-blue" alt="PDF Badge"></a></li>
