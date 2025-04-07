@@ -173,6 +173,9 @@ Recent advancements in reasoning with large language models (RLLMs), such as Ope
 <li><i><b>Demystifying Long Chain-of-Thought Reasoning in LLMs</b></i>, Yeo et al., <a href="https://arxiv.org/abs/2502.03373" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
 <li><i><b>LIMO: Less is More for Reasoning</b></i>, Ye et al., <a href="https://arxiv.org/abs/2502.03387" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
 <li><i><b>BOLT: Bootstrap Long Chain-of-Thought in Language Models without Distillation</b></i>, Pang et al., <a href="https://arxiv.org/abs/2502.03860" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
+<li><i><b>Abstract Meaning Representation-Based Logic-Driven Data Augmentation for Logical Reasoning</b></i>, Bao et al., <a href="https://aclanthology.org/2024.findings-acl.353/" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
+<li><i><b>Multi-Step Deductive Reasoning Over Natural Language: An Empirical Study on Out-of-Distribution Generalisation</b></i>, Bao et al., <a href="https://arxiv.org/abs/2207.14000" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
+<li><i><b>ChatLogic: Integrating Logic Programming with Large Language Models for Multi-step Reasoning</b></i>, Wang et al., <a href="https://openreview.net/forum?id=AOqGF7Po7Z" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
 </ul>
 
 <h2 id="part-2-reflection">Feasible Reflection</h2>
@@ -596,6 +599,10 @@ Recent advancements in reasoning with large language models (RLLMs), such as Ope
 <li><i><b>The Danger of Overthinking: Examining the Reasoning-Action Dilemma in Agentic Tasks</b></i>, Cuadron et al., <a href="https://arxiv.org/abs/2502.08235" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
 <li><i><b>PhD Knowledge Not Required: A Reasoning Challenge for Large Language Models</b></i>, Anderson et al., <a href="https://arxiv.org/abs/2502.01584" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
 <li><i><b>Scaling Test-Time Compute Without Verification or RL is Suboptimal</b></i>, Setlur et al., <a href="https://arxiv.org/abs/2502.12118" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
+<li><i><b>AbductionRules: Training Transformers to Explain Unexpected Inputs</b></i>, Bao et al., <a href="https://aclanthology.org/2022.findings-acl.19/" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
+<li><i><b>Exploring Iterative Enhancement for Improving Learnersourced Multiple-Choice Question Explanations with Large Language Models</b></i>, Bao et al., <a href="http://arxiv.org/abs/2309.10444" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
+<li><i><b>Large Language Models Are Not Strong Abstract Reasoners</b></i>, Bao et al., <a href="https://arxiv.org/abs/2305.19555" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
+<li><i><b>Assessing and Enhancing the Robustness of Large Language Models with Task Structure Variations for Logical Reasoning</b></i>, Bao et al., <a href="https://arxiv.org/abs/2310.09430" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
 </ul>
 
 <h3>Long CoT Evaluations</h3>
@@ -772,6 +779,9 @@ Recent advancements in reasoning with large language models (RLLMs), such as Ope
 <li><i><b>O1 Embedder: Let Retrievers Think Before Action</b></i>, Yan et al., <a href="https://arxiv.org/abs/2502.07555" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
 <li><i><b>Towards Robust Legal Reasoning: Harnessing Logical LLMs in Law</b></i>, Kant et al., <a href="https://arxiv.org/abs/2502.17638" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
 <li><i><b>OctoTools: An Agentic Framework with Extensible Tools for Complex Reasoning</b></i>, Lu et al., <a href="https://arxiv.org/abs/2502.11271" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
+<li><i><b>A Dynamic Prompt-tuning Method for Data Augmentation with Associated Knowledge</b></i>, Qi et al., <a href="https://openreview.net/forum?id=hli7A0ioiS_" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
+<li><i><b>HHH: An Online Medical Chatbot System based on Knowledge Graph and Hierarchical Bi-Directional Attention</b></i>, Bao et al., <a href="https://arxiv.org/abs/2002.03140" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
+<li><i><b>Enhancing Data Augmentation with Knowledge-Enriched Data Generation via Dynamic Prompt-Tuning Method</b></i>, Qi et al., <a href="https://ieeexplore.ieee.org/abstract/document/10651072/" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
 </ul>
 
 <h3>Multilingual Long CoT</h3>
