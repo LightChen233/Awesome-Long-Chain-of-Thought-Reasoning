@@ -1,4 +1,5 @@
-# <img src="assets/images/icon.jpg" alt="SVG Image" width="40px"> Awesome-System2-Reasoning-LLM
+# <img src="assets/images/icon.jpg" alt="SVG Image" width="40px"> Awesome-Long-Chain-of-Thought-Reasoning
+
 
 [![arXiv](https://img.shields.io/badge/arXiv-Long_Chain_of_Thought-b31b1b.svg)](https://arxiv.org/pdf/2503.09567) 
 [![Paper](https://img.shields.io/badge/Paper-801-green.svg)](https://github.com//LightChen233/Awesome-Long-Chain-of-Thought-Reasoning)
