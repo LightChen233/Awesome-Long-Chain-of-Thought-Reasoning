@@ -30,34 +30,34 @@ However, despite these developments, a comprehensive survey on Long CoT is still
 <!-- omit in toc -->
 ## 🔮 Contents
 
-- [Awesome-Long-CoT](#awesome-long-cot)
-  - [Part 1: Deep Reasoning](#part-1-deep-reasoning)
-    - Deep Reasoning Format
-    - Deep Reasoning Learning
-  - [Part 2: Feasible Reflection](#part-2-reflection)
-    - Feedback
-    - Refinement
-  - [Part 3: Extensive Exploration](#part-3-exploration)
-    - Exploration Scaling
-    - Internal Exploration
-    - External Exploration
-  - [Part 4: Analysis and Evaluation](#part-4-analysis-evaluation)
-    - Analysis & Explanation for Long CoT
-    - Long CoT Evaluations
-  - [Part 5: Future and Frontiers](#part-5-future)
-    - Agentic & Embodied Long CoT
-    - Efficient Long CoT
-    - Knowledge-Augmented Long CoT
-    - Multilingual Long CoT
-    - Multimodal Long CoT
-    - Safety for Long CoT
+- [Awesome-Long-CoT](#)
+  - [Part 1: Analysis and Evaluation](#analysis-and-evaluation)
+    - [Analysis & Explanation for Long CoT](#analysis-explanation-for-long-cot)
+    - [Long CoT Evaluations](#long-cot-evaluations)
+  - [Part 2: Deep Reasoning](#deep-reasoning)
+    - [Deep Reasoning Format](#deep-reasoning-format)
+    - [Deep Reasoning Learning](#deep-reasoning-learning)
+  - [Part 3: Feasible Reflection](#feasible-reflection)
+    - [Feedback](#feedback)
+    - [Refinement](#refinement)
+  - [Part 4: Extensive Exploration](#extensive-exploration)
+    - [Exploration Scaling](#exploration-scaling)
+    - [Internal Exploration](#internal-exploration)
+    - [External Exploration](#external-exploration)
+  - [Part 5: Future and Frontiers](#future)
+    - [Agentic & Embodied Long CoT](#agentic-embodied-long-cot)
+    - [Efficient Long CoT](#efficient-long-cot)
+    - [Knowledge-Augmented Long CoT](#knowledge-augmented-long-cot)
+    - [Multilingual Long CoT](#multilingual-long-cot)
+    - [Multimodal Long CoT](#multimodal-long-cot)
+    - [Safety for Long CoT](#safety-long-cot)
 
 ![image](./assets/images/contents.jpg)
 
-<h2>1. Analysis and Evaluation</h2>
+<h2 id="analysis-and-evaluation">1. Analysis and Evaluation</h2>
 
 
-<h3>1.1 Analysis & Explanation for Long CoT</h3>
+<h3 id="analysis-explanation-for-long-cot">1.1 Analysis & Explanation for Long CoT</h3>
 <img src="./assets/images/analysis.jpg" style="width: 580pt">
 <ul>
 <li><i><b>Explainable AI in Large Language Models: A Review</b></i>, Sauhandikaa et al., <a href="http://ieeexplore.ieee.org/abstract/document/10895578" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.00-blue" alt="PDF Badge"></a></li>
@@ -66,7 +66,7 @@ However, despite these developments, a comprehensive survey on Long CoT is still
 <li><i><b>Think or Step-by-Step? UnZIPping the Black Box in Zero-Shot Prompts</b></i>, Sadr et al., <a href="https://arxiv.org/abs/2502.03418" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
 </ul>
 
-<h4>1.1.1 Long CoT External Behavior Analysis</h4>
+<h4 id="long-cot-external-behavior-analysis">1.1.1 Long CoT External Behavior Analysis</h4>
 </ul>
 
 <ul>
@@ -182,7 +182,7 @@ However, despite these developments, a comprehensive survey on Long CoT is still
 <li><i><b>Reasoning Beyond Limits: Advances and Open Problems for LLMs</b></i>, Ferrag et al., <a href="https://arxiv.org/abs/2503.22732" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
 </ul>
 
-<h4>1.1.2 Long CoT Internal Mechanism Analysis</h4>
+<h4 id="long-cot-internal-mechanism-analysis">1.1.2 Long CoT Internal Mechanism Analysis</h4>
 </ul>
 
 <b>Knowledge Incorporating Mechanism</b>
@@ -212,8 +212,8 @@ However, despite these developments, a comprehensive survey on Long CoT is still
 
 
 
-<h3>1.2 Long CoT Evaluations</h3>
-<h4>1.2.3 Advanced Evaluation</h4>
+<h3 id="long-cot-evaluations">1.2 Long CoT Evaluations</h3>
+<h4 id="advanced-evaluation">1.2.3 Advanced Evaluation</h4>
 </ul>
 
 <b>AI for Research</b>
@@ -274,7 +274,7 @@ However, despite these developments, a comprehensive survey on Long CoT is still
 <li><i><b>LEGO-Puzzles: How Good Are MLLMs at Multi-Step Spatial Reasoning?</b></i>, Tang et al., <a href="https://arxiv.org/abs/2503.19990" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
 </ul>
 
-<h4>1.2.4 Benchmarks</h4>
+<h4 id="benchmarks">1.2.4 Benchmarks</h4>
 </ul>
 
 <b>Outcome Benchmarks</b>
@@ -326,7 +326,7 @@ However, despite these developments, a comprehensive survey on Long CoT is still
 <li><i><b>Cognitive-Mental-LLM: Leveraging Reasoning in Large Language Models for Mental Health Prediction via Online Text</b></i>, Patil et al., <a href="https://arxiv.org/abs/2503.10095" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
 </ul>
 
-<h4>1.2.5 Process Evaluations</h4>
+<h4 id="process-evaluations">1.2.5 Process Evaluations</h4>
 </ul>
 
 <b>Deep Reasoning Benchmarks</b>
@@ -364,7 +364,7 @@ However, despite these developments, a comprehensive survey on Long CoT is still
 <li><i><b>Can Large Language Models Detect Errors in Long Chain-of-Thought Reasoning?</b></i>, He et al., <a href="https://arxiv.org/abs/2502.19361" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
 <li><i><b>FINEREASON: Evaluating and Improving LLMs' Deliberate Reasoning through Reflective Puzzle Solving</b></i>, Chen et al., <a href="https://arxiv.org/abs/2502.20238" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
 </ul>
-<h2>2. Deep Reasoning</h2>
+<h2 id="deep-reasoning">2. Deep Reasoning</h2>
 <ul>
 <li><i><b>Thoughts Are All Over the Place: On the Underthinking of o1-Like LLMs</b></i>, Wang et al., <a href="https://arxiv.org/abs/2501.18585" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
 <li><i><b>Don't Get Lost in the Trees: Streamlining LLM Reasoning by Overcoming Tree Search Exploration Pitfalls</b></i>, Wang et al., <a href="https://arxiv.org/abs/2502.11183" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
@@ -372,9 +372,9 @@ However, despite these developments, a comprehensive survey on Long CoT is still
 
 
 
-<h3>2.1 Deep Reasoning Format</h3>
+<h3 id="deep-reasoning-format">2.1 Deep Reasoning Format</h3>
 <img src="./assets/images/deep-reasoning-1.jpg" style="width: 580pt">
-<h4>2.1.1 Latent Space Deep Reasoning</h4>
+<h4 id="latent-space-deep-reasoning">2.1.1 Latent Space Deep Reasoning</h4>
 </ul>
 
 <ul>
@@ -393,7 +393,7 @@ However, despite these developments, a comprehensive survey on Long CoT is still
 <li><i><b>Reasoning to Learn from Latent Thoughts</b></i>, Ruan et al., <a href="https://arxiv.org/abs/2503.18866" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
 </ul>
 
-<h4>2.1.2 Natural Language Deep Reasoning</h4>
+<h4 id="natural-language-deep-reasoning">2.1.2 Natural Language Deep Reasoning</h4>
 </ul>
 
 <ul>
@@ -408,7 +408,7 @@ However, despite these developments, a comprehensive survey on Long CoT is still
 <li><i><b>CodeI/O: Condensing Reasoning Patterns via Code Input-Output Prediction</b></i>, Li et al., <a href="https://arxiv.org/abs/2502.07316" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
 </ul>
 
-<h4>2.1.3 Structured Language Deep Reasoning</h4>
+<h4 id="structured-language-deep-reasoning">2.1.3 Structured Language Deep Reasoning</h4>
 </ul>
 
 <ul>
@@ -437,7 +437,7 @@ However, despite these developments, a comprehensive survey on Long CoT is still
 
 
 
-<h3>2.2 Deep Reasoning Learning</h3>
+<h3 id="deep-reasoning-learning">2.2 Deep Reasoning Learning</h3>
 <img src="./assets/images/deep-reasoning-2.png" style="width: 580pt">
 </ul>
 
@@ -450,7 +450,7 @@ However, despite these developments, a comprehensive survey on Long CoT is still
 <li><i><b>Don't Get Lost in the Trees: Streamlining LLM Reasoning by Overcoming Tree Search Exploration Pitfalls</b></i>, Wang et al., <a href="https://arxiv.org/abs/2502.11183" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
 </ul>
 
-<h4>2.2.4 Deep Reasoning Imitation</h4>
+<h4 id="deep-reasoning-imitation">2.2.4 Deep Reasoning Imitation</h4>
 </ul>
 
 <ul>
@@ -489,7 +489,7 @@ However, despite these developments, a comprehensive survey on Long CoT is still
 <li><i><b>OpenCodeReasoning: Advancing Data Distillation for Competitive Coding</b></i>, Ahmad et al., <a href="https://arxiv.org/abs/2504.01943" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.04-red" alt="arXiv Badge"></a></li>
 </ul>
 
-<h4>2.2.5 Deep Reasoning Self-Learning</h4>
+<h4 id="deep-reasoning-self-learning">2.2.5 Deep Reasoning Self-Learning</h4>
 </ul>
 
 <ul>
@@ -525,10 +525,10 @@ However, despite these developments, a comprehensive survey on Long CoT is still
 <li><i><b>Entropy-Based Adaptive Weighting for Self-Training</b></i>, Wang et al., <a href="https://arxiv.org/abs/2503.23913" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
 <li><i><b>Entropy-based Exploration Conduction for Multi-step Reasoning</b></i>, Zhang et al., <a href="https://arxiv.org/abs/2503.15848" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
 </ul>
-<h2>3. Feasible Reflection</h2>
+<h2 id="feasible-reflection">3. Feasible Reflection</h2>
 
 
-<h3>3.1 Feedback</h3>
+<h3 id="feedback">3.1 Feedback</h3>
 <img src="./assets/images/feedback.png" style="width: 580pt">
 <ul>
 <li><i><b>When is Tree Search Useful for LLM Planning? It Depends on the Discriminator</b></i>, Chen et al., <a href="https://aclanthology.org/2024.acl-long.738/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.08-blue" alt="PDF Badge"></a></li>
@@ -538,7 +538,7 @@ However, despite these developments, a comprehensive survey on Long CoT is still
 <li><i><b>A Survey on Feedback-based Multi-step Reasoning for Large Language Models on Mathematics</b></i>, Wei et al., <a href="https://arxiv.org/abs/2502.14333" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
 </ul>
 
-<h4>3.1.1 Hybrid Feedbacks</h4>
+<h4 id="hybrid-feedbacks">3.1.1 Hybrid Feedbacks</h4>
 </ul>
 
 <ul>
@@ -546,7 +546,7 @@ However, despite these developments, a comprehensive survey on Long CoT is still
 <li><i><b>Step-KTO: Optimizing Mathematical Reasoning through Stepwise Binary Feedback</b></i>, Lin et al., <a href="https://arxiv.org/abs/2501.10799" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
 </ul>
 
-<h4>3.1.2 Overall Feedback</h4>
+<h4 id="overall-feedback">3.1.2 Overall Feedback</h4>
 </ul>
 
 <b>Overall Feedback from Outcome Reward Model</b>
@@ -610,7 +610,7 @@ However, despite these developments, a comprehensive survey on Long CoT is still
 <li><i><b>Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation</b></i>, Baker et al., <a href="https://openai.com/index/chain-of-thought-monitoring/" target="_blank"><img src="https://img.shields.io/badge/PDF-2025.03-blue" alt="PDF Badge"></a></li>
 </ul>
 
-<h4>3.1.3 Process Feedback</h4>
+<h4 id="process-feedback">3.1.3 Process Feedback</h4>
 </ul>
 
 <ul>
@@ -678,9 +678,9 @@ However, despite these developments, a comprehensive survey on Long CoT is still
 
 
 
-<h3>3.2 Refinement</h3>
+<h3 id="refinement">3.2 Refinement</h3>
 <img src="./assets/images/refinement.png" style="width: 580pt">
-<h4>3.2.4 Prompt-based Refinement Generation</h4>
+<h4 id="prompt-based-refinement-generation">3.2.4 Prompt-based Refinement Generation</h4>
 </ul>
 
 <ul>
@@ -720,7 +720,7 @@ However, despite these developments, a comprehensive survey on Long CoT is still
 <li><i><b>The Lighthouse of Language: Enhancing LLM Agents via Critique-Guided Improvement</b></i>, Yang et al., <a href="https://arxiv.org/abs/2503.16024" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
 </ul>
 
-<h4>3.2.5 RL-based Refinement Learning</h4>
+<h4 id="rl-based-refinement-learning">3.2.5 RL-based Refinement Learning</h4>
 </ul>
 
 <ul>
@@ -733,7 +733,7 @@ However, despite these developments, a comprehensive survey on Long CoT is still
 <li><i><b>ARIES: Stimulating Self-Refinement of Large Language Models by Iterative Preference Optimization</b></i>, Zeng et al., <a href="https://arxiv.org/abs/2502.05605" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
 </ul>
 
-<h4>3.2.6 SFT-based Refinement Imitation</h4>
+<h4 id="sft-based-refinement-imitation">3.2.6 SFT-based Refinement Imitation</h4>
 </ul>
 
 <ul>
@@ -757,7 +757,7 @@ However, despite these developments, a comprehensive survey on Long CoT is still
 <li><i><b>LLMs Can Easily Learn to Reason from Demonstrations Structure, not content, is what matters!</b></i>, Li et al., <a href="https://arxiv.org/abs/2502.07374" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
 <li><i><b>MM-Verify: Enhancing Multimodal Reasoning with Chain-of-Thought Verification</b></i>, Sun et al., <a href="https://arxiv.org/abs/2502.13383" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
 </ul>
-<h2>4. Extensive Exploration</h2>
+<h2 id="extensive-exploration">4. Extensive Exploration</h2>
 <ul>
 <li><i><b>Improving Policies via Search in Cooperative Partially Observable Games</b></i>, Lerer et al., <a href="https://ojs.aaai.org/index.php/AAAI/article/view/6208" target="_blank"><img src="https://img.shields.io/badge/PDF-2020.04-blue" alt="PDF Badge"></a></li>
 <li><i><b>On The Planning Abilities of OpenAI's o1 Models: Feasibility, Optimality, and Generalizability</b></i>, Wang et al., <a href="https://arxiv.org/abs/2409.19924" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.09-red" alt="arXiv Badge"></a></li>
@@ -768,7 +768,7 @@ However, despite these developments, a comprehensive survey on Long CoT is still
 
 
 
-<h3>4.1 Exploration Scaling</h3>
+<h3 id="exploration-scaling">4.1 Exploration Scaling</h3>
 <img src="./assets/images/exploration-scaling.png" style="width: 580pt">
 </ul>
 
@@ -782,7 +782,7 @@ However, despite these developments, a comprehensive survey on Long CoT is still
 <li><i><b>(Mis) Fitting: A Survey of Scaling Laws</b></i>, Li et al., <a href="https://arxiv.org/abs/2502.18969" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
 </ul>
 
-<h4>4.1.1 Parallel Scaling</h4>
+<h4 id="parallel-scaling">4.1.1 Parallel Scaling</h4>
 </ul>
 
 <ul>
@@ -846,7 +846,7 @@ However, despite these developments, a comprehensive survey on Long CoT is still
 <li><i><b>Efficient test-time scaling via self-calibration</b></i>, Huang et al., <a href="https://arxiv.org/abs/2503.00031" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
 </ul>
 
-<h4>4.1.2 Vertical Scaling</h4>
+<h4 id="vertical-scaling">4.1.2 Vertical Scaling</h4>
 </ul>
 
 <ul>
@@ -864,9 +864,9 @@ However, despite these developments, a comprehensive survey on Long CoT is still
 
 
 
-<h3>4.2 External Exploration</h3>
+<h3 id="external-exploration">4.2 External Exploration</h3>
 <img src="./assets/images/external-exploration.png" style="width: 580pt">
-<h4>4.2.3 Human-driven Exploration</h4>
+<h4 id="human-driven-exploration">4.2.3 Human-driven Exploration</h4>
 </ul>
 
 <ul>
@@ -892,7 +892,7 @@ However, despite these developments, a comprehensive survey on Long CoT is still
 <li><i><b>START: Self-taught Reasoner with Tools</b></i>, Li et al., <a href="https://arxiv.org/abs/2503.04625" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
 </ul>
 
-<h4>4.2.4 Model-driven Exploration</h4>
+<h4 id="model-driven-exploration">4.2.4 Model-driven Exploration</h4>
 </ul>
 
 <b>Enhancing Exploration Logics</b>
@@ -949,7 +949,7 @@ However, despite these developments, a comprehensive survey on Long CoT is still
 
 
 
-<h3>4.3 Internal Exploration</h3>
+<h3 id="internal-exploration">4.3 Internal Exploration</h3>
 <img src="./assets/images/internal-exploration.png" style="width: 580pt">
 </ul>
 
@@ -961,7 +961,7 @@ However, despite these developments, a comprehensive survey on Long CoT is still
 <li><i><b>LLM Post-Training: A Deep Dive into Reasoning Large Language Models</b></i>, Kumar et al., <a href="https://arxiv.org/abs/2502.21321" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
 </ul>
 
-<h4>4.3.5 RL Strategies</h4>
+<h4 id="rl-strategies">4.3.5 RL Strategies</h4>
 </ul>
 
 <ul>
@@ -999,7 +999,7 @@ However, despite these developments, a comprehensive survey on Long CoT is still
 <li><i><b>VAPO: Efficient and Reliable Reinforcement Learning for Advanced Reasoning Tasks</b></i>, YuYue et al., <a href="https://arxiv.org/abs/2504.05118" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.04-red" alt="arXiv Badge"></a></li>
 </ul>
 
-<h4>4.3.6 Reward Strategies</h4>
+<h4 id="reward-strategies">4.3.6 Reward Strategies</h4>
 </ul>
 
 <b>Model-rewarded RL</b>
@@ -1036,13 +1036,13 @@ However, despite these developments, a comprehensive survey on Long CoT is still
 <li><i><b>The Danger of Overthinking: Examining the Reasoning-Action Dilemma in Agentic Tasks</b></i>, Cuadron et al., <a href="https://arxiv.org/abs/2502.08235" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
 <li><i><b>Z1: Efficient Test-time Scaling with Code</b></i>, Yu et al., <a href="https://arxiv.org/abs/2504.00810" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.04-red" alt="arXiv Badge"></a></li>
 </ul>
-<h2>5. Future and Frontiers</h2>
+<h2 id="future-and-frontiers">5. Future and Frontiers</h2>
 
 <img src="./assets/images/future.jpg" style="width: 580pt">
 
 
 
-<h3>5.1 Agentic & Embodied Long CoT</h3>
+<h3 id="agentic-embodied-long-cot">5.1 Agentic & Embodied Long CoT</h3>
 <ul>
 <li><i><b>Solving Math Word Problems via Cooperative Reasoning induced Language Models</b></i>, Zhu et al., <a href="https://aclanthology.org/2023.acl-long.245/" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.07-blue" alt="PDF Badge"></a></li>
 <li><i><b>Reasoning with Language Model is Planning with World Model</b></i>, Hao et al., <a href="https://aclanthology.org/2023.emnlp-main.507/" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.12-blue" alt="PDF Badge"></a></li>
@@ -1076,7 +1076,7 @@ However, despite these developments, a comprehensive survey on Long CoT is still
 
 
 
-<h3>5.2 Efficient Long CoT</h3>
+<h3 id="efficient-long-cot">5.2 Efficient Long CoT</h3>
 </ul>
 
 <ul>
@@ -1138,7 +1138,7 @@ However, despite these developments, a comprehensive survey on Long CoT is still
 
 
 
-<h3>5.3 Knowledge-Augmented Long CoT</h3>
+<h3 id="knowledge-augmented-long-cot">5.3 Knowledge-Augmented Long CoT</h3>
 </ul>
 
 <ul>
@@ -1175,7 +1175,7 @@ However, despite these developments, a comprehensive survey on Long CoT is still
 
 
 
-<h3>5.4 Multilingual Long CoT</h3>
+<h3 id="multilingual-long-cot">5.4 Multilingual Long CoT</h3>
 </ul>
 
 <ul>
@@ -1194,7 +1194,7 @@ However, despite these developments, a comprehensive survey on Long CoT is still
 
 
 
-<h3>5.5 Multimodal Long CoT</h3>
+<h3 id="multimodal-long-cot">5.5 Multimodal Long CoT</h3>
 </ul>
 
 <ul>
@@ -1242,7 +1242,7 @@ However, despite these developments, a comprehensive survey on Long CoT is still
 
 
 
-<h3>5.6 Safety and Stability for Long CoT</h3>
+<h3 id="safety-and-stability-for-long-cot">5.6 Safety and Stability for Long CoT</h3>
 </ul>
 
 <ul>
@@ -1285,10 +1285,10 @@ However, despite these developments, a comprehensive survey on Long CoT is still
 <li><i><b>Recitation over Reasoning: How Cutting-Edge Language Models Can Fail on Elementary School-Level Reasoning Problems?</b></i>, Yan et al., <a href="https://arxiv.org/abs/2504.00509" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.04-red" alt="arXiv Badge"></a></li>
 <li><i><b>Reasoning Models Don’t Always Say What They Think</b></i>, Chen et al., <a href="https://www.anthropic.com/research/reasoning-models-dont-say-think" target="_blank"><img src="https://img.shields.io/badge/PDF-2025.04-blue" alt="PDF Badge"></a></li>
 </ul>
-<h2>6. Resources</h2>
+<h2 id="resources">6. Resources</h2>
 
 
-<h3>6.1 Open-Sourced Training Framework</h3>
+<h3 id="open-sourced-training-framework">6.1 Open-Sourced Training Framework</h3>
 <ul>
 <li><i><b>OpenRLHF: An Easy-to-use, Scalable and High-performance RLHF Framework</b></i>, Hu et al., <a href="https://arxiv.org/abs/2405.11143" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.05-red" alt="arXiv Badge"></a></li>
 <li><i><b>LLM Reasoners: New Evaluation, Library, and Analysis of Step-by-Step Reasoning with Large Language Models</b></i>, Hao et al., <a href="https://openreview.net/forum?id=b0y6fbSUG0" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.07-blue" alt="PDF Badge"></a></li>
@@ -1309,6 +1309,7 @@ However, despite these developments, a comprehensive survey on Long CoT is still
 <li><i><b>Dapo: An open-source llm reinforcement learning system at scale</b></i>, Yu et al., <a href="https://arxiv.org/abs/2503.14476" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
 <li><i><b>VAPO: Efficient and Reliable Reinforcement Learning for Advanced Reasoning Tasks</b></i>, YuYue et al., <a href="https://arxiv.org/abs/2504.05118" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.04-red" alt="arXiv Badge"></a></li>
 </ul>
+
 
 
 ## 🎁 Citation
