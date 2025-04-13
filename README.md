@@ -2,7 +2,7 @@
 
 
 [![arXiv](https://img.shields.io/badge/arXiv-Long_Chain_of_Thought-b31b1b.svg)](https://arxiv.org/pdf/2503.09567) 
-[![Paper](https://img.shields.io/badge/Paper-801-green.svg)](https://github.com//LightChen233/Awesome-Long-Chain-of-Thought-Reasoning)
+[![Paper](https://img.shields.io/badge/Paper-908-green.svg)](https://github.com//LightChen233/Awesome-Long-Chain-of-Thought-Reasoning)
 [![Last Commit](https://img.shields.io/github/last-commit/LightChen233/Awesome-Long-Chain-of-Thought-Reasoning)](https://github.com/LightChen233/Awesome-Long-Chain-of-Thought-Reasoning)
 [![Contribution Welcome](https://img.shields.io/badge/Contributions-welcome-blue)]()
 
