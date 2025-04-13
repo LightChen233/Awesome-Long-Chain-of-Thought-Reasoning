@@ -55,6 +55,7 @@ Recent advancements in reasoning with large language models (RLLMs), such as Ope
 ![image](./assets/images/deep-reasoning-1.jpg)
 
 <ul>
+<li><i><b>ARMAP: Scaling Autonomous Agents via Automatic Reward Modeling And Planning</b></i>, Chen et al., <a href="https://arxiv.org/abs/2502.12130" target="_blank"><img src="https://img.shields.io/badge/ICLR-2025-blue" alt="PDF Badge"></a></li>
 <li><i><b>Generative language modeling for automated theorem proving</b></i>, Polu et al., <a href="https://arxiv.org/abs/2009.03393" target="_blank"><img src="https://img.shields.io/badge/arXiv-2020.09-red" alt="arXiv Badge"></a></li>
 <li><i><b>Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</b></i>, Wei et al., <a href="https://proceedings.neurips.cc/paper_files/paper/2022/file/9d5609613524ecf4f15af0f7b31abca4-Paper-Conference.pdf" target="_blank"><img src="https://img.shields.io/badge/PDF-2022.00-blue" alt="PDF Badge"></a></li>
 <li><i><b>Reflection of thought: Inversely eliciting numerical reasoning in language models via solving linear systems</b></i>, Zhou et al., <a href="https://arxiv.org/abs/2210.05075" target="_blank"><img src="https://img.shields.io/badge/arXiv-2022.10-red" alt="arXiv Badge"></a></li>
@@ -125,6 +126,7 @@ Recent advancements in reasoning with large language models (RLLMs), such as Ope
 ![image](./assets/images/deep-reasoning-2.png)
 
 <ul>
+<li><i><b>ARMAP: Scaling Autonomous Agents via Automatic Reward Modeling And Planning</b></i>, Chen et al., <a href="https://arxiv.org/abs/2502.12130" target="_blank"><img src="https://img.shields.io/badge/ICLR-2025-blue" alt="PDF Badge"></a></li>
 <li><i><b>Thinking fast and slow with deep learning and tree search</b></i>, Anthony et al., <img src="https://img.shields.io/badge/No Link-2017.00-lightgrey" alt="No Link Badge"></li>
 <li><i><b>Training verifiers to solve math word problems</b></i>, Cobbe et al., <a href="https://arxiv.org/abs/2110.14168" target="_blank"><img src="https://img.shields.io/badge/arXiv-2021.10-red" alt="arXiv Badge"></a></li>
 <li><i><b>Chain of Thought Imitation with Procedure Cloning</b></i>, Yang et al., <a href="https://openreview.net/forum?id=ZJqqSa8FsH9" target="_blank"><img src="https://img.shields.io/badge/PDF-2022.00-blue" alt="PDF Badge"></a></li>
@@ -351,6 +353,7 @@ Recent advancements in reasoning with large language models (RLLMs), such as Ope
 ![image](./assets/images/exploration-scaling.png)
 
 <ul>
+<li><i><b>ARMAP: Scaling Autonomous Agents via Automatic Reward Modeling And Planning</b></i>, Chen et al., <a href="https://arxiv.org/abs/2502.12130" target="_blank"><img src="https://img.shields.io/badge/ICLR-2025-blue" alt="PDF Badge"></a></li>
 <li><i><b>Greedy Policy Search: A Simple Baseline for Learnable Test-Time Augmentation</b></i>, Lyzhov et al., <a href="https://proceedings.mlr.press/v124/lyzhov20a.html" target="_blank"><img src="https://img.shields.io/badge/PDF-2020.00-blue" alt="PDF Badge"></a></li>
 <li><i><b>Scaling scaling laws with board games</b></i>, Jones et al., <a href="https://arxiv.org/abs/2104.03113" target="_blank"><img src="https://img.shields.io/badge/arXiv-2021.04-red" alt="arXiv Badge"></a></li>
 <li><i><b>Show Your Work: Scratchpads for Intermediate Computation with Language Models</b></i>, Nye et al., <a href="https://openreview.net/forum?id=HBlx2idbkbq" target="_blank"><img src="https://img.shields.io/badge/PDF-2022.00-blue" alt="PDF Badge"></a></li>
@@ -695,6 +698,7 @@ Recent advancements in reasoning with large language models (RLLMs), such as Ope
 
 <h3>Agentic & Embodied Long CoT</h3>
 <ul>
+<li><i><b>ARMAP: Scaling Autonomous Agents via Automatic Reward Modeling And Planning</b></i>, Chen et al., <a href="https://arxiv.org/abs/2502.12130" target="_blank"><img src="https://img.shields.io/badge/ICLR-2025-blue" alt="PDF Badge"></a></li>
 <li><i><b>Large language models as commonsense knowledge for large-scale task planning</b></i>, Zhao et al., <img src="https://img.shields.io/badge/No Link-2023.00-lightgrey" alt="No Link Badge"></li>
 <li><i><b>Solving Math Word Problems via Cooperative Reasoning induced Language Models</b></i>, Zhu et al., <a href="https://aclanthology.org/2023.acl-long.245/" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.00-blue" alt="PDF Badge"></a></li>
 <li><i><b>Reasoning with language model is planning with world model</b></i>, Hao et al., <a href="https://arxiv.org/abs/2305.14992" target="_blank"><img src="https://img.shields.io/badge/arXiv-2023.05-red" alt="arXiv Badge"></a></li>
