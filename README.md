@@ -1139,6 +1139,7 @@ However, despite these developments, a comprehensive survey on Long CoT is still
 <li><i><b>ThinkPrune: Pruning Long Chain-of-Thought of LLMs via Reinforcement Learning</b></i>, Hou et al., <a href="https://arxiv.org/abs/2504.01296" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.04-red" alt="arXiv Badge"></a></li>
 <li><i><b>Long-Short Chain-of-Thought Mixture Supervised Fine-Tuning Eliciting Efficient Reasoning in Large Language Models</b></i>, Yu et al., <a href="https://arxiv.org/abs/2505.03469" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.05-red" alt="arXiv Badge"></a></li>
 <li><i><b>Can Pruning Improve Reasoning? Revisiting Long-CoT Compression with Capability in Mind for Better Reasoning</b></i>, Shang et al., <a href="https://arxiv.org/abs/2505.14582" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.05-red" alt="arXiv Badge"></a></li>
+<li><i><b>Accelerated Test-Time Scaling with Model-Free Speculative Sampling</b></i>, Song et al., <a href="https://arxiv.org/abs/2506.04708" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.06-red" alt="arXiv Badge"></a></li>
 </ul>
 
 
