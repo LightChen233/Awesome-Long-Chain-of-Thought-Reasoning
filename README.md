@@ -6,17 +6,20 @@
 [![Last Commit](https://img.shields.io/github/last-commit/LightChen233/Awesome-Long-Chain-of-Thought-Reasoning)](https://github.com/LightChen233/Awesome-Long-Chain-of-Thought-Reasoning)
 [![Contribution Welcome](https://img.shields.io/badge/Contributions-welcome-blue)]()
 
+\[[English Tutorial](README.md)\] / \[[中文教程](README-zh.md)\] 
+
+
 ![image](./assets/images/overall.png)
 
 
 <!-- omit in toc -->
-## 🔥 News
-
+# 🔥 News
+- **2025.07**: 🎉🎉🎉 We have updated the number of reviewed papers to over 1000. Additionally, we have added bilingual supports and updated our repository more friendly for Long-CoT beginner.
 - **2025.04**: 🎉🎉🎉 We have updated the number of reviewed papers to over 900. Additionally, we have enhanced the presentation with more engaging teaser figure.
 - **2025.03**: 🎉🎉🎉 We have published a survey paper titled "[Towards Reasoning Era: A Survey of Long Chain-of-Thought for Reasoning Large Language Models](https://arxiv.org/pdf/2503.09567)". Please feel free to cite or open pull requests for your awesome studies.
 
 <!-- omit in toc -->
-## 🌟 Introduction
+# 🌟 Introduction
 
 Welcome to the repository associated with our survey paper, "Towards Reasoning Era: A Survey of Long Chain-of-Thought for Reasoning Large Language Models". This repository contains **resources and updates** related to our ongoing Long CoT research. For a detailed introduction, please refer to [our survey paper](https://arxiv.org/pdf/2503.09567).
 
@@ -24,1301 +27,975 @@ Recent advancements in reasoning with large language models (RLLMs), such as Ope
 
 ![image](./assets/images/develop.png)
 
-However, despite these developments, a comprehensive survey on Long CoT is still lacking, limiting our understanding of its distinctions from traditional short chain-of-thought (Short CoT) and complicating ongoing debates on issues like "overthinking" and "test-time scaling." This survey seeks to fill this gap by offering a unified perspective on Long CoT. (1) We first distinguish Long CoT from Short CoT and introduce a novel taxonomy to categorize current reasoning paradigms. (2) Next, we explore the key characteristics of Long CoT: deep reasoning, extensive exploration, and feasible reflection, which enable models to handle more complex tasks and produce more efficient, coherent outcomes compared to the shallower Short CoT. (3) We then investigate key phenomena such as the emergence of Long CoT with these characteristics, including overthinking, and test-time scaling, offering insights into how these processes manifest in practice. (4) Finally, we identify significant research gaps and highlight promising future directions, including the integration of multi-modal reasoning, efficiency improvements, and enhanced knowledge frameworks. By providing a structured overview, this survey aims to inspire future research and further the development of logical reasoning in artificial intelligence.
+However, despite these developments, a comprehensive survey on Long CoT is still lacking, limiting our understanding of its distinctions from traditional short chain-of-thought (Short CoT) and complicating ongoing debates on issues like "overthinking" and "test-time scaling." This survey seeks to fill this gap by offering a unified perspective on Long CoT.
+1. We first distinguish Long CoT from Short CoT and introduce a novel taxonomy to categorize current reasoning paradigms.
+2. Next, we explore the key characteristics of Long CoT: deep reasoning, extensive exploration, and feasible reflection, which enable models to handle more complex tasks and produce more efficient, coherent outcomes compared to the shallower Short CoT.
+3. We then investigate key phenomena such as the emergence of Long CoT with these characteristics, including overthinking, and test-time scaling, offering insights into how these processes manifest in practice.
+4. Finally, we identify significant research gaps and highlight promising future directions, including the integration of multi-modal reasoning, efficiency improvements, and enhanced knowledge frameworks. 
+
+By providing a structured overview, this survey aims to inspire future research and further the development of logical reasoning in artificial intelligence.
 
 ![image](./assets/images/intro.jpg)
 
 <!-- omit in toc -->
-## 🔮 Contents
 
-- [Awesome-Long-CoT](#)
-  - [Part 1: Analysis and Evaluation](#analysis-and-evaluation)
-    - [Analysis & Explanation for Long CoT](#analysis-explanation-for-long-cot)
-    - [Long CoT Evaluations](#long-cot-evaluations)
-  - [Part 2: Deep Reasoning](#deep-reasoning)
-    - [Deep Reasoning Format](#deep-reasoning-format)
-    - [Deep Reasoning Learning](#deep-reasoning-learning)
-  - [Part 3: Feasible Reflection](#feasible-reflection)
-    - [Feedback](#feedback)
-    - [Refinement](#refinement)
-  - [Part 4: Extensive Exploration](#extensive-exploration)
-    - [Exploration Scaling](#exploration-scaling)
-    - [Internal Exploration](#internal-exploration)
-    - [External Exploration](#external-exploration)
-  - [Part 5: Future and Frontiers](#future)
-    - [Agentic & Embodied Long CoT](#agentic-embodied-long-cot)
-    - [Efficient Long CoT](#efficient-long-cot)
-    - [Knowledge-Augmented Long CoT](#knowledge-augmented-long-cot)
-    - [Multilingual Long CoT](#multilingual-long-cot)
-    - [Multimodal Long CoT](#multimodal-long-cot)
-    - [Safety for Long CoT](#safety-long-cot)
+
+# 🕹️ Content
+## 0. How to Learn \& About Us
+We aim to help newcomers quickly establish domain knowledge, so our design concept is as follows: briefly introduce the main technologies involved in reasoning large models and Long CoT, allowing everyone to understand which problems different technologies can address, so that when they wish to delve deeper into the field in the future, they will have a clear starting point.
+
+We are a team of beginners in reasoning large models, and we hope that through our own learning experiences, we can offer some assistance to future learners, accelerating the popularization and application of reasoning large models. We welcome more friends to join our project, and we are also open to friendship and academic collaboration. For any inquiries, please feel free to contact us via email at [charleschen2333@gmail.com](mailto:charleschen2333@gmail.com).
+
+**Daily Knowledge Resources**
+- **Social Media:**
+  - Recommended WeChat Public Accounts: JIQIZHIXIN, Paper Weekly, MLNLP...
+  - Recommended Twitter Accounts: [AK](https://x.com/_akhaliq), [elvis](https://x.com/omarsar0), [Philipp Schmid](https://x.com/_philschmid), ...
+- **Cutting-edge Courses:** [CS336](https://stanford-cs336.github.io/spring2025/)
+- **Community Sharing:** [MLNLP](https://space.bilibili.com/168887299), [JIQIZHIXIN](https://space.bilibili.com/73414544), [NICE Academic](https://space.bilibili.com/507524288)
+
+## 1. Classical Reasoning Model
+- [OpenAI-o1 / o3 / o4](https://platform.openai.com/docs/models/#o3): The earliest reasoning large language models exploring Long CoT, developed by OpenAI’s first-tier models.
+- [Gemini](https://github.com/google-gemini): First-tier reasoning large language models developed by Google.
+- [Deepseek-r1](https://github.com/deepseek-ai/DeepSeek-R1): The first open-source reasoning large language model with Long CoT.
+- [QwQ](https://qwenlm.github.io/zh/blog/qwq-32b-preview/): The first open-source large-scale reasoning large language model with Long CoT.
+- [Qwen3](https://github.com/QwenLM/Qwen3): The most commonly used open-source reasoning large language models for Long CoT developed by Alibaba.
+- [Seed-Thinking-v1.5](https://github.com/ByteDance-Seed/Seed-Thinking-v1.5/blob/main/seed-thinking-v1.5.pdf): ByteDance’s open-source reasoning model for Long CoT.
+- [Kimi-k1.5](https://github.com/MoonshotAI/Kimi-k1.5): The earliest multimodal reasoning model for Long CoT developed by Moonshot.
+- [MiniMax-m1](https://github.com/MiniMax-AI/MiniMax-M1): The open-source reasoning model for Long CoT developed by MiniMax.
+
+
+## 2. Introduction to Long-CoT Capabilities
+In this chapter, we will provide the most representative technologies for each capability, along with the latest developments. A detailed list of papers can be found in the [complete list](pages/paper.md).
+
 
 ![image](./assets/images/contents.jpg)
 
-<h2 id="analysis-and-evaluation">1. Analysis and Evaluation</h2>
 
+### 2.1 Deep Reasoning
 
-<h3 id="analysis-explanation-for-long-cot">1.1 Analysis & Explanation for Long CoT</h3>
-<img src="./assets/images/analysis.jpg" style="width: 580pt">
-<ul>
-<li><i><b>Explainable AI in Large Language Models: A Review</b></i>, Sauhandikaa et al., <a href="http://ieeexplore.ieee.org/abstract/document/10895578" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.00-blue" alt="PDF Badge"></a></li>
-<li><i><b>Xai meets llms: A survey of the relation between explainable ai and large language models</b></i>, Cambria et al., <a href="https://arxiv.org/abs/2407.15248" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.07-red" alt="arXiv Badge"></a></li>
-<li><i><b>When a language model is optimized for reasoning, does it still show embers of autoregression? An analysis of OpenAI o1</b></i>, McCoy et al., <a href="https://arxiv.org/abs/2410.01792" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>Think or Step-by-Step? UnZIPping the Black Box in Zero-Shot Prompts</b></i>, Sadr et al., <a href="https://arxiv.org/abs/2502.03418" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-</ul>
+The core of deep reasoning ability lies in the need for sufficient logical depth to manage a large number of reasoning nodes. Without this capability, the performance of reasoning large language models (RLLMs) significantly degrades. Current methods for enhancing deep reasoning can be categorized into two main approaches: Deep Reasoning Format and Deep Reasoning Learning.
 
-<h4 id="long-cot-external-behavior-analysis">1.1.1 Long CoT External Behavior Analysis</h4>
-</ul>
-
-<ul>
-<li><i><b>Language Models Can Predict Their Own Behavior</b></i>, Ashok et al., <a href="https://arxiv.org/abs/2502.13329" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-</ul>
-
-<b>Aha Moment Phenomenon</b>
-<ul>
-<li><i><b>There May Not be Aha Moment in R1-Zero-like Training — A Pilot Study</b></i>, Liu et al., <a href="https://oatllm.notion.site/oat-zero" target="_blank"><img src="https://img.shields.io/badge/Notion-2025.00-white" alt="Notion Badge"></a></li>
-<li><i><b>Deepseek-r1: Incentivizing reasoning capability in llms via reinforcement learning</b></i>, Guo et al., <a href="https://arxiv.org/abs/2501.12948" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Open R1</b></i>, Team et al., <a href="https://github.com/huggingface/open-r1" target="_blank"><img src="https://img.shields.io/badge/Github-2025.01-white" alt="Github Badge"></a></li>
-<li><i><b>Logic-RL: Unleashing LLM Reasoning with Rule-Based Reinforcement Learning</b></i>, Xie et al., <a href="https://arxiv.org/abs/2502.14768" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>R1-Zero's" Aha Moment" in Visual Reasoning on a 2B Non-SFT Model</b></i>, Zhou et al., <a href="https://arxiv.org/abs/2503.05132" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>MM-Eureka: Exploring Visual Aha Moment with Rule-based Large-scale Reinforcement Learning</b></i>, Meng et al., <a href="https://arxiv.org/abs/2503.07365" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>Understanding Aha Moments: from External Observations to Internal Mechanisms</b></i>, Yang et al., <a href="https://arxiv.org/abs/2504.02956" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.04-red" alt="arXiv Badge"></a></li>
-</ul>
-
-<b>Inference Test-Time Scaling Phenomenon</b>
-<ul>
-<li><i><b>Greedy Policy Search: A Simple Baseline for Learnable Test-Time Augmentation</b></i>, Lyzhov et al., <a href="https://proceedings.mlr.press/v124/lyzhov20a.html" target="_blank"><img src="https://img.shields.io/badge/PDF-2020.08-blue" alt="PDF Badge"></a></li>
-<li><i><b>Large language monkeys: Scaling inference compute with repeated sampling</b></i>, Brown et al., <a href="https://arxiv.org/abs/2407.21787" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.07-red" alt="arXiv Badge"></a></li>
-<li><i><b>The Impact of Reasoning Step Length on Large Language Models</b></i>, Jin et al., <a href="https://aclanthology.org/2024.findings-acl.108/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.08-blue" alt="PDF Badge"></a></li>
-<li><i><b>Inference scaling laws: An empirical analysis of compute-optimal inference for problem-solving with language models</b></i>, Wu et al., <a href="https://arxiv.org/abs/2408.00724" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.08-red" alt="arXiv Badge"></a></li>
-<li><i><b>Unlocking the Capabilities of Thought: A Reasoning Boundary Framework to Quantify and Optimize Chain-of-Thought</b></i>, Chen et al., <a href="https://openreview.net/forum?id=pC44UMwy2v" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.09-blue" alt="PDF Badge"></a></li>
-<li><i><b>From Decoding to Meta-Generation: Inference-time Algorithms for Large Language Models</b></i>, Welleck et al., <a href="https://openreview.net/forum?id=eskQMcIbMS" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.11-blue" alt="PDF Badge"></a></li>
-<li><i><b>Openai o1 system card</b></i>, Jaech et al., <a href="https://arxiv.org/abs/2412.16720" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>Deepseek-r1: Incentivizing reasoning capability in llms via reinforcement learning</b></i>, Guo et al., <a href="https://arxiv.org/abs/2501.12948" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>When More is Less: Understanding Chain-of-Thought Length in LLMs</b></i>, Wu et al., <a href="https://arxiv.org/abs/2502.07266" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Inference-Time Computations for LLM Reasoning and Planning: A Benchmark and Insights</b></i>, Parashar et al., <a href="https://arxiv.org/abs/2502.12521" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Examining False Positives under Inference Scaling for Mathematical Reasoning</b></i>, Wang et al., <a href="https://arxiv.org/abs/2502.06217" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>ECM: A Unified Electronic Circuit Model for Explaining the Emergence of In-Context Learning and Chain-of-Thought in Large Language Model</b></i>, Chen et al., <a href="https://arxiv.org/abs/2502.03325" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>PhD Knowledge Not Required: A Reasoning Challenge for Large Language Models</b></i>, Anderson et al., <a href="https://arxiv.org/abs/2502.01584" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Scaling Test-Time Compute Without Verification or RL is Suboptimal</b></i>, Setlur et al., <a href="https://arxiv.org/abs/2502.12118" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>The Relationship Between Reasoning and Performance in Large Language Models--o3 (mini) Thinks Harder, Not Longer</b></i>, Ballon et al., <a href="https://arxiv.org/abs/2502.15631" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Inference-Time Scaling for Complex Tasks: Where We Stand and What Lies Ahead</b></i>, Balachandran et al., <a href="https://arxiv.org/abs/2504.00294" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.04-red" alt="arXiv Badge"></a></li>
-</ul>
-
-<b>Long CoT Emergence Phenomenon</b>
-<ul>
-<li><i><b>Star: Bootstrapping reasoning with reasoning</b></i>, Zelikman et al., <a href="https://openreview.net/pdf?id=_3ELRdg2sgI" target="_blank"><img src="https://img.shields.io/badge/PDF-2022.11-blue" alt="PDF Badge"></a></li>
-<li><i><b>Towards Understanding Chain-of-Thought Prompting: An Empirical Study of What Matters</b></i>, Wang et al., <a href="https://aclanthology.org/2023.acl-long.153/" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.07-blue" alt="PDF Badge"></a></li>
-<li><i><b>LAMBADA: Backward Chaining for Automated Reasoning in Natural Language</b></i>, Kazemi et al., <a href="https://aclanthology.org/2023.acl-long.361/" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.07-blue" alt="PDF Badge"></a></li>
-<li><i><b>What Makes Chain-of-Thought Prompting Effective? A Counterfactual Study</b></i>, Madaan et al., <a href="https://aclanthology.org/2023.findings-emnlp.101.pdf" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.12-blue" alt="PDF Badge"></a></li>
-<li><i><b>Automatic Prompt Augmentation and Selection with Chain-of-Thought from Labeled Data</b></i>, Shum et al., <a href="https://aclanthology.org/2023.findings-emnlp.811/" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.12-blue" alt="PDF Badge"></a></li>
-<li><i><b>MoT: Memory-of-Thought Enables ChatGPT to Self-Improve</b></i>, Li et al., <a href="https://aclanthology.org/2023.emnlp-main.392/" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.12-blue" alt="PDF Badge"></a></li>
-<li><i><b>The llama 3 herd of models</b></i>, Dubey et al., <a href="https://arxiv.org/abs/2407.21783" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.07-red" alt="arXiv Badge"></a></li>
-<li><i><b>Do Large Language Models Latently Perform Multi-Hop Reasoning?</b></i>, Yang et al., <a href="https://aclanthology.org/2024.acl-long.550/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.08-blue" alt="PDF Badge"></a></li>
-<li><i><b>Chain of Thoughtlessness? An Analysis of CoT in Planning</b></i>, Stechly et al., <a href="https://openreview.net/forum?id=kPBEAZU5Nm" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.09-blue" alt="PDF Badge"></a></li>
-<li><i><b>Chain-of-Thought Reasoning Without Prompting</b></i>, Wang et al., <a href="https://openreview.net/forum?id=4Zt7S0B0Jp" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.09-blue" alt="PDF Badge"></a></li>
-<li><i><b>Qwen2.5 technical report</b></i>, Yang et al., <a href="https://arxiv.org/abs/2412.15115" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>Deepseek-r1: Incentivizing reasoning capability in llms via reinforcement learning</b></i>, Guo et al., <a href="https://arxiv.org/abs/2501.12948" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Towards System 2 Reasoning in LLMs: Learning How to Think With Meta Chain-of-Though</b></i>, Xiang et al., <a href="https://arxiv.org/abs/2501.04682" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Think or Step-by-Step? UnZIPping the Black Box in Zero-Shot Prompts</b></i>, Sadr et al., <a href="https://arxiv.org/abs/2502.03418" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Logic-RL: Unleashing LLM Reasoning with Rule-Based Reinforcement Learning</b></i>, Xie et al., <a href="https://arxiv.org/abs/2502.14768" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Problem-Solving Logic Guided Curriculum In-Context Learning for LLMs Complex Reasoning</b></i>, Ma et al., <a href="https://arxiv.org/abs/2502.15401" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Cognitive Behaviors that Enable Self-Improving Reasoners, or, Four Habits of Highly Effective STaRs</b></i>, Gandhi et al., <a href="https://arxiv.org/abs/2503.01307" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>Style over Substance: Distilled Language Models Reason Via Stylistic Replication</b></i>, Lippmann et al., <a href="https://arxiv.org/abs/2504.01738" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.04-red" alt="arXiv Badge"></a></li>
-<li><i><b>Do Larger Language Models Imply Better Reasoning? A Pretraining Scaling Law for Reasoning</b></i>, Wang et al., <a href="https://arxiv.org/abs/2504.03635" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.04-red" alt="arXiv Badge"></a></li>
-</ul>
-
-<b>Overthinking Phenomenon</b>
-<ul>
-<li><i><b>The Impact of Reasoning Step Length on Large Language Models</b></i>, Jin et al., <a href="https://aclanthology.org/2024.findings-acl.108/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.08-blue" alt="PDF Badge"></a></li>
-<li><i><b>Unlocking the Capabilities of Thought: A Reasoning Boundary Framework to Quantify and Optimize Chain-of-Thought</b></i>, Chen et al., <a href="https://openreview.net/forum?id=pC44UMwy2v" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.09-blue" alt="PDF Badge"></a></li>
-<li><i><b>Compositional Hardness of Code in Large Language Models--A Probabilistic Perspective</b></i>, Wolf et al., <a href="https://arxiv.org/abs/2409.18028" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.09-red" alt="arXiv Badge"></a></li>
-<li><i><b>DynaThink: Fast or Slow? A Dynamic Decision-Making Framework for Large Language Models</b></i>, Pan et al., <a href="https://aclanthology.org/2024.emnlp-main.814/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.11-blue" alt="PDF Badge"></a></li>
-<li><i><b>What Are Step-Level Reward Models Rewarding? Counterintuitive Findings from MCTS-Boosted Mathematical Reasoning</b></i>, Ma et al., <a href="https://arxiv.org/abs/2412.15904" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>Do not think that much for 2+ 3=? on the overthinking of o1-like llms</b></i>, Chen et al., <a href="https://arxiv.org/abs/2412.21187" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>Rethinking External Slow-Thinking: From Snowball Errors to Probability of Correct Reasoning</b></i>, Gan et al., <a href="https://arxiv.org/abs/2501.15602" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Complexity Control Facilitates Reasoning-Based Compositional Generalization in Transformers</b></i>, Zhang et al., <a href="https://arxiv.org/abs/2501.08537" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Logic-RL: Unleashing LLM Reasoning with Rule-Based Reinforcement Learning</b></i>, Xie et al., <a href="https://arxiv.org/abs/2502.14768" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>When More is Less: Understanding Chain-of-Thought Length in LLMs</b></i>, Wu et al., <a href="https://arxiv.org/abs/2502.07266" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>ECM: A Unified Electronic Circuit Model for Explaining the Emergence of In-Context Learning and Chain-of-Thought in Large Language Model</b></i>, Chen et al., <a href="https://arxiv.org/abs/2502.03325" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>The Danger of Overthinking: Examining the Reasoning-Action Dilemma in Agentic Tasks</b></i>, Cuadron et al., <a href="https://arxiv.org/abs/2502.08235" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>OVERTHINKING: Slowdown Attacks on Reasoning LLMs</b></i>, Kumar et al., <a href="https://arxiv.org/abs/2502.02542" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-</ul>
-
-<b>PRM v.s. ORM Phenomenon</b>
-<ul>
-<li><i><b>Concrete problems in AI safety</b></i>, Amodei et al., <a href="https://arxiv.org/abs/1606.06565" target="_blank"><img src="https://img.shields.io/badge/arXiv-2016.06-red" alt="arXiv Badge"></a></li>
-<li><i><b>The effects of reward misspecification: Mapping and mitigating misaligned models</b></i>, Pan et al., <a href="https://arxiv.org/abs/2201.03544" target="_blank"><img src="https://img.shields.io/badge/arXiv-2022.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Goal misgeneralization in deep reinforcement learning</b></i>, Di Langosco et al., <a href="https://proceedings.mlr.press/v162/langosco22a/langosco22a.pdf" target="_blank"><img src="https://img.shields.io/badge/PDF-2022.10-blue" alt="PDF Badge"></a></li>
-<li><i><b>Can language models learn from explanations in context?</b></i>, Lampinen et al., <a href="https://aclanthology.org/2022.findings-emnlp.38" target="_blank"><img src="https://img.shields.io/badge/PDF-2022.12-blue" alt="PDF Badge"></a></li>
-<li><i><b>Causal Abstraction for Chain-of-Thought Reasoning in Arithmetic Word Problems</b></i>, Tan et al., <a href="https://aclanthology.org/2023.blackboxnlp-1.12" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.12-blue" alt="PDF Badge"></a></li>
-<li><i><b>Processbench: Identifying process errors in mathematical reasoning</b></i>, Zheng et al., <a href="https://arxiv.org/abs/2412.06559" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>Towards Large Reasoning Models: A Survey of Reinforced Reasoning with Large Language Models</b></i>, Xu et al., <a href="https://arxiv.org/abs/2501.09686" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>PRMBench: A Fine-grained and Challenging Benchmark for Process-Level Reward Models</b></i>, Song et al., <a href="https://arxiv.org/abs/2501.03124" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Deepseek-r1: Incentivizing reasoning capability in llms via reinforcement learning</b></i>, Guo et al., <a href="https://arxiv.org/abs/2501.12948" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Do We Need to Verify Step by Step? Rethinking Process Supervision from a Theoretical Perspective</b></i>, Jia et al., <a href="https://arxiv.org/abs/2502.10581" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Unveiling and Causalizing CoT: A Causal Pespective</b></i>, Fu et al., <a href="https://arxiv.org/abs/2502.18239" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Logic-RL: Unleashing LLM Reasoning with Rule-Based Reinforcement Learning</b></i>, Xie et al., <a href="https://arxiv.org/abs/2502.14768" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Agentic Reward Modeling: Integrating Human Preferences with Verifiable Correctness Signals for Reliable Reward Systems</b></i>, Peng et al., <a href="https://arxiv.org/abs/2502.19328" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Process-based Self-Rewarding Language Models</b></i>, Zhang et al., <a href="https://arxiv.org/abs/2503.03746" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation</b></i>, Baker et al., <a href="https://openai.com/index/chain-of-thought-monitoring/" target="_blank"><img src="https://img.shields.io/badge/PDF-2025.03-blue" alt="PDF Badge"></a></li>
-<li><i><b>Rewarding Curse: Analyze and Mitigate Reward Modeling Issues for LLM Reasoning</b></i>, Li et al., <a href="https://arxiv.org/abs/2503.05188" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-</ul>
-
-<b>Reasoning Boundary Phenomenon</b>
-<ul>
-<li><i><b>The Expressive Power of Transformers with Chain of Thought</b></i>, Merrill et al., <a href="https://openreview.net/pdf?id=CDmerQ37Zs" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.01-blue" alt="PDF Badge"></a></li>
-<li><i><b>Chain of Thought Empowers Transformers to Solve Inherently Serial Problems</b></i>, Li et al., <a href="https://openreview.net/pdf?id=3EWTEy9MTM" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.01-blue" alt="PDF Badge"></a></li>
-<li><i><b>Mathprompter: Mathematical reasoning using large language models</b></i>, Imani et al., <a href="https://arxiv.org/abs/2303.05398" target="_blank"><img src="https://img.shields.io/badge/arXiv-2023.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>Towards Revealing the Mystery behind Chain of Thought: A Theoretical Perspective</b></i>, Feng et al., <a href="https://openreview.net/forum?id=qHrADgAdYu" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.09-blue" alt="PDF Badge"></a></li>
-<li><i><b>When Do Program-of-Thought Works for Reasoning?</b></i>, Bi et al., <a href="https://ojs.aaai.org/index.php/AAAI/article/view/29721/31237" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.00-blue" alt="PDF Badge"></a></li>
-<li><i><b>MuSR: Testing the Limits of Chain-of-thought with Multistep Soft Reasoning</b></i>, Sprague et al., <a href="https://openreview.net/forum?id=jenyYQzue1" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.01-blue" alt="PDF Badge"></a></li>
-<li><i><b>How Far Are We on the Decision-Making of LLMs? Evaluating LLMs' Gaming Ability in Multi-Agent Environments</b></i>, Huang et al., <a href="https://arxiv.org/abs/2403.11807" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>Unlocking the Capabilities of Thought: A Reasoning Boundary Framework to Quantify and Optimize Chain-of-Thought</b></i>, Chen et al., <a href="https://openreview.net/forum?id=pC44UMwy2v" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.09-blue" alt="PDF Badge"></a></li>
-<li><i><b>Not All LLM Reasoners Are Created Equal</b></i>, Hosseini et al., <a href="https://openreview.net/forum?id=aPAWbip1xV" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.10-blue" alt="PDF Badge"></a></li>
-<li><i><b>Exploring the Compositional Deficiency of Large Language Models in Mathematical Reasoning Through Trap Problems</b></i>, Zhao et al., <a href="https://aclanthology.org/2024.emnlp-main.915/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.11-blue" alt="PDF Badge"></a></li>
-<li><i><b>GSM-Infinite: How Do Your LLMs Behave over Infinitely Increasing Context Length and Reasoning Complexity?</b></i>, Zhou et al., <a href="https://arxiv.org/abs/2502.05252" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Lower Bounds for Chain-of-Thought Reasoning in Hard-Attention Transformers</b></i>, Amiri et al., <a href="https://arxiv.org/abs/2502.02393" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>The Lookahead Limitation: Why Multi-Operand Addition is Hard for LLMs</b></i>, Baeumel et al., <a href="https://arxiv.org/abs/2502.19981" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Reasoning Beyond Limits: Advances and Open Problems for LLMs</b></i>, Ferrag et al., <a href="https://arxiv.org/abs/2503.22732" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-</ul>
-
-<h4 id="long-cot-internal-mechanism-analysis">1.1.2 Long CoT Internal Mechanism Analysis</h4>
-</ul>
-
-<b>Knowledge Incorporating Mechanism</b>
-<ul>
-<li><i><b>Why think step by step? Reasoning emerges from the locality of experience</b></i>, Prystawski et al., <a href="https://proceedings.neurips.cc/paper_files/paper/2023/file/e0af79ad53a336b4c4b4f7e2a68eb609-Paper-Conference.pdf" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.09-blue" alt="PDF Badge"></a></li>
-<li><i><b>Thinking llms: General instruction following with thought generation</b></i>, Wu et al., <a href="https://arxiv.org/abs/2410.10630" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>On the reasoning capacity of ai models and how to quantify it</b></i>, Radha et al., <a href="https://arxiv.org/abs/2501.13833" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Exploring Concept Depth: How Large Language Models Acquire Knowledge and Concept at Different Layers?</b></i>, Jin et al., <a href="https://aclanthology.org/2025.coling-main.37/" target="_blank"><img src="https://img.shields.io/badge/PDF-2025.01-blue" alt="PDF Badge"></a></li>
-<li><i><b>How Do LLMs Acquire New Knowledge? A Knowledge Circuits Perspective on Continual Pre-Training</b></i>, Ou et al., <a href="https://arxiv.org/abs/2502.11196" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Logic-RL: Unleashing LLM Reasoning with Rule-Based Reinforcement Learning</b></i>, Xie et al., <a href="https://arxiv.org/abs/2502.14768" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Enhancing llm reliability via explicit knowledge boundary modeling</b></i>, Zheng et al., <a href="https://arxiv.org/abs/2503.02233" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-</ul>
-
-<b>Reasoning Interal Mechanism</b>
-<ul>
-<li><i><b>How Large Language Models Implement Chain-of-Thought?</b></i>, Wang et al., <a href="https://openreview.net/pdf?id=b2XfOm3RJa" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.09-blue" alt="PDF Badge"></a></li>
-<li><i><b>How does GPT-2 compute greater-than?: Interpreting mathematical abilities in a pre-trained language model</b></i>, Hanna et al., <a href="https://openreview.net/forum?id=p4PckNQR8k" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.09-blue" alt="PDF Badge"></a></li>
-<li><i><b>System 2 Attention (is something you might need too)</b></i>, Weston et al., <a href="https://arxiv.org/abs/2311.11829" target="_blank"><img src="https://img.shields.io/badge/arXiv-2023.11-red" alt="arXiv Badge"></a></li>
-<li><i><b>How to think step-by-step: A mechanistic understanding of chain-of-thought reasoning</b></i>, Dutta et al., <a href="https://openreview.net/forum?id=uHLDkQVtyC" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.07-blue" alt="PDF Badge"></a></li>
-<li><i><b>An Investigation of Neuron Activation as a Unified Lens to Explain Chain-of-Thought Eliciting Arithmetic Reasoning of LLMs</b></i>, Rai et al., <a href="https://aclanthology.org/2024.acl-long.387/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.08-blue" alt="PDF Badge"></a></li>
-<li><i><b>What Happened in LLMs Layers when Trained for Fast vs. Slow Thinking: A Gradient Perspective</b></i>, Li et al., <a href="https://arxiv.org/abs/2410.23743" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>Finite State Automata Inside Transformers with Chain-of-Thought: A Mechanistic Study on State Tracking</b></i>, Zhang et al., <a href="https://arxiv.org/abs/2502.20129" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>The Validation Gap: A Mechanistic Analysis of How Language Models Compute Arithmetic but Fail to Validate It</b></i>, Bertolazzi et al., <a href="https://arxiv.org/abs/2502.11771" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Layer by Layer: Uncovering Hidden Representations in Language Models</b></i>, Skean et al., <a href="https://arxiv.org/abs/2502.02013" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Back Attention: Understanding and Enhancing Multi-Hop Reasoning in Large Language Models</b></i>, Yu et al., <a href="https://arxiv.org/abs/2502.10835" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-</ul>
-
-
-
-<h3 id="long-cot-evaluations">1.2 Long CoT Evaluations</h3>
-<h4 id="advanced-evaluation">1.2.3 Advanced Evaluation</h4>
-</ul>
-
-<b>AI for Research</b>
-<ul>
-<li><i><b>ScienceWorld: Is your Agent Smarter than a 5th Grader?</b></i>, Wang et al., <a href="https://aclanthology.org/2022.emnlp-main.775/" target="_blank"><img src="https://img.shields.io/badge/PDF-2022.12-blue" alt="PDF Badge"></a></li>
-<li><i><b>Can llms generate novel research ideas? a large-scale human study with 100+ nlp researchers</b></i>, Si et al., <a href="https://arxiv.org/abs/2409.04109" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.09-red" alt="arXiv Badge"></a></li>
-<li><i><b>Mle-bench: Evaluating machine learning agents on machine learning engineering</b></i>, Chan et al., <a href="https://arxiv.org/abs/2410.07095" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>Chain of ideas: Revolutionizing research via novel idea development with llm agents</b></i>, Li et al., <a href="https://arxiv.org/abs/2410.13185" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>HardML: A Benchmark For Evaluating Data Science And Machine Learning knowledge and reasoning in AI</b></i>, Pricope et al., <a href="https://arxiv.org/abs/2501.15627" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>DeepSolution: Boosting Complex Engineering Solution Design via Tree-based Exploration and Bi-point Thinking</b></i>, Li et al., <a href="https://arxiv.org/abs/2502.20730" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Large Language Models Penetration in Scholarly Writing and Peer Review</b></i>, Zhou et al., <a href="https://arxiv.org/abs/2502.11193" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Towards an AI co-scientist</b></i>, Gottweis et al., <a href="https://arxiv.org/abs/2502.18864" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Agentic Reasoning: Reasoning LLMs with Tools for the Deep Research</b></i>, Wu et al., <a href="https://arxiv.org/abs/2502.04644" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Open Deep Research</b></i>, Team et al., <a href="https://github.com/nickscamara/open-deep-research" target="_blank"><img src="https://img.shields.io/badge/Github-2025.02-white" alt="Github Badge"></a></li>
-<li><i><b>Enabling AI Scientists to Recognize Innovation: A Domain-Agnostic Algorithm for Assessing Novelty</b></i>, Wang et al., <a href="https://arxiv.org/abs/2503.01508" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-</ul>
-
-<b>Agentic & Embodied Reasoning</b>
-<ul>
-<li><i><b>WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents</b></i>, Yao et al., <a href="https://openreview.net/forum?id=R9KnuFlvnU" target="_blank"><img src="https://img.shields.io/badge/PDF-2022.00-blue" alt="PDF Badge"></a></li>
-<li><i><b>ScienceWorld: Is your Agent Smarter than a 5th Grader?</b></i>, Wang et al., <a href="https://aclanthology.org/2022.emnlp-main.775/" target="_blank"><img src="https://img.shields.io/badge/PDF-2022.12-blue" alt="PDF Badge"></a></li>
-<li><i><b>WebArena: A Realistic Web Environment for Building Autonomous Agents</b></i>, Zhou et al., <a href="https://openreview.net/forum?id=oKn9c6ytLx" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.01-blue" alt="PDF Badge"></a></li>
-<li><i><b>How Far Are We on the Decision-Making of LLMs? Evaluating LLMs' Gaming Ability in Multi-Agent Environments</b></i>, Huang et al., <a href="https://arxiv.org/abs/2403.11807" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>CogAgent: A Visual Language Model for GUI Agents</b></i>, Hong et al., <a href="https://openaccess.thecvf.com/content/CVPR2024/papers/Hong_CogAgent_A_Visual_Language_Model_for_GUI_Agents_CVPR_2024_paper.pdf" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.06-blue" alt="PDF Badge"></a></li>
-<li><i><b>OSWorld: Benchmarking Multimodal Agents for Open-Ended Tasks in Real Computer Environments</b></i>, Xie et al., <a href="https://openreview.net/forum?id=tN61DTr4Ed" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.09-blue" alt="PDF Badge"></a></li>
-<li><i><b>ToolComp: A Multi-Tool Reasoning & Process Supervision Benchmark</b></i>, Nath et al., <a href="https://arxiv.org/abs/2501.01290" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Mobile-Agent-E: Self-Evolving Mobile Assistant for Complex Tasks</b></i>, Wang et al., <a href="https://arxiv.org/abs/2501.11733" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>PhysReason: A Comprehensive Benchmark towards Physics-Based Reasoning</b></i>, Zhang et al., <a href="https://arxiv.org/abs/2502.12054" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Text2World: Benchmarking Large Language Models for Symbolic World Model Generation</b></i>, Hu et al., <a href="https://arxiv.org/abs/2502.13092" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>WebGames: Challenging General-Purpose Web-Browsing AI Agents</b></i>, Thomas et al., <a href="https://arxiv.org/abs/2502.18356" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>VEM: Environment-Free Exploration for Training GUI Agent with Value Environment Model</b></i>, Zheng et al., <a href="https://arxiv.org/abs/2502.18906" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Mobile-Agent-V: Learning Mobile Device Operation Through Video-Guided Multi-Agent Collaboration</b></i>, Wang et al., <a href="https://arxiv.org/abs/2502.17110" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Generating Symbolic World Models via Test-time Scaling of Large Language Models</b></i>, Yu et al., <a href="https://arxiv.org/abs/2502.04728" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>UI-R1: Enhancing Action Prediction of GUI Agents by Reinforcement Learning</b></i>, Lu et al., <a href="https://arxiv.org/abs/2503.21620" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-</ul>
-
-<b>Multimodal Reasoning</b>
-<ul>
-<li><i><b>Learn to Explain: Multimodal Reasoning via Thought Chains for Science Question Answering</b></i>, Lu et al., <a href="https://openreview.net/forum?id=HjwK-Tc_Bc" target="_blank"><img src="https://img.shields.io/badge/PDF-2022.11-blue" alt="PDF Badge"></a></li>
-<li><i><b>A Multi-Modal Neural Geometric Solver with Textual Clauses Parsed from Diagram</b></i>, Zhang et al., <a href="https://doi.org/10.24963/ijcai.2023/376" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.00-blue" alt="PDF Badge"></a></li>
-<li><i><b>MathVista: Evaluating Mathematical Reasoning of Foundation Models in Visual Contexts</b></i>, Lu et al., <a href="https://openreview.net/forum?id=KUNzEQMWU7" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.01-blue" alt="PDF Badge"></a></li>
-<li><i><b>Plot2code: A comprehensive benchmark for evaluating multi-modal large language models in code generation from scientific plots</b></i>, Wu et al., <a href="https://arxiv.org/abs/2405.07990" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.05-red" alt="arXiv Badge"></a></li>
-<li><i><b>M<sup>3</sup>CoT: A Novel Benchmark for Multi-Domain Multi-step Multi-modal Chain-of-Thought</b></i>, Chen et al., <a href="https://aclanthology.org/2024.acl-long.446/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.08-blue" alt="PDF Badge"></a></li>
-<li><i><b>PuzzleVQA: Diagnosing Multimodal Reasoning Challenges of Language Models with Abstract Visual Patterns</b></i>, Chia et al., <a href="https://aclanthology.org/2024.findings-acl.962/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.08-blue" alt="PDF Badge"></a></li>
-<li><i><b>Can LLMs Solve Molecule Puzzles? A Multimodal Benchmark for Molecular Structure Elucidation</b></i>, Guo et al., <a href="https://openreview.net/forum?id=t1mAXb4Cop" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.09-blue" alt="PDF Badge"></a></li>
-<li><i><b>Measuring Multimodal Mathematical Reasoning with MATH-Vision Dataset</b></i>, Wang et al., <a href="https://openreview.net/forum?id=QWTCcxMpPA" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.09-blue" alt="PDF Badge"></a></li>
-<li><i><b>Mathverse: Does your multi-modal llm truly see the diagrams in visual math problems?</b></i>, Zhang et al., <a href="https://link.springer.com/chapter/10.1007/978-3-031-73242-3_10" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.10-blue" alt="PDF Badge"></a></li>
-<li><i><b>HumanEval-V: Evaluating Visual Understanding and Reasoning Abilities of Large Multimodal Models Through Coding Tasks</b></i>, Zhang et al., <a href="https://arxiv.org/abs/2410.12381" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>A Survey of Mathematical Reasoning in the Era of Multimodal Large Language Model: Benchmark, Method & Challenges</b></i>, Yan et al., <a href="https://arxiv.org/abs/2412.11936" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>CoMT: A Novel Benchmark for Chain of Multi-modal Thought on Large Vision-Language Models</b></i>, Cheng et al., <a href="https://arxiv.org/abs/2412.12932" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>CMMaTH: A Chinese Multi-modal Math Skill Evaluation Benchmark for Foundation Models</b></i>, Li et al., <a href="https://aclanthology.org/2025.coling-main.184/" target="_blank"><img src="https://img.shields.io/badge/PDF-2025.01-blue" alt="PDF Badge"></a></li>
-<li><i><b>ChartMimic: Evaluating LMM's Cross-Modal Reasoning Capability via Chart-to-Code Generation</b></i>, Yang et al., <a href="https://openreview.net/forum?id=sGpCzsfd1K" target="_blank"><img src="https://img.shields.io/badge/PDF-2025.01-blue" alt="PDF Badge"></a></li>
-<li><i><b>Can Large Language Models Unveil the Mysteries? An Exploration of Their Ability to Unlock Information in Complex Scenarios</b></i>, Wang et al., <a href="https://arxiv.org/abs/2502.19973" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>EnigmaEval: A Benchmark of Long Multimodal Reasoning Challenges</b></i>, Wang et al., <a href="https://arxiv.org/abs/2502.08859" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Code-Vision: Evaluating Multimodal LLMs Logic Understanding and Code Generation Capabilities</b></i>, Wang et al., <a href="https://arxiv.org/abs/2502.11829" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Exploring and Evaluating Multimodal Knowledge Reasoning Consistency of Multimodal Large Language Models</b></i>, Jia et al., <a href="https://arxiv.org/abs/2503.04801" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>MMSciBench: Benchmarking Language Models on Multimodal Scientific Problems</b></i>, Ye et al., <a href="https://arxiv.org/abs/2503.01891" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>LEGO-Puzzles: How Good Are MLLMs at Multi-Step Spatial Reasoning?</b></i>, Tang et al., <a href="https://arxiv.org/abs/2503.19990" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-</ul>
-
-<h4 id="benchmarks">1.2.4 Benchmarks</h4>
-</ul>
-
-<b>Outcome Benchmarks</b>
-<ul>
-<li><i><b>On the measure of intelligence</b></i>, Chollet et al., <a href="https://arxiv.org/abs/1911.01547" target="_blank"><img src="https://img.shields.io/badge/arXiv-2019.11-red" alt="arXiv Badge"></a></li>
-<li><i><b>What Disease Does This Patient Have? A Large-Scale Open Domain Question Answering Dataset from Medical Exams</b></i>, Jin et al., <a href="https://www.mdpi.com/2076-3417/11/14/6421" target="_blank"><img src="https://img.shields.io/badge/PDF-2021.07-blue" alt="PDF Badge"></a></li>
-<li><i><b>Training verifiers to solve math word problems</b></i>, Cobbe et al., <a href="https://arxiv.org/abs/2110.14168" target="_blank"><img src="https://img.shields.io/badge/arXiv-2021.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>Measuring Mathematical Problem Solving With the MATH Dataset</b></i>, Hendrycks et al., <a href="https://openreview.net/forum?id=7Bywt2mQsCe" target="_blank"><img src="https://img.shields.io/badge/PDF-2021.10-blue" alt="PDF Badge"></a></li>
-<li><i><b>Competition-Level Code Generation with AlphaCode</b></i>, Li et al., <a href="https://arxiv.org/abs/2203.07814" target="_blank"><img src="https://img.shields.io/badge/arXiv-2022.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>Challenging BIG-Bench Tasks and Whether Chain-of-Thought Can Solve Them</b></i>, Suzgun et al., <a href="https://aclanthology.org/2023.findings-acl.824/" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.07-blue" alt="PDF Badge"></a></li>
-<li><i><b>Assessing and Enhancing the Robustness of Large Language Models with Task Structure Variations for Logical Reasoning</b></i>, Bao et al., <a href="https://arxiv.org/abs/2310.09430" target="_blank"><img src="https://img.shields.io/badge/arXiv-2023.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>AI for Math or Math for AI? On the Generalization of Learning Mathematical Problem Solving</b></i>, Zhou et al., <a href="https://openreview.net/forum?id=xlnvZ85CSo" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.00-blue" alt="PDF Badge"></a></li>
-<li><i><b>OlympicArena: Benchmarking Multi-discipline Cognitive Reasoning for Superintelligent AI</b></i>, Huang et al., <a href="https://openreview.net/forum?id=ayF8bEKYQy" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.00-blue" alt="PDF Badge"></a></li>
-<li><i><b>Putnam-AXIOM: A Functional and Static Benchmark for Measuring Higher Level Mathematical Reasoning</b></i>, Gulati et al., <a href="https://openreview.net/forum?id=YXnwlZe0yf" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.00-blue" alt="PDF Badge"></a></li>
-<li><i><b>Let's verify step by step</b></i>, Lightman et al., <a href="https://openreview.net/forum?id=v8L0pN6EOi" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.01-blue" alt="PDF Badge"></a></li>
-<li><i><b>SWE-bench: Can Language Models Resolve Real-world Github Issues?</b></i>, Jimenez et al., <a href="https://openreview.net/forum?id=VTF8yNQM66" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.01-blue" alt="PDF Badge"></a></li>
-<li><i><b>Benchmarking large language models on answering and explaining challenging medical questions</b></i>, Chen et al., <a href="https://arxiv.org/abs/2402.18060" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Achieving> 97% on GSM8K: Deeply Understanding the Problems Makes LLMs Better Solvers for Math Word Problems</b></i>, Zhong et al., <a href="https://arxiv.org/abs/2404.14963" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.04-red" alt="arXiv Badge"></a></li>
-<li><i><b>Mhpp: Exploring the capabilities and limitations of language models beyond basic code generation</b></i>, Dai et al., <a href="https://arxiv.org/abs/2405.11430" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.05-red" alt="arXiv Badge"></a></li>
-<li><i><b>AIME 2024</b></i>, AI-MO et al., <a href="https://huggingface.co/datasets/AI-MO/aimo-validation-aime" target="_blank"><img src="https://img.shields.io/badge/Huggingface-2024.07-yellow" alt="Huggingface Badge"></a></li>
-<li><i><b>AMC 2023</b></i>, AI-MO et al., <a href="https://huggingface.co/datasets/AI-MO/aimo-validation-amc" target="_blank"><img src="https://img.shields.io/badge/Huggingface-2024.07-yellow" alt="Huggingface Badge"></a></li>
-<li><i><b>GPQA: A Graduate-Level Google-Proof Q&A Benchmark</b></i>, Rein et al., <a href="https://openreview.net/forum?id=Ti67584b98" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.07-blue" alt="PDF Badge"></a></li>
-<li><i><b>OlympiadBench: A Challenging Benchmark for Promoting AGI with Olympiad-Level Bilingual Multimodal Scientific Problems</b></i>, He et al., <a href="https://aclanthology.org/2024.acl-long.211/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.08-blue" alt="PDF Badge"></a></li>
-<li><i><b>MMLU-Pro: A More Robust and Challenging Multi-Task Language Understanding Benchmark</b></i>, Wang et al., <a href="https://openreview.net/forum?id=y10DM6R2r3" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.09-blue" alt="PDF Badge"></a></li>
-<li><i><b>Frontiermath: A benchmark for evaluating advanced mathematical reasoning in ai</b></i>, Glazer et al., <a href="https://arxiv.org/abs/2411.04872" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.11-red" alt="arXiv Badge"></a></li>
-<li><i><b>HumanEval Pro and MBPP Pro: Evaluating Large Language Models on Self-invoking Code Generation</b></i>, Yu et al., <a href="https://arxiv.org/abs/2412.21199" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>LiveBench: A Challenging, Contamination-Limited LLM Benchmark</b></i>, White et al., <a href="https://openreview.net/forum?id=sKYHBTAxVa" target="_blank"><img src="https://img.shields.io/badge/PDF-2025.00-blue" alt="PDF Badge"></a></li>
-<li><i><b>LiveCodeBench: Holistic and Contamination Free Evaluation of Large Language Models for Code</b></i>, Jain et al., <a href="https://openreview.net/forum?id=chfJJYC3iL" target="_blank"><img src="https://img.shields.io/badge/PDF-2025.01-blue" alt="PDF Badge"></a></li>
-<li><i><b>JustLogic: A Comprehensive Benchmark for Evaluating Deductive Reasoning in Large Language Models</b></i>, Chen et al., <a href="https://arxiv.org/abs/2501.14851" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Humanity's Last Exam</b></i>, Phan et al., <a href="https://arxiv.org/abs/2501.14249" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>MedXpertQA: Benchmarking Expert-Level Medical Reasoning and Understanding</b></i>, Zuo et al., <a href="https://arxiv.org/abs/2501.18362" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Theoretical Physics Benchmark (TPBench)--a Dataset and Study of AI Reasoning Capabilities in Theoretical Physics</b></i>, Chung et al., <a href="https://arxiv.org/abs/2502.15815" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>AIME 2025</b></i>, OpenCompass et al., <a href="https://huggingface.co/datasets/opencompass/AIME2025" target="_blank"><img src="https://img.shields.io/badge/Huggingface-2025.02-yellow" alt="Huggingface Badge"></a></li>
-<li><i><b>ThinkBench: Dynamic Out-of-Distribution Evaluation for Robust LLM Reasoning</b></i>, Huang et al., <a href="https://arxiv.org/abs/2502.16268" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>MATH-Perturb: Benchmarking LLMs' Math Reasoning Abilities against Hard Perturbations</b></i>, Huang et al., <a href="https://arxiv.org/abs/2502.06453" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>ProBench: Benchmarking Large Language Models in Competitive Programming</b></i>, Yang et al., <a href="https://arxiv.org/abs/2502.20868" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>EquiBench: Benchmarking Code Reasoning Capabilities of Large Language Models via Equivalence Checking</b></i>, Wei et al., <a href="https://arxiv.org/abs/2502.12466" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>ZebraLogic: On the Scaling Limits of LLMs for Logical Reasoning</b></i>, Lin et al., <a href="https://arxiv.org/abs/2502.01100" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>DivIL: Unveiling and Addressing Over-Invariance for Out-of-Distribution Generalization</b></i>, WANG et al., <a href="https://openreview.net/forum?id=2Zan4ATYsh" target="_blank"><img src="https://img.shields.io/badge/PDF-2025.02-blue" alt="PDF Badge"></a></li>
-<li><i><b>SuperGPQA: Scaling LLM Evaluation across 285 Graduate Disciplines</b></i>, Du et al., <a href="https://arxiv.org/abs/2502.14739" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>DeepSeek-R1 Outperforms Gemini 2.0 Pro, OpenAI o1, and o3-mini in Bilingual Complex Ophthalmology Reasoning</b></i>, Xu et al., <a href="https://arxiv.org/abs/2502.17947" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>QuestBench: Can LLMs ask the right question to acquire information in reasoning tasks?</b></i>, Li et al., <a href="https://arxiv.org/abs/2503.22674" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>Proof or Bluff? Evaluating LLMs on 2025 USA Math Olympiad</b></i>, Petrov et al., <a href="https://arxiv.org/abs/2503.21934" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>Benchmarking Reasoning Robustness in Large Language Models</b></i>, Yu et al., <a href="https://arxiv.org/abs/2503.04550" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>From Code to Courtroom: LLMs as the New Software Judges</b></i>, He et al., <a href="https://arxiv.org/abs/2503.02246" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>Interacting with AI Reasoning Models: Harnessing" Thoughts" for AI-Driven Software Engineering</b></i>, Treude et al., <a href="https://arxiv.org/abs/2503.00483" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>Can Frontier LLMs Replace Annotators in Biomedical Text Mining? Analyzing Challenges and Exploring Solutions</b></i>, Zhao et al., <a href="https://arxiv.org/abs/2503.03261" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>An evaluation of DeepSeek Models in Biomedical Natural Language Processing</b></i>, Zhan et al., <a href="https://arxiv.org/abs/2503.00624" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>Cognitive-Mental-LLM: Leveraging Reasoning in Large Language Models for Mental Health Prediction via Online Text</b></i>, Patil et al., <a href="https://arxiv.org/abs/2503.10095" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-</ul>
-
-<h4 id="process-evaluations">1.2.5 Process Evaluations</h4>
-</ul>
-
-<b>Deep Reasoning Benchmarks</b>
-<ul>
-<li><i><b>ROSCOE: A Suite of Metrics for Scoring Step-by-Step Reasoning</b></i>, Golovneva et al., <a href="https://openreview.net/forum?id=xYlJRpzZtsY" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.00-blue" alt="PDF Badge"></a></li>
-<li><i><b>Making Language Models Better Reasoners with Step-Aware Verifier</b></i>, Li et al., <a href="https://aclanthology.org/2023.acl-long.291/" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.07-blue" alt="PDF Badge"></a></li>
-<li><i><b>ReCEval: Evaluating Reasoning Chains via Correctness and Informativeness</b></i>, Prasad et al., <a href="https://aclanthology.org/2023.emnlp-main.622/" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.12-blue" alt="PDF Badge"></a></li>
-<li><i><b>Unlocking the Capabilities of Thought: A Reasoning Boundary Framework to Quantify and Optimize Chain-of-Thought</b></i>, Chen et al., <a href="https://openreview.net/forum?id=pC44UMwy2v" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.09-blue" alt="PDF Badge"></a></li>
-<li><i><b>ZebraLogic: On the Scaling Limits of LLMs for Logical Reasoning</b></i>, Lin et al., <a href="https://arxiv.org/abs/2502.01100" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Evaluating Step-by-step Reasoning Traces: A Survey</b></i>, Lee et al., <a href="https://arxiv.org/abs/2502.12289" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Mathematical Reasoning in Large Language Models: Assessing Logical and Arithmetic Errors across Wide Numerical Ranges</b></i>, Shrestha et al., <a href="https://arxiv.org/abs/2502.08680" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Landscape of Thoughts: Visualizing the Reasoning Process of Large Language Models</b></i>, Zhou et al., <a href="https://arxiv.org/abs/2503.22165" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-</ul>
-
-<b>Exploration Benchmarks</b>
-<ul>
-<li><i><b>EVOLvE: Evaluating and Optimizing LLMs For Exploration</b></i>, Nie et al., <a href="https://arxiv.org/abs/2410.06238" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>Evaluating the Systematic Reasoning Abilities of Large Language Models through Graph Coloring</b></i>, Heyman et al., <a href="https://arxiv.org/abs/2502.07087" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Inference-Time Computations for LLM Reasoning and Planning: A Benchmark and Insights</b></i>, Parashar et al., <a href="https://arxiv.org/abs/2502.12521" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-</ul>
-
-<b>Reflection Benchmarks</b>
-<ul>
-<li><i><b>Rewardbench: Evaluating reward models for language modeling</b></i>, Lambert et al., <a href="https://arxiv.org/abs/2403.13787" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>MR-Ben: A Meta-Reasoning Benchmark for Evaluating System-2 Thinking in LLMs</b></i>, Zeng et al., <a href="https://openreview.net/forum?id=GN2qbxZlni" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.06-blue" alt="PDF Badge"></a></li>
-<li><i><b>Evaluating LLMs at Detecting Errors in LLM Responses</b></i>, Kamoi et al., <a href="https://openreview.net/forum?id=dnwRScljXr" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.07-blue" alt="PDF Badge"></a></li>
-<li><i><b>CriticBench: Benchmarking LLMs for Critique-Correct Reasoning</b></i>, Lin et al., <a href="https://aclanthology.org/2024.findings-acl.91/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.08-blue" alt="PDF Badge"></a></li>
-<li><i><b>Judgebench: A benchmark for evaluating llm-based judges</b></i>, Tan et al., <a href="https://arxiv.org/abs/2410.12784" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>Errorradar: Benchmarking complex mathematical reasoning of multimodal large language models via error detection</b></i>, Yan et al., <a href="https://arxiv.org/abs/2410.04509" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>Processbench: Identifying process errors in mathematical reasoning</b></i>, Zheng et al., <a href="https://arxiv.org/abs/2412.06559" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>Medec: A benchmark for medical error detection and correction in clinical notes</b></i>, Abacha et al., <a href="https://arxiv.org/abs/2412.19260" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>PRMBench: A Fine-grained and Challenging Benchmark for Process-Level Reward Models</b></i>, Song et al., <a href="https://arxiv.org/abs/2501.03124" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Multimodal RewardBench: Holistic Evaluation of Reward Models for Vision Language Models</b></i>, Yasunaga et al., <a href="https://arxiv.org/abs/2502.14191" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>CodeCriticBench: A Holistic Code Critique Benchmark for Large Language Models</b></i>, Zhang et al., <a href="https://arxiv.org/abs/2502.16614" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Can Large Language Models Detect Errors in Long Chain-of-Thought Reasoning?</b></i>, He et al., <a href="https://arxiv.org/abs/2502.19361" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>FINEREASON: Evaluating and Improving LLMs' Deliberate Reasoning through Reflective Puzzle Solving</b></i>, Chen et al., <a href="https://arxiv.org/abs/2502.20238" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-</ul>
-<h2 id="deep-reasoning">2. Deep Reasoning</h2>
-<ul>
-<li><i><b>Thoughts Are All Over the Place: On the Underthinking of o1-Like LLMs</b></i>, Wang et al., <a href="https://arxiv.org/abs/2501.18585" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Don't Get Lost in the Trees: Streamlining LLM Reasoning by Overcoming Tree Search Exploration Pitfalls</b></i>, Wang et al., <a href="https://arxiv.org/abs/2502.11183" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-</ul>
-
-
-
-<h3 id="deep-reasoning-format">2.1 Deep Reasoning Format</h3>
-<img src="./assets/images/deep-reasoning-1.jpg" style="width: 580pt">
-<h4 id="latent-space-deep-reasoning">2.1.1 Latent Space Deep Reasoning</h4>
-</ul>
-
-<ul>
-<li><i><b>Guiding language model reasoning with planning tokens</b></i>, Wang et al., <a href="https://arxiv.org/abs/2310.05707" target="_blank"><img src="https://img.shields.io/badge/arXiv-2023.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>MuSR: Testing the Limits of Chain-of-thought with Multistep Soft Reasoning</b></i>, Sprague et al., <a href="https://openreview.net/forum?id=jenyYQzue1" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.01-blue" alt="PDF Badge"></a></li>
-<li><i><b>Quiet-star: Language models can teach themselves to think before speaking</b></i>, Zelikman et al., <a href="https://arxiv.org/abs/2403.09629" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>From explicit cot to implicit cot: Learning to internalize cot step by step</b></i>, Deng et al., <a href="https://arxiv.org/abs/2405.14838" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.05-red" alt="arXiv Badge"></a></li>
-<li><i><b>Training large language models to reason in a continuous latent space</b></i>, Hao et al., <a href="https://arxiv.org/abs/2412.06769" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>Efficient Reasoning with Hidden Thinking</b></i>, Shen et al., <a href="https://arxiv.org/abs/2501.19201" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Scaling up Test-Time Compute with Latent Reasoning: A Recurrent Depth Approach</b></i>, Geiping et al., <a href="https://arxiv.org/abs/2502.05171" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Reasoning with Latent Thoughts: On the Power of Looped Transformers</b></i>, Saunshi et al., <a href="https://arxiv.org/abs/2502.17416" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Self-Enhanced Reasoning Training: Activating Latent Reasoning in Small Models for Enhanced Reasoning Distillation</b></i>, Zhang et al., <a href="https://arxiv.org/abs/2502.12744" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>LLM Pretraining with Continuous Concepts</b></i>, Tack et al., <a href="https://arxiv.org/abs/2502.08524" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Scalable Language Models with Posterior Inference of Latent Thought Vectors</b></i>, Kong et al., <a href="https://arxiv.org/abs/2502.01567" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Inner Thinking Transformer: Leveraging Dynamic Depth Scaling to Foster Adaptive Internal Thinking</b></i>, Chen et al., <a href="https://arxiv.org/abs/2502.13842" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Reasoning to Learn from Latent Thoughts</b></i>, Ruan et al., <a href="https://arxiv.org/abs/2503.18866" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-</ul>
-
-<h4 id="natural-language-deep-reasoning">2.1.2 Natural Language Deep Reasoning</h4>
-</ul>
-
-<ul>
-<li><i><b>Reflection of thought: Inversely eliciting numerical reasoning in language models via solving linear systems</b></i>, Zhou et al., <a href="https://arxiv.org/abs/2210.05075" target="_blank"><img src="https://img.shields.io/badge/arXiv-2022.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</b></i>, Wei et al., <a href="https://proceedings.neurips.cc/paper_files/paper/2022/file/9d5609613524ecf4f15af0f7b31abca4-Paper-Conference.pdf" target="_blank"><img src="https://img.shields.io/badge/PDF-2022.11-blue" alt="PDF Badge"></a></li>
-<li><i><b>Mathprompter: Mathematical reasoning using large language models</b></i>, Imani et al., <a href="https://arxiv.org/abs/2303.05398" target="_blank"><img src="https://img.shields.io/badge/arXiv-2023.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>Deductive Verification of Chain-of-Thought Reasoning</b></i>, Ling et al., <a href="https://proceedings.neurips.cc/paper_files/paper/2023/file/72393bd47a35f5b3bee4c609e7bba733-Paper-Conference.pdf" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.09-blue" alt="PDF Badge"></a></li>
-<li><i><b>Cross-lingual Prompting: Improving Zero-shot Chain-of-Thought Reasoning across Languages</b></i>, Qin et al., <a href="https://aclanthology.org/2023.emnlp-main.163/" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.12-blue" alt="PDF Badge"></a></li>
-<li><i><b>AutoCAP: Towards Automatic Cross-lingual Alignment Planning for Zero-shot Chain-of-Thought</b></i>, Zhang et al., <a href="https://aclanthology.org/2024.findings-acl.546/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.08-blue" alt="PDF Badge"></a></li>
-<li><i><b>Large language models are not strong abstract reasoners</b></i>, Gendron et al., <a href="https://doi.org/10.24963/ijcai.2024/693" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.08-blue" alt="PDF Badge"></a></li>
-<li><i><b>Planning in Natural Language Improves LLM Search for Code Generation</b></i>, Wang et al., <a href="https://openreview.net/forum?id=B2iSfPNj49" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.10-blue" alt="PDF Badge"></a></li>
-<li><i><b>CodeI/O: Condensing Reasoning Patterns via Code Input-Output Prediction</b></i>, Li et al., <a href="https://arxiv.org/abs/2502.07316" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-</ul>
-
-<h4 id="structured-language-deep-reasoning">2.1.3 Structured Language Deep Reasoning</h4>
-</ul>
-
-<ul>
-<li><i><b>Generative language modeling for automated theorem proving</b></i>, Polu et al., <a href="https://arxiv.org/abs/2009.03393" target="_blank"><img src="https://img.shields.io/badge/arXiv-2020.09-red" alt="arXiv Badge"></a></li>
-<li><i><b>Multi-step deductive reasoning over natural language: An empirical study on out-of-distribution generalisation</b></i>, Bao et al., <a href="https://arxiv.org/abs/2207.14000" target="_blank"><img src="https://img.shields.io/badge/arXiv-2022.07-red" alt="arXiv Badge"></a></li>
-<li><i><b>PAL: Program-aided Language Models</b></i>, Gao et al., <a href="https://proceedings.mlr.press/v202/gao23f.html" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.07-blue" alt="PDF Badge"></a></li>
-<li><i><b>Program of Thoughts Prompting: Disentangling Computation from Reasoning for Numerical Reasoning Tasks</b></i>, Chen et al., <a href="https://openreview.net/forum?id=YfZ4ZPt8zd" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.11-blue" alt="PDF Badge"></a></li>
-<li><i><b>Tinygsm: achieving> 80% on gsm8k with small language models</b></i>, Liu et al., <a href="https://arxiv.org/abs/2312.09241" target="_blank"><img src="https://img.shields.io/badge/arXiv-2023.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>ChatLogic: Integrating Logic Programming with Large Language Models for Multi-step Reasoning</b></i>, Wang et al., <a href="https://openreview.net/forum?id=AOqGF7Po7Z" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.12-blue" alt="PDF Badge"></a></li>
-<li><i><b>Brain-Inspired Two-Stage Approach: Enhancing Mathematical Reasoning by Imitating Human Thought Processes</b></i>, Chen et al., <a href="https://arxiv.org/abs/2403.00800" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>MathDivide: Improved mathematical reasoning by large language models</b></i>, Srivastava et al., <a href="https://arxiv.org/abs/2405.13004" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.05-red" alt="arXiv Badge"></a></li>
-<li><i><b>Certified Deductive Reasoning with Language Models</b></i>, Poesia et al., <a href="https://openreview.net/forum?id=yXnwrs2Tl6" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.05-blue" alt="PDF Badge"></a></li>
-<li><i><b>Interactive Evolution: A Neural-Symbolic Self-Training Framework For Large Language Models</b></i>, Xu et al., <a href="https://arxiv.org/abs/2406.11736" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.06-red" alt="arXiv Badge"></a></li>
-<li><i><b>Lean-star: Learning to interleave thinking and proving</b></i>, Lin et al., <a href="https://arxiv.org/abs/2407.10040" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.07-red" alt="arXiv Badge"></a></li>
-<li><i><b>Chain of Code: Reasoning with a Language Model-Augmented Code Emulator</b></i>, Li et al., <a href="https://proceedings.mlr.press/v235/li24ar.html" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.07-blue" alt="PDF Badge"></a></li>
-<li><i><b>Siam: Self-improving code-assisted mathematical reasoning of large language models</b></i>, Yu et al., <a href="https://arxiv.org/abs/2408.15565" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.08-red" alt="arXiv Badge"></a></li>
-<li><i><b>Formal mathematical reasoning: A new frontier in ai</b></i>, Yang et al., <a href="https://arxiv.org/abs/2412.16075" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>SKIntern: Internalizing Symbolic Knowledge for Distilling Better CoT Capabilities into Small Language Models</b></i>, Liao et al., <a href="https://aclanthology.org/2025.coling-main.215.pdf" target="_blank"><img src="https://img.shields.io/badge/PDF-2025.01-blue" alt="PDF Badge"></a></li>
-<li><i><b>CodePlan: Unlocking Reasoning Potential in Large Language Models by Scaling Code-form Planning</b></i>, Wen et al., <a href="https://openreview.net/forum?id=dCPF1wlqj8" target="_blank"><img src="https://img.shields.io/badge/PDF-2025.01-blue" alt="PDF Badge"></a></li>
-<li><i><b>Improving Chain-of-Thought Reasoning via Quasi-Symbolic Abstractions</b></i>, Ranaldi et al., <a href="https://arxiv.org/abs/2502.12616" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Towards Better Understanding of Program-of-Thought Reasoning in Cross-Lingual and Multilingual Environments</b></i>, Payoungkhamdee et al., <a href="https://arxiv.org/abs/2502.17956" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Beyond Limited Data: Self-play LLM Theorem Provers with Iterative Conjecturing and Proving</b></i>, Dong et al., <a href="https://arxiv.org/abs/2502.00212" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Theorem Prover as a Judge for Synthetic Data Generation</b></i>, Leang et al., <a href="https://arxiv.org/abs/2502.13137" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Code-Driven Inductive Synthesis: Enhancing Reasoning Abilities of Large Language Models with Sequences</b></i>, Chen et al., <a href="https://arxiv.org/abs/2503.13109" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-</ul>
-
-
-
-<h3 id="deep-reasoning-learning">2.2 Deep Reasoning Learning</h3>
 <img src="./assets/images/deep-reasoning-2.png" style="width: 580pt">
-</ul>
 
-<ul>
-<li><i><b>Instruction tuning for large language models: A survey</b></i>, Zhang et al., <a href="https://arxiv.org/abs/2308.10792" target="_blank"><img src="https://img.shields.io/badge/arXiv-2023.08-red" alt="arXiv Badge"></a></li>
-<li><i><b>On memorization of large language models in logical reasoning</b></i>, Xie et al., <a href="https://arxiv.org/abs/2410.23123" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>Thoughts Are All Over the Place: On the Underthinking of o1-Like LLMs</b></i>, Wang et al., <a href="https://arxiv.org/abs/2501.18585" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Deepseek-r1: Incentivizing reasoning capability in llms via reinforcement learning</b></i>, Guo et al., <a href="https://arxiv.org/abs/2501.12948" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Sft memorizes, rl generalizes: A comparative study of foundation model post-training</b></i>, Chu et al., <a href="https://arxiv.org/abs/2501.17161" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Don't Get Lost in the Trees: Streamlining LLM Reasoning by Overcoming Tree Search Exploration Pitfalls</b></i>, Wang et al., <a href="https://arxiv.org/abs/2502.11183" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-</ul>
-
-<h4 id="deep-reasoning-imitation">2.2.4 Deep Reasoning Imitation</h4>
-</ul>
-
-<ul>
-<li><i><b>Training verifiers to solve math word problems</b></i>, Cobbe et al., <a href="https://arxiv.org/abs/2110.14168" target="_blank"><img src="https://img.shields.io/badge/arXiv-2021.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>Chain of Thought Imitation with Procedure Cloning</b></i>, Yang et al., <a href="https://openreview.net/forum?id=ZJqqSa8FsH9" target="_blank"><img src="https://img.shields.io/badge/PDF-2022.11-blue" alt="PDF Badge"></a></li>
-<li><i><b>Large Language Models Are Reasoning Teachers</b></i>, Ho et al., <a href="https://aclanthology.org/2023.acl-long.830/" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.07-blue" alt="PDF Badge"></a></li>
-<li><i><b>The CoT Collection: Improving Zero-shot and Few-shot Learning of Language Models via Chain-of-Thought Fine-Tuning</b></i>, Kim et al., <a href="https://aclanthology.org/2023.emnlp-main.782/" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.12-blue" alt="PDF Badge"></a></li>
-<li><i><b>Brain-Inspired Two-Stage Approach: Enhancing Mathematical Reasoning by Imitating Human Thought Processes</b></i>, Chen et al., <a href="https://arxiv.org/abs/2403.00800" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>Exploring Iterative Enhancement for Improving Learnersourced Multiple-Choice Question Explanations with Large Language Models</b></i>, Bao et al., <a href="https://openreview.net/forum?id=a8AE5PYoEi" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.03-blue" alt="PDF Badge"></a></li>
-<li><i><b>Qwen2.5-math technical report: Toward mathematical expert model via self-improvement</b></i>, Yang et al., <a href="https://arxiv.org/abs/2409.12122" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.09-red" alt="arXiv Badge"></a></li>
-<li><i><b>Enhancing Reasoning Capabilities of LLMs via Principled Synthetic Logic Corpus</b></i>, Morishita et al., <a href="https://proceedings.neurips.cc/paper_files/paper/2024/file/8678da90126aa58326b2fc0254b33a8c-Paper-Conference.pdf" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.09-blue" alt="PDF Badge"></a></li>
-<li><i><b>DART-Math: Difficulty-Aware Rejection Tuning for Mathematical Problem-Solving</b></i>, Tong et al., <a href="https://proceedings.neurips.cc/paper_files/paper/2024/file/0ef1afa0daa888d695dcd5e9513bafa3-Paper-Conference.pdf" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.09-blue" alt="PDF Badge"></a></li>
-<li><i><b>O1 Replication Journey--Part 2: Surpassing O1-preview through Simple Distillation, Big Progress or Bitter Lesson?</b></i>, Huang et al., <a href="https://arxiv.org/abs/2411.16489" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.11-red" alt="arXiv Badge"></a></li>
-<li><i><b>System-2 Mathematical Reasoning via Enriched Instruction Tuning</b></i>, Cai et al., <a href="https://arxiv.org/abs/2412.16964" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>Acemath: Advancing frontier math reasoning with post-training and reward modeling</b></i>, Liu et al., <a href="https://arxiv.org/abs/2412.15084" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>Imitate, explore, and self-improve: A reproduction report on slow-thinking reasoning systems</b></i>, Min et al., <a href="https://arxiv.org/abs/2412.09413" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>Openai o1 system card</b></i>, Jaech et al., <a href="https://arxiv.org/abs/2412.16720" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>Smaller, Weaker, Yet Better: Training LLM Reasoners via Compute-Optimal Sampling</b></i>, Bansal et al., <a href="https://openreview.net/forum?id=HuYSURUxs2" target="_blank"><img src="https://img.shields.io/badge/PDF-2025.01-blue" alt="PDF Badge"></a></li>
-<li><i><b>Advancing Math Reasoning in Language Models: The Impact of Problem-Solving Data, Data Synthesis Methods, and Training Stages</b></i>, Chen et al., <a href="https://arxiv.org/abs/2501.14002" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Deepseek-r1: Incentivizing reasoning capability in llms via reinforcement learning</b></i>, Guo et al., <a href="https://arxiv.org/abs/2501.12948" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Agent-R: Training Language Model Agents to Reflect via Iterative Self-Training</b></i>, Yuan et al., <a href="https://arxiv.org/abs/2501.11425" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>s1: Simple test-time scaling</b></i>, Muennighoff et al., <a href="https://arxiv.org/abs/2501.19393" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>RedStar: Does Scaling Long-CoT Data Unlock Better Slow-Reasoning Systems?</b></i>, Xu et al., <a href="https://arxiv.org/abs/2501.11284" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>FastMCTS: A Simple Sampling Strategy for Data Synthesis</b></i>, Li et al., <a href="https://arxiv.org/abs/2502.11476" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>LLMs Can Teach Themselves to Better Predict the Future</b></i>, Turtel et al., <a href="https://arxiv.org/abs/2502.05253" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>SoS1: O1 and R1-Like Reasoning LLMs are Sum-of-Square Solvers</b></i>, Li et al., <a href="https://arxiv.org/abs/2502.20545" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Distillation Scaling Laws</b></i>, Busbridge et al., <a href="https://arxiv.org/abs/2502.08606" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Unveiling the Mechanisms of Explicit CoT Training: How Chain-of-Thought Enhances Reasoning Generalization</b></i>, Yao et al., <a href="https://arxiv.org/abs/2502.04667" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>CoT2Align: Cross-Chain of Thought Distillation via Optimal Transport Alignment for Language Models with Different Tokenizers</b></i>, Le et al., <a href="https://arxiv.org/abs/2502.16806" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Unveiling the Key Factors for Distilling Chain-of-Thought Reasoning</b></i>, Chen et al., <a href="https://arxiv.org/abs/2502.18001" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Chain-of-Thought Matters: Improving Long-Context Language Models with Reasoning Path Supervision</b></i>, Zhu et al., <a href="https://arxiv.org/abs/2502.20790" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Demystifying Long Chain-of-Thought Reasoning in LLMs</b></i>, Yeo et al., <a href="https://arxiv.org/abs/2502.03373" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>LIMO: Less is More for Reasoning</b></i>, Ye et al., <a href="https://arxiv.org/abs/2502.03387" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>PromptCoT: Synthesizing Olympiad-level Problems for Mathematical Reasoning in Large Language Models</b></i>, Zhao et al., <a href="https://arxiv.org/abs/2503.02324" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>Rewarding Graph Reasoning Process makes LLMs more Generalized Reasoners</b></i>, Peng et al., <a href="https://arxiv.org/abs/2503.00845" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>OpenCodeReasoning: Advancing Data Distillation for Competitive Coding</b></i>, Ahmad et al., <a href="https://arxiv.org/abs/2504.01943" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.04-red" alt="arXiv Badge"></a></li>
-</ul>
-
-<h4 id="deep-reasoning-self-learning">2.2.5 Deep Reasoning Self-Learning</h4>
-</ul>
-
-<ul>
-<li><i><b>Thinking fast and slow with deep learning and tree search</b></i>, Anthony et al., <a href="https://proceedings.neurips.cc/paper_files/paper/2017/file/d8e1344e27a5b08cdfd5d027d9b8d6de-Paper.pdf" target="_blank"><img src="https://img.shields.io/badge/PDF-2017.12-blue" alt="PDF Badge"></a></li>
-<li><i><b>Star: Bootstrapping reasoning with reasoning</b></i>, Zelikman et al., <a href="https://openreview.net/pdf?id=_3ELRdg2sgI" target="_blank"><img src="https://img.shields.io/badge/PDF-2022.11-blue" alt="PDF Badge"></a></li>
-<li><i><b>Synthetic Prompting: Generating Chain-of-Thought Demonstrations for Large Language Models</b></i>, Shao et al., <a href="https://proceedings.mlr.press/v202/shao23a.html" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.07-blue" alt="PDF Badge"></a></li>
-<li><i><b>Reinforced self-training (rest) for language modeling</b></i>, Gulcehre et al., <a href="https://arxiv.org/abs/2308.08998" target="_blank"><img src="https://img.shields.io/badge/arXiv-2023.08-red" alt="arXiv Badge"></a></li>
-<li><i><b>Training Chain-of-Thought via Latent-Variable Inference</b></i>, Hoffman et al., <a href="https://openreview.net/forum?id=a147pIS2Co" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.09-blue" alt="PDF Badge"></a></li>
-<li><i><b>Tree of Thoughts: Deliberate Problem Solving with Large Language Models</b></i>, Yao et al., <a href="https://proceedings.neurips.cc/paper_files/paper/2023/file/271db9922b8d1f4dd7aaef84ed5ac703-Paper-Conference.pdf" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.09-blue" alt="PDF Badge"></a></li>
-<li><i><b>RAFT: Reward rAnked FineTuning for Generative Foundation Model Alignment</b></i>, Dong et al., <a href="https://openreview.net/forum?id=m7p5O7zblY" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.11-blue" alt="PDF Badge"></a></li>
-<li><i><b>Training large language models for reasoning through reverse curriculum reinforcement learning</b></i>, Xi et al., <a href="https://arxiv.org/abs/2402.05808" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Beyond Human Data: Scaling Self-Training for Problem-Solving with Language Models</b></i>, Singh et al., <a href="https://openreview.net/pdf?id=lNAyUngGFK" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.04-blue" alt="PDF Badge"></a></li>
-<li><i><b>V-STaR: Training Verifiers for Self-Taught Reasoners</b></i>, Hosseini et al., <a href="https://openreview.net/forum?id=stmqBSW2dV" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.07-blue" alt="PDF Badge"></a></li>
-<li><i><b>ReAct Meets ActRe: Autonomous Annotation of Agent Trajectories for Contrastive Self-Training</b></i>, Yang et al., <a href="https://openreview.net/forum?id=0VLBwQGWpA" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.07-blue" alt="PDF Badge"></a></li>
-<li><i><b>Fine-Tuning with Divergent Chains of Thought Boosts Reasoning Through Self-Correction in Language Models</b></i>, Puerto et al., <a href="https://arxiv.org/abs/2407.03181" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.07-red" alt="arXiv Badge"></a></li>
-<li><i><b>Direct Large Language Model Alignment Through Self-Rewarding Contrastive Prompt Distillation</b></i>, Liu et al., <a href="https://aclanthology.org/2024.acl-long.523/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.08-blue" alt="PDF Badge"></a></li>
-<li><i><b>Iterative Reasoning Preference Optimization</b></i>, Pang et al., <a href="https://proceedings.neurips.cc/paper_files/paper/2024/file/d37c9ad425fe5b65304d500c6edcba00-Paper-Conference.pdf" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.09-blue" alt="PDF Badge"></a></li>
-<li><i><b>Chain of Preference Optimization: Improving Chain-of-Thought Reasoning in LLMs</b></i>, Zhang et al., <a href="https://proceedings.neurips.cc/paper_files/paper/2024/file/00d80722b756de0166523a87805dd00f-Paper-Conference.pdf" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.09-blue" alt="PDF Badge"></a></li>
-<li><i><b>AlphaMath Almost Zero: Process Supervision without Process</b></i>, Chen et al., <a href="https://openreview.net/forum?id=VaXnxQ3UKo" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.09-blue" alt="PDF Badge"></a></li>
-<li><i><b>Cream: Consistency Regularized Self-Rewarding Language Models</b></i>, Wang et al., <a href="https://openreview.net/forum?id=oaWajnM93y" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.10-blue" alt="PDF Badge"></a></li>
-<li><i><b>TPO: Aligning Large Language Models with Multi-branch & Multi-step Preference Trees</b></i>, Liao et al., <a href="https://arxiv.org/abs/2410.12854" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>Towards Self-Improvement of LLMs via MCTS: Leveraging Stepwise Knowledge with Curriculum Preference Learning</b></i>, Wang et al., <a href="https://arxiv.org/abs/2410.06508" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>On the impact of fine-tuning on chain-of-thought reasoning</b></i>, Lobo et al., <a href="https://arxiv.org/abs/2411.15382" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.11-red" alt="arXiv Badge"></a></li>
-<li><i><b>Weak-to-Strong Reasoning</b></i>, Yang et al., <a href="https://aclanthology.org/2024.findings-emnlp.490/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.11-blue" alt="PDF Badge"></a></li>
-<li><i><b>Self-Explore: Enhancing Mathematical Reasoning in Language Models with Fine-grained Rewards</b></i>, Hwang et al., <a href="https://aclanthology.org/2024.findings-emnlp.78/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.11-blue" alt="PDF Badge"></a></li>
-<li><i><b>OpenRFT: Adapting Reasoning Foundation Model for Domain-specific Tasks with Reinforcement Fine-Tuning</b></i>, Zhang et al., <a href="https://arxiv.org/abs/2412.16849" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>Proposing and solving olympiad geometry with guided tree search</b></i>, Zhang et al., <a href="https://arxiv.org/abs/2412.10673" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>Enhancing Reasoning through Process Supervision with Monte Carlo Tree Search</b></i>, Li et al., <a href="https://openreview.net/forum?id=OupEEi1341" target="_blank"><img src="https://img.shields.io/badge/PDF-2025.01-blue" alt="PDF Badge"></a></li>
-<li><i><b>Policy Guided Tree Search for Enhanced LLM Reasoning</b></i>, Li et al., <a href="https://arxiv.org/abs/2502.06813" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Self-Improvement Towards Pareto Optimality: Mitigating Preference Conflicts in Multi-Objective Alignment</b></i>, Li et al., <a href="https://arxiv.org/abs/2502.14354" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>BOLT: Bootstrap Long Chain-of-Thought in Language Models without Distillation</b></i>, Pang et al., <a href="https://arxiv.org/abs/2502.03860" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Process-based Self-Rewarding Language Models</b></i>, Zhang et al., <a href="https://arxiv.org/abs/2503.03746" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>Entropy-Based Adaptive Weighting for Self-Training</b></i>, Wang et al., <a href="https://arxiv.org/abs/2503.23913" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>Entropy-based Exploration Conduction for Multi-step Reasoning</b></i>, Zhang et al., <a href="https://arxiv.org/abs/2503.15848" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-</ul>
-<h2 id="feasible-reflection">3. Feasible Reflection</h2>
+#### 2.1.1 Deep Reasoning Format
+Since reasoning models heavily depend on the format of reasoning, they tend to achieve the deepest reasoning paths in the forms they excel at. As a result, some works have begun exploring better reasoning formats for deeper reasoning.
 
 
-<h3 id="feedback">3.1 Feedback</h3>
+
+<img src="./assets/images/deep-reasoning-1.jpg" style="width: 580pt">
+
+**Natural Language Deep Reasoning**
+
+- **Core Idea:** Aims to express deep reasoning through natural language formats.
+- **Representative Works:**
+  - [Natural Program](https://proceedings.neurips.cc/paper_files/paper/2023/file/72393bd47a35f5b3bee4c609e7bba733-Paper-Conference.pdf): ensures more structured and rigorous logical analysis.
+  - [Code I/O](https://arxiv.org/abs/2502.07316): restructures code-based reasoning patterns into natural language forms, further unleashing the reasoning potential of RLLMs.
+
+---
+
+**Structured Language Deep Reasoning**
+
+- **Core Idea:** Aims to enhance deep reasoning through programmatic or symbolic language formats. Current research primarily focuses on using code to improve mathematical reasoning capabilities.
+- **Representative Works:**
+  - [Program-of-Thought](https://openreview.net/forum?id=YfZ4ZPt8zd): enables models to think using code language, thereby enhancing their reasoning capabilities.
+  - [DeepSeek-Prover](https://arxiv.org/abs/2405.14333): converts natural language questions into formal statements, filters out low-quality statements, and generates proofs to create synthetic data, enhancing LLM’s theorem proving ability.
+  - [RBF](https://proceedings.neurips.cc/paper_files/paper/2024/hash/62ab1c2cb4b03e717005479efb211841-Abstract-Conference.html): demonstrates why structured language is more effective than natural language in scenarios that require strong planning.
+
+
+
+---
+
+**Latent Space Deep Reasoning**
+
+- **Core Idea:** Enhances LLM reasoning ability through continuous latent space operations.
+- **Representative Works:**
+  1. **Token-driven:** Early studies introduced implicit "planning tokens" or "thinking tokens" to guide the reasoning process in latent space.
+     - [Coconut (Chain of Continuous Thought)](https://arxiv.org/abs/2412.06769): further expands this method by maintaining multiple parallel reasoning paths, enhancing complexity while ensuring efficiency.
+     - [Heima](https://arxiv.org/abs/2501.19201): performs efficient reasoning through latent hidden spaces, innovatively compressing the entire Long CoT process into a single token, resulting in significant computational resource savings.
+  2. **Vector-driven:** Inserts an additional vector to guide the reasoning process in latent space.
+     - [LTMs](https://arxiv.org/abs/2502.01567): innovatively abstracts each layer of the LLM into "thinking blocks" and introduces the concept of a "thinking vector" for each layer. Through iterative deep computation in latent space, the model dynamically scales the computational load during testing.
+  3. **Manager-driven:** Proposes a continuous manager mechanism to manage the latent space states.
+     - [Recurrent Block](https://arxiv.org/abs/2502.05171): uses iterative control over trained "recurrent blocks" as recursive "thinking blocks" to integrate deeper model layers during reasoning, enhancing performance without the need for specialized training data.
+     - [Implicit Thought Transformer (ITT)](https://arxiv.org/abs/2502.13842): leverages raw Transformer layers as recursive "thinking blocks," using adaptive token routing to select key tokens and residual thinking connections to control reasoning depth, thereby achieving efficient processing of key tokens.
+- **Relevant Repositories:**
+  - [Awesome-Latent-CoT](https://github.com/EIT-NLP/Awesome-Latent-CoT): provides an overview of various thought chain representations in latent space, capturing complex non-linguistic thoughts that cannot be expressed by language alone.
+
+---
+
+#### 2.1.2 Deep Reasoning Learning
+The deficiency of deep reasoning abilities in RLLMs can significantly reduce model performance. As a result, the academic focus has shifted towards enhancing reasoning capabilities through training. Supervised fine-tuning (SFT), as a memory process, can stabilize model output, while reinforcement learning (RL) facilitates generalization and self-learning.
+
+---
+
+**Deep Reasoning Imitation**
+
+- **Core Idea:** By imitating advanced reasoning systems, deep reasoning in RLLMs can be effectively achieved, enabling models to learn complex reasoning patterns and generalize across tasks.
+- **Representative Works:**
+  1. **Imitation from Human**
+     - [GSM8K/GPT-Verifier](https://arxiv.org/abs/2110.14168): Introduces early imitative learning based on human-annotated deep reasoning samples.
+     - [ALT](https://proceedings.neurips.cc/paper_files/paper/2024/file/8678da90126aa58326b2fc0254b33a8c-Paper-Conference.pdf): Enhances deep reasoning in RLLMs by generating a large-scale dataset of human-annotated logical templates.
+  2. **Imitation from Advanced RLLMs**
+     - [AceMath](https://arxiv.org/abs/2412.15084): Uses few-shot prompting to distill Long CoT samples from advanced LLMs, improving performance through multi-stage quality-guided SFT.
+     - [DART-Math](https://proceedings.neurips.cc/paper_files/paper/2024/file/0ef1afa0daa888d695dcd5e9513bafa3-Paper-Conference.pdf): Effectively distills difficulty-dependent deep reasoning samples through rejection sampling in the synthesis stage.
+     - [OpenThoughts](https://arxiv.org/abs/2506.04178) / [OpenCodeReasoning](https://arxiv.org/abs/2504.01943) / [NaturalThoughts](https://arxiv.org/abs/2507.01921): Extends this paradigm to mathematics, code, and general scenarios.
+  3. **Imitation from Scaling-augmented RLLMs**
+     - [Bansal et al.](https://openreview.net/forum?id=HuYSURUxs2): Find that expanding the sampling scale and length improves data quality.
+     - [Qwen-Math](https://arxiv.org/abs/2409.12122) / [PromptCoT](https://arxiv.org/abs/2503.02324): Further combine large-scale sampling with reward model sample selection to generate Olympic-level difficulty deep reasoning samples.
+     - [FastMCTS](https://arxiv.org/abs/2502.11476): Utilizes Monte Carlo Tree Search (MCTS) to identify optimal deep reasoning paths.
+- **Latest Developments:**
+     - [Journey P2](https://arxiv.org/abs/2411.16489): Knowledge distilled from advanced RLLM APIs such as o1, R1 significantly boosts small LLMs' performance, with supervised fine-tuning methods surpassing teacher models in complex mathematical reasoning tasks.
+     - [s1](https://arxiv.org/abs/2501.19393) / [LIMO](https://arxiv.org/abs/2502.03387): A small number of high-quality samples is sufficient to activate deep reasoning abilities in base LLMs.
+
+---
+
+**Deep Reasoning Self-Learning**
+
+- **Core Idea:** Although simple imitation yields excellent performance, current models still heavily rely on human annotations or outputs from advanced models during imitation and distillation. To break through this limitation, research focuses on self-learning techniques to achieve more advanced reasoning capabilities.
+- **Representative Works:**
+  1. **Self-Learning from Direct Sampling**
+     - [STaR](https://arxiv.org/abs/2203.14465): Uses in-context learning (ICL) to sample deep reasoning results and treats the correctness of the final answer as an implicit reward for self-learning.
+     - [Reinforced Self-Training (ReST)](https://arxiv.org/abs/2308.08998): Proposes the "Grow-Improve" paradigm, where the self-generated reasoning process is rewarded, enhancing with offline reinforcement learning.
+     - [ReST$^{EM}$](https://arxiv.org/abs/2312.06585): Generates rewards and iteratively optimizes LLMs to achieve peak performance on validation sets, significantly improving robustness.
+     - [TOPS](https://arxiv.org/abs/2502.18080): Finds that self-learning with deep reasoning samples at an appropriate reasoning depth is the most efficient.
+  2. **Self-Learning from Tree Search**
+     - [PGTS](https://arxiv.org/abs/2502.06813): Uses policy-guided tree search, combining reinforcement learning with structured tree exploration.
+     - [ReST-MCTS*](https://arxiv.org/abs/2406.03816): Optimizes MCTS behavior through progressive trajectory extraction and curriculum preference learning, significantly improving LLMs' reasoning ability.
+- **Latest Developments:** Introduce an error-correction adaptive mechanism by training a verifier or using entropy to filter and optimize the reward process, thus enhancing the quality of self-learning.
+   - [UnCert-CoT](https://arxiv.org/abs/2503.15341): Dynamically schedules thought chains based on entropy-aware uncertainty, activating multi-path reasoning only under high-entropy situations, significantly improving code generation accuracy and efficiency.
+   - [Wang et al.](https://arxiv.org/abs/2506.01939): Analyzes the impact of verifiable reward-based reinforcement learning on large language models' reasoning capabilities from the token entropy perspective, where high-entropy "branching" tokens dominate adjustments to multi-path reasoning strategies. Policy gradient optimization is applied exclusively to these high-entropy tokens.
+   - [CoT-Valve](https://arxiv.org/abs/2502.09601): Dynamically adjusts to reduce reasoning path length based on task difficulty, thus reducing computational overhead.
+
+
+
+---
+
+### 2.2 Feasible Reflection
+
+#### 2.2.1 Feedback
+
+Feedback mechanisms provide multi-granularity evaluation signals for Long CoT, ranging from Overall Feedback, which evaluates the final outcome, to Process Feedback, which supervises individual steps of the reasoning process, and Hybrid Feedback, which combines both types. These mechanisms not only support reward modeling and path optimization but also lay the foundation for subsequent self-correction, serving as a crucial bridge to move RLLMs from static generation to dynamic evaluation.
+
 <img src="./assets/images/feedback.png" style="width: 580pt">
-<ul>
-<li><i><b>When is Tree Search Useful for LLM Planning? It Depends on the Discriminator</b></i>, Chen et al., <a href="https://aclanthology.org/2024.acl-long.738/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.08-blue" alt="PDF Badge"></a></li>
-<li><i><b>From generation to judgment: Opportunities and challenges of llm-as-a-judge</b></i>, Li et al., <a href="https://arxiv.org/abs/2411.16594" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.11-red" alt="arXiv Badge"></a></li>
-<li><i><b>Search, Verify and Feedback: Towards Next Generation Post-training Paradigm of Foundation Models via Verifier Engineering</b></i>, Guan et al., <a href="https://arxiv.org/abs/2411.11504" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.11-red" alt="arXiv Badge"></a></li>
-<li><i><b>Llms-as-judges: a comprehensive survey on llm-based evaluation methods</b></i>, Li et al., <a href="https://arxiv.org/abs/2412.05579" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>A Survey on Feedback-based Multi-step Reasoning for Large Language Models on Mathematics</b></i>, Wei et al., <a href="https://arxiv.org/abs/2502.14333" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-</ul>
 
-<h4 id="hybrid-feedbacks">3.1.1 Hybrid Feedbacks</h4>
-</ul>
+---
 
-<ul>
-<li><i><b>The lessons of developing process reward models in mathematical reasoning</b></i>, Zhang et al., <a href="https://arxiv.org/abs/2501.07301" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Step-KTO: Optimizing Mathematical Reasoning through Stepwise Binary Feedback</b></i>, Lin et al., <a href="https://arxiv.org/abs/2501.10799" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-</ul>
+**Overall Feedback**
 
-<h4 id="overall-feedback">3.1.2 Overall Feedback</h4>
-</ul>
+- **Core Idea:** Overall feedback evaluates the complete reasoning process and the final result from a global perspective, commonly used to guide large language models in improving reasoning quality during reinforcement learning or self-optimization. Feedback forms include numerical rewards, rule checks, and natural language evaluations.
+- **Representative Works:**
+  1. **Outcome Reward Models(ORM):** Provide numeric reward signals to optimize output quality, suitable for tasks where accuracy is hard to assess directly.
+     - [Gen-Verifier](https://arxiv.org/abs/2110.14168): introduces the first generation verification framework based on reasoning accuracy;
+     - [Critic-RM](https://arxiv.org/abs/2411.16646): combines natural language criticism and reward prediction, significantly optimizing feedback quality;
+     - [Self-Rewarding LMs (SRLMs)](https://arxiv.org/abs/2502.08922): introduce consistency mechanisms, achieving self-supervised rewards without human annotation.
+  2. **Rule Extraction:** Uses in-task rules to verify and correct answers, enhancing the stability of feedback.
+     - [STaR](https://arxiv.org/abs/2203.14465) / [ReST](https://arxiv.org/abs/2308.08998): show that rule-based feedback based on final answers outperforms ORM in mathematical tasks;
+     - [OpenCodeInterpreter](https://arxiv.org/abs/2402.14658) / [AceCoder](https://arxiv.org/abs/2502.01718): generate program-level feedback using automated test cases in coding tasks.
+  3. **RLLMs Feedback (LLM-as-a-Judge):**
+      The model self-critiques and evaluates in natural language, enhancing reflection and error-correction capabilities.
+     - [EvalPlanner](https://arxiv.org/abs/2501.18099): distinguishes feedback between planning and reasoning;
+     - [RoT](https://arxiv.org/abs/2410.12323): combines reverse reasoning and reflection to assist models in discovering knowledge gaps;
+     - [AutoRace](https://arxiv.org/abs/2404.05221): provides task-specific evaluation criteria to improve feedback relevance.
+- **Relevant Repositories:**
+  - [RewardBench](https://github.com/allenai/reward-bench)For system evaluation of ORM methods.
 
-<b>Overall Feedback from Outcome Reward Model</b>
-<ul>
-<li><i><b>Training verifiers to solve math word problems</b></i>, Cobbe et al., <a href="https://arxiv.org/abs/2110.14168" target="_blank"><img src="https://img.shields.io/badge/arXiv-2021.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>Towards Mitigating LLM Hallucination via Self Reflection</b></i>, Ji et al., <a href="https://aclanthology.org/2023.findings-emnlp.123/" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.12-blue" alt="PDF Badge"></a></li>
-<li><i><b>Deepseekmath: Pushing the limits of mathematical reasoning in open language models</b></i>, Shao et al., <a href="https://arxiv.org/abs/2402.03300" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Generative verifiers: Reward modeling as next-token prediction</b></i>, Zhang et al., <a href="https://arxiv.org/abs/2408.15240" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.08-red" alt="arXiv Badge"></a></li>
-<li><i><b>Self-generated critiques boost reward modeling for language models</b></i>, Yu et al., <a href="https://arxiv.org/abs/2411.16646" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.11-red" alt="arXiv Badge"></a></li>
-<li><i><b>Self-Consistency of the Internal Reward Models Improves Self-Rewarding Language Models</b></i>, Zhou et al., <a href="https://arxiv.org/abs/2502.08922" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-</ul>
+**Process Feedback**
 
-<b>Overall Feedback from RLLMs</b>
-<ul>
-  
-<li><i><b>Self-critiquing models for assisting human evaluators</b></i>, Saunders et al., <a href="https://arxiv.org/abs/2206.05802" target="_blank"><img src="https://img.shields.io/badge/arXiv-2022.06-red" alt="arXiv Badge"></a></li>
-<li><i><b>Language models (mostly) know what they know</b></i>, Kadavath et al., <a href="https://arxiv.org/abs/2207.05221" target="_blank"><img src="https://img.shields.io/badge/arXiv-2022.07-red" alt="arXiv Badge"></a></li>
-<li><i><b>Constitutional AI: Harmlessness from AI Feedback</b></i>, Bai et al., <a href="https://arxiv.org/abs/2212.08073" target="_blank"><img src="https://img.shields.io/badge/arXiv-2022.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>Contrastive learning with logic-driven data augmentation for logical reasoning over text</b></i>, Bao et al., <a href="https://arxiv.org/abs/2305.12599" target="_blank"><img src="https://img.shields.io/badge/arXiv-2023.05-red" alt="arXiv Badge"></a></li>
-<li><i><b>Self-verification improves few-shot clinical information extraction</b></i>, Gero et al., <a href="https://openreview.net/forum?id=SBbJICrglS" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.06-blue" alt="PDF Badge"></a></li>
-<li><i><b>Shepherd: A critic for language model generation</b></i>, Wang et al., <a href="https://arxiv.org/abs/2308.04592" target="_blank"><img src="https://img.shields.io/badge/arXiv-2023.08-red" alt="arXiv Badge"></a></li>
-<li><i><b>Large Language Models are Better Reasoners with Self-Verification</b></i>, Weng et al., <a href="https://aclanthology.org/2023.findings-emnlp.167/" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.12-blue" alt="PDF Badge"></a></li>
-<li><i><b>Large Language Models Cannot Self-Correct Reasoning Yet</b></i>, Huang et al., <a href="https://openreview.net/forum?id=IkmD3fKBPQ" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.01-blue" alt="PDF Badge"></a></li>
-<li><i><b>SelfCheck: Using LLMs to Zero-Shot Check Their Own Step-by-Step Reasoning</b></i>, Miao et al., <a href="https://openreview.net/forum?id=pTHfApDakA" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.01-blue" alt="PDF Badge"></a></li>
-<li><i><b>Agent-Pro: Learning to Evolve via Policy-Level Reflection and Optimization</b></i>, Zhang et al., <a href="https://arxiv.org/pdf/2402.17574" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.02-blue" alt="PDF Badge"></a></li>
-<li><i><b>Self-reflection in llm agents: Effects on problem-solving performance</b></i>, Renze et al., <a href="https://arxiv.org/abs/2405.06682" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.05-red" alt="arXiv Badge"></a></li>
-<li><i><b>Llm critics help catch llm bugs</b></i>, McAleese et al., <a href="https://arxiv.org/abs/2407.00215" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.07-red" alt="arXiv Badge"></a></li>
-<li><i><b>LLM Reasoners: New Evaluation, Library, and Analysis of Step-by-Step Reasoning with Large Language Models</b></i>, Hao et al., <a href="https://openreview.net/forum?id=b0y6fbSUG0" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.07-blue" alt="PDF Badge"></a></li>
-<li><i><b>Promptbreeder: Self-Referential Self-Improvement via Prompt Evolution</b></i>, Fernando et al., <a href="https://proceedings.mlr.press/v235/fernando24a.html" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.07-blue" alt="PDF Badge"></a></li>
-<li><i><b>Self-Contrast: Better Reflection Through Inconsistent Solving Perspectives</b></i>, Zhang et al., <a href="https://aclanthology.org/2024.acl-long.197/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.08-blue" alt="PDF Badge"></a></li>
-<li><i><b>Critic-cot: Boosting the reasoning abilities of large language model via chain-of-thoughts critic</b></i>, Zheng et al., <a href="https://arxiv.org/abs/2408.16326" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.08-red" alt="arXiv Badge"></a></li>
-<li><i><b>Small Language Models Need Strong Verifiers to Self-Correct Reasoning</b></i>, Zhang et al., <a href="https://aclanthology.org/2024.findings-acl.924/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.08-blue" alt="PDF Badge"></a></li>
-<li><i><b>Abstract Meaning Representation-Based Logic-Driven Data Augmentation for Logical Reasoning</b></i>, Bao et al., <a href="https://aclanthology.org/2024.findings-acl.353/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.08-blue" alt="PDF Badge"></a></li>
-<li><i><b>Reversal of Thought: Enhancing Large Language Models with Preference-Guided Reverse Reasoning Warm-up</b></i>, Yuan et al., <a href="https://arxiv.org/abs/2410.12323" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>What Makes Large Language Models Reason in (Multi-Turn) Code Generation?</b></i>, Zheng et al., <a href="https://openreview.net/forum?id=Zk9guOl9NS" target="_blank"><img src="https://img.shields.io/badge/PDF-2025.01-blue" alt="PDF Badge"></a></li>
-<li><i><b>Attention-guided Self-reflection for Zero-shot Hallucination Detection in Large Language Models</b></i>, Liu et al., <a href="https://arxiv.org/abs/2501.09997" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Learning to Plan & Reason for Evaluation with Thinking-LLM-as-a-Judge</b></i>, Saha et al., <a href="https://arxiv.org/abs/2501.18099" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Physics of Language Models: Part 2.2, How to Learn From Mistakes on Grade-School Math Problems</b></i>, Ye et al., <a href="https://openreview.net/forum?id=zpDGwcmMV4" target="_blank"><img src="https://img.shields.io/badge/PDF-2025.01-blue" alt="PDF Badge"></a></li>
-<li><i><b>Training an LLM-as-a-Judge Model: Pipeline, Insights, and Practical Lessons</b></i>, Hu et al., <a href="https://arxiv.org/abs/2502.02988" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>A Study on Leveraging Search and Self-Feedback for Agent Reasoning</b></i>, Yuan et al., <a href="https://arxiv.org/abs/2502.12094" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>RefineCoder: Iterative Improving of Large Language Models via Adaptive Critique Refinement for Code Generation</b></i>, Zhou et al., <a href="https://arxiv.org/abs/2502.09183" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-</ul>
+- **Core Idea:**
+   Process feedback evaluates each step in the reasoning chain progressively, often in conjunction with reinforcement learning or tree search, guiding the model to fine-tune without relying on human annotations. The feedback sources primarily include process reward models and language models driven by natural language.
+- **Representative Works:**
+  1. **Process Feedback from Process Reward Models (PRMs):**
+      Use automatically constructed or minimally annotated data to train stepwise reward functions, the mainstream approach in Long CoT.
+     - [PRM800K](https://arxiv.org/abs/2305.20050): Pioneers using human-annotated stepwise supervision to enhance reward stability;
+     - [Math-Shepherd](https://arxiv.org/abs/2312.08935): Automatically generates stepwise feedback using tree search to enhance PRM generalization;
+     - [Full-Step-DPO](https://arxiv.org/abs/2502.14356): Rewards the entire reasoning chain, encouraging holistic optimization;
+     - [AdaptiveStep](https://arxiv.org/abs/2502.13943): Dynamically segments reasoning steps based on confidence, enabling token-level fine-grained feedback.
+  2. **Process Feedback from RLLMs:** Leverages the model’s own generation of natural language feedback to simulate reward signals, improving the flexibility and scalability of process supervision.
+     - [React](https://arxiv.org/abs/2210.03629) / [Reflexion](https://arxiv.org/abs/2303.11366): Generate language feedback after each action, enhancing decision-making rationality;
+     - [Step-DPO](https://arxiv.org/abs/2405.18629): Introduces a self-validation mechanism to construct positive-negative contrastive samples, optimizing the training process;
+     - [CACE](https://arxiv.org/abs/1907.07165): Proposes causal impact metrics between reasoning steps to make the entire chain more interpretable;
+     - [ORPS](https://arxiv.org/html/2412.15118v1): Automatically optimizes reasoning strategies with program execution feedback, reducing human reliance.
+- **Relevant Repositories:**
+  - [ProcessBench](https://github.com/QwenLM/ProcessBench): Evaluates stepwise reasoning and reward model performance;
+  - [PRMBench](https://github.com/ssmisya/PRMBench): Focuses on comparative analysis of PRM methods in mathematical tasks.
 
-<b>Overall Feedback from Rule Extraction</b>
-<ul>
-<li><i><b>Star: Bootstrapping reasoning with reasoning</b></i>, Zelikman et al., <a href="https://openreview.net/pdf?id=_3ELRdg2sgI" target="_blank"><img src="https://img.shields.io/badge/PDF-2022.11-blue" alt="PDF Badge"></a></li>
-<li><i><b>Critic: Large language models can self-correct with tool-interactive critiquing</b></i>, Gou et al., <a href="https://arxiv.org/abs/2305.11738" target="_blank"><img src="https://img.shields.io/badge/arXiv-2023.05-red" alt="arXiv Badge"></a></li>
-<li><i><b>LEVER: Learning to Verify Language-to-Code Generation with Execution</b></i>, Ni et al., <a href="https://proceedings.mlr.press/v202/ni23b.html" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.07-blue" alt="PDF Badge"></a></li>
-<li><i><b>Reinforced self-training (rest) for language modeling</b></i>, Gulcehre et al., <a href="https://arxiv.org/abs/2308.08998" target="_blank"><img src="https://img.shields.io/badge/arXiv-2023.08-red" alt="arXiv Badge"></a></li>
-<li><i><b>Tree of Thoughts: Deliberate Problem Solving with Large Language Models</b></i>, Yao et al., <a href="https://proceedings.neurips.cc/paper_files/paper/2023/file/271db9922b8d1f4dd7aaef84ed5ac703-Paper-Conference.pdf" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.09-blue" alt="PDF Badge"></a></li>
-<li><i><b>Reasoning with Language Model is Planning with World Model</b></i>, Hao et al., <a href="https://aclanthology.org/2023.emnlp-main.507/" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.12-blue" alt="PDF Badge"></a></li>
-<li><i><b>Solving Challenging Math Word Problems Using GPT-4 Code Interpreter with Code-based Self-Verification</b></i>, Zhou et al., <a href="https://openreview.net/forum?id=c8McWs4Av0" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.01-blue" alt="PDF Badge"></a></li>
-<li><i><b>VerMCTS: Synthesizing Multi-Step Programs using a Verifier, a Large Language Model, and Tree Search</b></i>, Brandfonbrener et al., <a href="https://arxiv.org/abs/2402.08147" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>ReFT: Reasoning with Reinforced Fine-Tuning</b></i>, Trung et al., <a href="https://aclanthology.org/2024.acl-long.410/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.08-blue" alt="PDF Badge"></a></li>
-<li><i><b>OpenCodeInterpreter: Integrating Code Generation with Execution and Refinement</b></i>, Zheng et al., <a href="https://aclanthology.org/2024.findings-acl.762/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.08-blue" alt="PDF Badge"></a></li>
-<li><i><b>On designing effective rl reward at training time for llm reasoning</b></i>, Gao et al., <a href="https://arxiv.org/abs/2410.15115" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>o1-coder: an o1 replication for coding</b></i>, Zhang et al., <a href="https://arxiv.org/abs/2412.00154" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>Deepseek-r1: Incentivizing reasoning capability in llms via reinforcement learning</b></i>, Guo et al., <a href="https://arxiv.org/abs/2501.12948" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Dynamic Scaling of Unit Tests for Code Reward Modeling</b></i>, Ma et al., <a href="https://arxiv.org/abs/2501.01054" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Logic-RL: Unleashing LLM Reasoning with Rule-Based Reinforcement Learning</b></i>, Xie et al., <a href="https://arxiv.org/abs/2502.14768" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>SoRFT: Issue Resolving with Subtask-oriented Reinforced Fine-Tuning</b></i>, Ma et al., <a href="https://arxiv.org/abs/2502.20127" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>ACECODER: Acing Coder RL via Automated Test-Case Synthesis</b></i>, Zeng et al., <a href="https://arxiv.org/abs/2502.01718" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation</b></i>, Baker et al., <a href="https://openai.com/index/chain-of-thought-monitoring/" target="_blank"><img src="https://img.shields.io/badge/PDF-2025.03-blue" alt="PDF Badge"></a></li>
-</ul>
+**Hybrid Feedback**
 
-<h4 id="process-feedback">3.1.3 Process Feedback</h4>
-</ul>
+- **Core Idea:** Hybrid feedback mechanisms combine the strengths of both overall and process feedback, assessing final outputs while focusing on intermediate reasoning steps. This unified multi-granularity evaluation system enhances the overall reasoning quality and error-correction capabilities of language models.
+- **Representative Works:**
+  - [Consensus Filtering](https://arxiv.org/abs/2501.07301): Combines Monte Carlo estimation with LLM-as-Judge to integrate overall and stepwise feedback, enhancing reasoning consistency and accuracy;
+  - [Step-KTO](https://arxiv.org/abs/2501.10799): Merges PRM and ORM binary feedback mechanisms, emphasizing reflection-driven error correction, guiding the model to form more coherent Long CoT structures.
 
-<ul>
-<li><i><b>Solving math word problems with process- and outcome-based feedback</b></i>, Uesato et al., <a href="https://arxiv.org/abs/2211.14275" target="_blank"><img src="https://img.shields.io/badge/arXiv-2022.11-red" alt="arXiv Badge"></a></li>
-<li><i><b>Vineppo: Unlocking rl potential for llm reasoning through refined credit assignment</b></i>, Kazemnejad et al., <a href="https://arxiv.org/abs/2410.01679" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.10-red" alt="arXiv Badge"></a></li>
-</ul>
+#### 2.2.2 Refinement
 
-<b>Process Feedback from Process Rewarded Model</b>
-<ul>
-<li><i><b>Let's reward step by step: Step-Level reward model as the Navigators for Reasoning</b></i>, Ma et al., <a href="https://arxiv.org/abs/2310.10080" target="_blank"><img src="https://img.shields.io/badge/arXiv-2023.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>Let's verify step by step</b></i>, Lightman et al., <a href="https://openreview.net/forum?id=v8L0pN6EOi" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.01-blue" alt="PDF Badge"></a></li>
-<li><i><b>Uncertainty of Thoughts: Uncertainty-Aware Planning Enhances Information Seeking in Large Language Models</b></i>, Hu et al., <a href="https://openreview.net/forum?id=ZWyLjimciT" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.03-blue" alt="PDF Badge"></a></li>
-<li><i><b>OVM, Outcome-supervised Value Models for Planning in Mathematical Reasoning</b></i>, Yu et al., <a href="https://aclanthology.org/2024.findings-naacl.55/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.06-blue" alt="PDF Badge"></a></li>
-<li><i><b>Token-Supervised Value Models for Enhancing Mathematical Reasoning Capabilities of Large Language Models</b></i>, Lee et al., <a href="https://arxiv.org/abs/2407.12863" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.07-red" alt="arXiv Badge"></a></li>
-<li><i><b>Tlcr: Token-level continuous reward for fine-grained reinforcement learning from human feedback</b></i>, Yoon et al., <a href="https://arxiv.org/abs/2407.16574" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.07-red" alt="arXiv Badge"></a></li>
-<li><i><b>Math-Shepherd: Verify and Reinforce LLMs Step-by-step without Human Annotations</b></i>, Wang et al., <a href="https://aclanthology.org/2024.acl-long.510/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.08-blue" alt="PDF Badge"></a></li>
-<li><i><b>Selective Preference Optimization via Token-Level Reward Function Estimation</b></i>, Yang et al., <a href="https://arxiv.org/abs/2408.13518" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.08-red" alt="arXiv Badge"></a></li>
-<li><i><b>Step-level Value Preference Optimization for Mathematical Reasoning</b></i>, Chen et al., <a href="https://aclanthology.org/2024.findings-emnlp.463/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.11-blue" alt="PDF Badge"></a></li>
-<li><i><b>Skywork-o1 open series</b></i>, Team et al., <a href="https://huggingface.co/Skywork" target="_blank"><img src="https://img.shields.io/badge/Huggingface-2024.11-yellow" alt="Huggingface Badge"></a></li>
-<li><i><b>Entropy-Regularized Process Reward Model</b></i>, Zhang et al., <a href="https://arxiv.org/abs/2412.11006" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>Hunyuanprover: A scalable data synthesis framework and guided tree search for automated theorem proving</b></i>, Li et al., <a href="https://arxiv.org/abs/2412.20735" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>Acemath: Advancing frontier math reasoning with post-training and reward modeling</b></i>, Liu et al., <a href="https://arxiv.org/abs/2412.15084" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>Free process rewards without process labels</b></i>, Yuan et al., <a href="https://arxiv.org/abs/2412.01981" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>AutoPSV: Automated Process-Supervised Verifier</b></i>, Lu et al., <a href="https://proceedings.neurips.cc/paper_files/paper/2024/file/9246aa822579d9b29a140ecdac36ad60-Paper-Conference.pdf" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.12-blue" alt="PDF Badge"></a></li>
-<li><i><b>Scaling Autonomous Agents via Automatic Reward Modeling And Planning</b></i>, Chen et al., <a href="https://openreview.net/forum?id=womU9cEwcO" target="_blank"><img src="https://img.shields.io/badge/PDF-2025.01-blue" alt="PDF Badge"></a></li>
-<li><i><b>Advancing LLM Reasoning Generalists with Preference Trees</b></i>, Yuan et al., <a href="https://openreview.net/forum?id=2ea5TNVR0c" target="_blank"><img src="https://img.shields.io/badge/PDF-2025.01-blue" alt="PDF Badge"></a></li>
-<li><i><b>Learning to Plan & Reason for Evaluation with Thinking-LLM-as-a-Judge</b></i>, Saha et al., <a href="https://arxiv.org/abs/2501.18099" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Rewarding Progress: Scaling Automated Process Verifiers for LLM Reasoning</b></i>, Setlur et al., <a href="https://openreview.net/forum?id=A6Y7AqlzLW" target="_blank"><img src="https://img.shields.io/badge/PDF-2025.01-blue" alt="PDF Badge"></a></li>
-<li><i><b>Capturing Nuanced Preferences: Preference-Aligned Distillation for Small Language Models</b></i>, Gu et al., <a href="https://arxiv.org/abs/2502.14272" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Distill Not Only Data but Also Rewards: Can Smaller Language Models Surpass Larger Ones?</b></i>, Zhang et al., <a href="https://arxiv.org/abs/2502.19557" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Adaptivestep: Automatically dividing reasoning step through model confidence</b></i>, Liu et al., <a href="https://arxiv.org/abs/2502.13943" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Process Reward Models for LLM Agents: Practical Framework and Directions</b></i>, Choudhury et al., <a href="https://arxiv.org/abs/2502.10325" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Process reinforcement through implicit rewards</b></i>, Cui et al., <a href="https://arxiv.org/abs/2502.01456" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Full-Step-DPO: Self-Supervised Preference Optimization with Step-wise Rewards for Mathematical Reasoning</b></i>, Xu et al., <a href="https://arxiv.org/abs/2502.14356" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>VersaPRM: Multi-Domain Process Reward Model via Synthetic Reasoning Data</b></i>, Zeng et al., <a href="https://arxiv.org/abs/2502.06737" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Direct Value Optimization: Improving Chain-of-Thought Reasoning in LLMs with Refined Values</b></i>, Zhang et al., <a href="https://arxiv.org/abs/2502.13723" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Teaching Language Models to Critique via Reinforcement Learning</b></i>, Xie et al., <a href="https://arxiv.org/abs/2502.03492" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Uncertainty-Aware Search and Value Models: Mitigating Search Scaling Flaws in LLMs</b></i>, Yu et al., <a href="https://arxiv.org/abs/2502.11155" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>AURORA: Automated Training Framework of Universal Process Reward Models via Ensemble Prompting and Reverse Verification</b></i>, Tan et al., <a href="https://arxiv.org/abs/2502.11520" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Visualprm: An effective process reward model for multimodal reasoning</b></i>, Wang et al., <a href="https://arxiv.org/abs/2503.10291" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>QwQ: Reflect Deeply on the Boundaries of the Unknown</b></i>, Team et al., <a href="https://qwenlm.github.io/blog/qwq-32b-preview/" target="_blank"><img src="https://img.shields.io/badge/Github-2025.11-white" alt="Github Badge"></a></li>
-</ul>
-
-<b>Process Feedback from RLLMs</b>
-<ul>
-<li><i><b>ReAct: Synergizing Reasoning and Acting in Language Models</b></i>, Yao et al., <a href="https://openreview.net/forum?id=WE_vluYUL-X" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.02-blue" alt="PDF Badge"></a></li>
-<li><i><b>Reflexion: language agents with verbal reinforcement learning</b></i>, Shinn et al., <a href="https://proceedings.neurips.cc/paper_files/paper/2023/file/1b44b878bb782e6954cd888628510e90-Paper-Conference.pdf" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.12-blue" alt="PDF Badge"></a></li>
-<li><i><b>Can We Verify Step by Step for Incorrect Answer Detection?</b></i>, Xu et al., <a href="https://arxiv.org/abs/2402.10528" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Monte carlo tree search boosts reasoning via iterative preference learning</b></i>, Xie et al., <a href="https://arxiv.org/abs/2405.00451" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.05-red" alt="arXiv Badge"></a></li>
-<li><i><b>Interactive Evolution: A Neural-Symbolic Self-Training Framework For Large Language Models</b></i>, Xu et al., <a href="https://arxiv.org/abs/2406.11736" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.06-red" alt="arXiv Badge"></a></li>
-<li><i><b>Llm critics help catch bugs in mathematics: Towards a better mathematical verifier with natural language feedback</b></i>, Gao et al., <a href="https://arxiv.org/abs/2406.14024" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.06-red" alt="arXiv Badge"></a></li>
-<li><i><b>Step-dpo: Step-wise preference optimization for long-chain reasoning of llms</b></i>, Lai et al., <a href="https://arxiv.org/abs/2406.18629" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.06-red" alt="arXiv Badge"></a></li>
-<li><i><b>Reasoning in Flux: Enhancing Large Language Models Reasoning through Uncertainty-aware Adaptive Guidance</b></i>, Yin et al., <a href="https://aclanthology.org/2024.acl-long.131/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.08-blue" alt="PDF Badge"></a></li>
-<li><i><b>Advancing Process Verification for Large Language Models via Tree-Based Preference Learning</b></i>, He et al., <a href="https://aclanthology.org/2024.emnlp-main.125/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.11-blue" alt="PDF Badge"></a></li>
-<li><i><b>Outcome-Refining Process Supervision for Code Generation</b></i>, Yu et al., <a href="https://arxiv.org/abs/2412.15118" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>Error Classification of Large Language Models on Math Word Problems: A Dynamically Adaptive Framework</b></i>, Sun et al., <a href="https://arxiv.org/abs/2501.15581" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Zero-Shot Verification-guided Chain of Thoughts</b></i>, Chowdhury et al., <a href="https://arxiv.org/abs/2501.13122" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Robotic Programmer: Video Instructed Policy Code Generation for Robotic Manipulation</b></i>, Xie et al., <a href="https://arxiv.org/abs/2501.04268" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Unveiling and Causalizing CoT: A Causal Pespective</b></i>, Fu et al., <a href="https://arxiv.org/abs/2502.18239" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Diverse Inference and Verification for Advanced Reasoning</b></i>, Drori et al., <a href="https://arxiv.org/abs/2502.09955" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Mathematical Reasoning in Large Language Models: Assessing Logical and Arithmetic Errors across Wide Numerical Ranges</b></i>, Shrestha et al., <a href="https://arxiv.org/abs/2502.08680" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Uncertainty-Aware Step-wise Verification with Generative Reward Models</b></i>, Ye et al., <a href="https://arxiv.org/abs/2502.11250" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>JudgeLRM: Large Reasoning Models as a Judge</b></i>, Chen et al., <a href="https://arxiv.org/abs/2504.00050" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.04-red" alt="arXiv Badge"></a></li>
-</ul>
+The Refinement mechanism focuses on self-correction capabilities based on feedback information, serving as a key step in achieving closed-loop optimization in Long CoT. Through Prompt-based Refinement, spontaneous reflection is achieved; SFT-based Refinement facilitates imitation learning; and RL-based Refinement strengthens self-correction strategies. As a result, the model gradually develops the ability of "self-diagnosis—self-updating," making the reasoning chain more robust and controllable.
 
 
-
-<h3 id="refinement">3.2 Refinement</h3>
 <img src="./assets/images/refinement.png" style="width: 580pt">
-<h4 id="prompt-based-refinement-generation">3.2.4 Prompt-based Refinement Generation</h4>
-</ul>
 
-<ul>
-<li><i><b>Self-critiquing models for assisting human evaluators</b></i>, Saunders et al., <a href="https://arxiv.org/abs/2206.05802" target="_blank"><img src="https://img.shields.io/badge/arXiv-2022.06-red" alt="arXiv Badge"></a></li>
-<li><i><b>Self-Refine: Iterative Refinement with Self-Feedback</b></i>, Madaan et al., <a href="https://proceedings.neurips.cc/paper_files/paper/2023/file/91edff07232fb1b55a505a9e9f6c0ff3-Paper-Conference.pdf" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.03-blue" alt="PDF Badge"></a></li>
-<li><i><b>Grace: Discriminator-guided chain-of-thought reasoning</b></i>, Khalifa et al., <a href="https://arxiv.org/abs/2305.14934" target="_blank"><img src="https://img.shields.io/badge/arXiv-2023.05-red" alt="arXiv Badge"></a></li>
-<li><i><b>Automatically correcting large language models: Surveying the landscape of diverse self-correction strategies</b></i>, Pan et al., <a href="https://arxiv.org/abs/2308.03188" target="_blank"><img src="https://img.shields.io/badge/arXiv-2023.08-red" alt="arXiv Badge"></a></li>
-<li><i><b>Reflexion: language agents with verbal reinforcement learning</b></i>, Shinn et al., <a href="https://proceedings.neurips.cc/paper_files/paper/2023/file/1b44b878bb782e6954cd888628510e90-Paper-Conference.pdf" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.12-blue" alt="PDF Badge"></a></li>
-<li><i><b>Towards Mitigating LLM Hallucination via Self Reflection</b></i>, Ji et al., <a href="https://aclanthology.org/2023.findings-emnlp.123/" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.12-blue" alt="PDF Badge"></a></li>
-<li><i><b>SelfCheck: Using LLMs to Zero-Shot Check Their Own Step-by-Step Reasoning</b></i>, Miao et al., <a href="https://openreview.net/forum?id=pTHfApDakA" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.01-blue" alt="PDF Badge"></a></li>
-<li><i><b>Learning to check: Unleashing potentials for self-correction in large language models</b></i>, Zhang et al., <a href="https://arxiv.org/abs/2402.13035" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>REFINER: Reasoning Feedback on Intermediate Representations</b></i>, Paul et al., <a href="https://aclanthology.org/2024.eacl-long.67/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.03-blue" alt="PDF Badge"></a></li>
-<li><i><b>GLoRe: When, Where, and How to Improve LLM Reasoning via Global and Local Refinements</b></i>, Havrilla et al., <a href="https://openreview.net/forum?id=LH6R06NxdB" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.05-blue" alt="PDF Badge"></a></li>
-<li><i><b>Enhancing Zero-Shot Chain-of-Thought Reasoning in Large Language Models through Logic</b></i>, Zhao et al., <a href="https://aclanthology.org/2024.lrec-main.543/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.05-blue" alt="PDF Badge"></a></li>
-<li><i><b>General purpose verification for chain of thought prompting</b></i>, Vacareanu et al., <a href="https://arxiv.org/abs/2405.00204" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.05-red" alt="arXiv Badge"></a></li>
-<li><i><b>Large language models have intrinsic self-correction ability</b></i>, Liu et al., <a href="https://arxiv.org/abs/2406.15673" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.06-red" alt="arXiv Badge"></a></li>
-<li><i><b>Progressive-Hint Prompting Improves Reasoning in Large Language Models</b></i>, Zheng et al., <a href="https://openreview.net/forum?id=UkFEs3ciz8" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.06-blue" alt="PDF Badge"></a></li>
-<li><i><b>Accessing gpt-4 level mathematical olympiad solutions via monte carlo tree self-refine with llama-3 8b</b></i>, Zhang et al., <a href="https://arxiv.org/abs/2406.07394" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.06-red" alt="arXiv Badge"></a></li>
-<li><i><b>Toward Adaptive Reasoning in Large Language Models with Thought Rollback</b></i>, Chen et al., <a href="https://proceedings.mlr.press/v235/chen24y.html" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.07-blue" alt="PDF Badge"></a></li>
-<li><i><b>CoT Rerailer: Enhancing the Reliability of Large Language Models in Complex Reasoning Tasks through Error Detection and Correction</b></i>, Wan et al., <a href="https://arxiv.org/abs/2408.13940" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.08-red" alt="arXiv Badge"></a></li>
-<li><i><b>Pride and Prejudice: LLM Amplifies Self-Bias in Self-Refinement</b></i>, Xu et al., <a href="https://aclanthology.org/2024.acl-long.826/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.08-blue" alt="PDF Badge"></a></li>
-<li><i><b>A Theoretical Understanding of Self-Correction through In-context Alignment</b></i>, Wang et al., <a href="https://openreview.net/forum?id=OtvNLTWYww" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.09-blue" alt="PDF Badge"></a></li>
-<li><i><b>ReST-MCTS*: LLM Self-Training via Process Reward Guided Tree Search</b></i>, Zhang et al., <a href="https://openreview.net/forum?id=8rcFOqEud5" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.09-blue" alt="PDF Badge"></a></li>
-<li><i><b>Enhancing Mathematical Reasoning in LLMs by Stepwise Correction</b></i>, Wu et al., <a href="https://arxiv.org/abs/2410.12934" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>LLM Self-Correction with DeCRIM: Decompose, Critique, and Refine for Enhanced Following of Instructions with Multiple Constraints</b></i>, Ferraz et al., <a href="https://openreview.net/forum?id=RQ6Ff8lso0" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.10-blue" alt="PDF Badge"></a></li>
-<li><i><b>Advancing Large Language Model Attribution through Self-Improving</b></i>, Huang et al., <a href="https://aclanthology.org/2024.emnlp-main.223/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.11-blue" alt="PDF Badge"></a></li>
-<li><i><b>Confidence vs Critique: A Decomposition of Self-Correction Capability for LLMs</b></i>, Yang et al., <a href="https://arxiv.org/abs/2412.19513" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>LLM2: Let Large Language Models Harness System 2 Reasoning</b></i>, Yang et al., <a href="https://arxiv.org/abs/2412.20372" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>Understanding the Dark Side of LLMs' Intrinsic Self-Correction</b></i>, Zhang et al., <a href="https://arxiv.org/abs/2412.14959" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>Enhancing LLM Reasoning with Multi-Path Collaborative Reactive and Reflection agents</b></i>, He et al., <a href="https://arxiv.org/abs/2501.00430" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>BackMATH: Towards Backward Reasoning for Solving Math Problems Step by Step</b></i>, Zhang et al., <a href="https://aclanthology.org/2025.coling-industry.40/" target="_blank"><img src="https://img.shields.io/badge/PDF-2025.01-blue" alt="PDF Badge"></a></li>
-<li><i><b>ReARTeR: Retrieval-Augmented Reasoning with Trustworthy Process Rewarding</b></i>, Sun et al., <a href="https://arxiv.org/abs/2501.07861" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Step Back to Leap Forward: Self-Backtracking for Boosting Reasoning of Language Models</b></i>, Yang et al., <a href="https://arxiv.org/abs/2502.04404" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Optimizing generative AI by backpropagating language model feedback</b></i>, Yuksekgonul et al., <a href="https://www.nature.com/articles/s41586-025-08661-4" target="_blank"><img src="https://img.shields.io/badge/PDF-2025.03-blue" alt="PDF Badge"></a></li>
-<li><i><b>DLPO: Towards a Robust, Efficient, and Generalizable Prompt Optimization Framework from a Deep-Learning Perspective</b></i>, Peng et al., <a href="https://arxiv.org/abs/2503.13413" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>Instruct-of-Reflection: Enhancing Large Language Models Iterative Reflection Capabilities via Dynamic-Meta Instruction</b></i>, Liu et al., <a href="https://arxiv.org/abs/2503.00902" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>The Lighthouse of Language: Enhancing LLM Agents via Critique-Guided Improvement</b></i>, Yang et al., <a href="https://arxiv.org/abs/2503.16024" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-</ul>
+---
 
-<h4 id="rl-based-refinement-learning">3.2.5 RL-based Refinement Learning</h4>
-</ul>
+**Prompt-based Refinement**
 
-<ul>
-<li><i><b>Training language models to self-correct via reinforcement learning</b></i>, Kumar et al., <a href="https://arxiv.org/abs/2409.12917" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.09-red" alt="arXiv Badge"></a></li>
-<li><i><b>Deepseek-r1: Incentivizing reasoning capability in llms via reinforcement learning</b></i>, Guo et al., <a href="https://arxiv.org/abs/2501.12948" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>7B Model and 8K Examples: Emerging Reasoning with Reinforcement Learning is Both Effective and Efficient</b></i>, Zeng et al., <a href="https://hkust-nlp.notion.site/simplerl-reason" target="_blank"><img src="https://img.shields.io/badge/Notion-2025.01-white" alt="Notion Badge"></a></li>
-<li><i><b>S<sup>2</sup>R: Teaching LLMs to Self-verify and Self-correct via Reinforcement Learning</b></i>, Ma et al., <a href="https://arxiv.org/abs/2502.12853" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>ReasonFlux: Hierarchical LLM Reasoning via Scaling Thought Templates</b></i>, Yang et al., <a href="https://arxiv.org/abs/2502.06772" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>ReVISE: Learning to Refine at Test-Time via Intrinsic Self-Verification</b></i>, Lee et al., <a href="https://arxiv.org/abs/2502.14565" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>ARIES: Stimulating Self-Refinement of Large Language Models by Iterative Preference Optimization</b></i>, Zeng et al., <a href="https://arxiv.org/abs/2502.05605" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-</ul>
+- **Core Idea:** By guiding the model to generate initial responses via prompts, and allowing for self-feedback and multi-round corrections in subsequent rounds, this method improves reasoning accuracy, reduces hallucinations, and supports stronger automated reflection capabilities.
+- **Representative Works:**
+  - [ReAct](https://github.com/ysymyth/ReAct) / [Reflexion](https://github.com/noahshinn/reflexion): A typical implementation of the multi-round reflection and self-correction mechanism;
+  - [Self-Backtracking](https://arxiv.org/abs/2502.04404) / [Refiner](https://aclanthology.org/2024.eacl-long.67/) / [BackMath](https://aclanthology.org/2025.coling-industry.40/): Supports the model in autonomously backtracking and modifying during the reasoning process, streamlining decision paths;
+  - [MCTSr](https://arxiv.org/abs/2406.07394) / [ReST-MCTS](https://arxiv.org/abs/2406.03816): Combines tree search with confidence updates to enable multi-round dynamic reflection;
+  - [LLM2](https://arxiv.org/abs/2412.20372)/ [ReARTeR](https://arxiv.org/abs/2501.07861): Promotes the automatic evolution and stable convergence of refinement strategies in Long CoT tasks.
+  
 
-<h4 id="sft-based-refinement-imitation">3.2.6 SFT-based Refinement Imitation</h4>
-</ul>
+**SFT-based Refinement**
 
-<ul>
-<li><i><b>Learning from mistakes makes llm better reasoner</b></i>, An et al., <a href="https://arxiv.org/abs/2310.20689" target="_blank"><img src="https://img.shields.io/badge/arXiv-2023.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>Reflection-tuning: Data recycling improves llm instruction-tuning</b></i>, Li et al., <a href="https://arxiv.org/abs/2310.11716" target="_blank"><img src="https://img.shields.io/badge/arXiv-2023.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>Teaching Large Language Models to Self-Debug</b></i>, Chen et al., <a href="https://openreview.net/forum?id=KuPixIqPiq" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.01-blue" alt="PDF Badge"></a></li>
-<li><i><b>Enhancing visual-language modality alignment in large vision language models via self-improvement</b></i>, Wang et al., <a href="https://arxiv.org/abs/2405.15973" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.05-red" alt="arXiv Badge"></a></li>
-<li><i><b>Llm critics help catch bugs in mathematics: Towards a better mathematical verifier with natural language feedback</b></i>, Gao et al., <a href="https://arxiv.org/abs/2406.14024" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.06-red" alt="arXiv Badge"></a></li>
-<li><i><b>Mutual reasoning makes smaller llms stronger problem-solvers</b></i>, Qi et al., <a href="https://arxiv.org/abs/2408.06195" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.08-red" alt="arXiv Badge"></a></li>
-<li><i><b>S <sup>3</sup> c-Math: Spontaneous Step-level Self-correction Makes Large Language Models Better Mathematical Reasoners</b></i>, Yan et al., <a href="https://arxiv.org/abs/2409.01524" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.09-red" alt="arXiv Badge"></a></li>
-<li><i><b>Recursive Introspection: Teaching Language Model Agents How to Self-Improve</b></i>, Qu et al., <a href="https://openreview.net/forum?id=DRC9pZwBwR" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.09-blue" alt="PDF Badge"></a></li>
-<li><i><b>O1 Replication Journey: A Strategic Progress Report--Part 1</b></i>, Qin et al., <a href="https://arxiv.org/abs/2410.18982" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>Enhancing llm reasoning via critique models with test-time and training-time supervision</b></i>, Xi et al., <a href="https://arxiv.org/abs/2411.16579" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.11-red" alt="arXiv Badge"></a></li>
-<li><i><b>Vision-language models can self-improve reasoning via reflection</b></i>, Cheng et al., <a href="https://arxiv.org/abs/2411.00855" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.11-red" alt="arXiv Badge"></a></li>
-<li><i><b>CoT-based Synthesizer: Enhancing LLM Performance through Answer Synthesis</b></i>, Zhang et al., <a href="https://arxiv.org/abs/2501.01668" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Critique fine-tuning: Learning to critique is more effective than learning to imitate</b></i>, Wang et al., <a href="https://arxiv.org/abs/2501.17703" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>RealCritic: Towards Effectiveness-Driven Evaluation of Language Model Critiques</b></i>, Tang et al., <a href="https://arxiv.org/abs/2501.14492" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>ProgCo: Program Helps Self-Correction of Large Language Models</b></i>, Song et al., <a href="https://arxiv.org/abs/2501.01264" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>URSA: Understanding and Verifying Chain-of-thought Reasoning in Multimodal Mathematics</b></i>, Luo et al., <a href="https://arxiv.org/abs/2501.04686" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Iterative Deepening Sampling for Large Language Models</b></i>, Chen et al., <a href="https://arxiv.org/abs/2502.05449" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>LLMs Can Easily Learn to Reason from Demonstrations Structure, not content, is what matters!</b></i>, Li et al., <a href="https://arxiv.org/abs/2502.07374" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>MM-Verify: Enhancing Multimodal Reasoning with Chain-of-Thought Verification</b></i>, Sun et al., <a href="https://arxiv.org/abs/2502.13383" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-</ul>
-<h2 id="extensive-exploration">4. Extensive Exploration</h2>
-<ul>
-<li><i><b>Improving Policies via Search in Cooperative Partially Observable Games</b></i>, Lerer et al., <a href="https://ojs.aaai.org/index.php/AAAI/article/view/6208" target="_blank"><img src="https://img.shields.io/badge/PDF-2020.04-blue" alt="PDF Badge"></a></li>
-<li><i><b>On The Planning Abilities of OpenAI's o1 Models: Feasibility, Optimality, and Generalizability</b></i>, Wang et al., <a href="https://arxiv.org/abs/2409.19924" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.09-red" alt="arXiv Badge"></a></li>
-<li><i><b>LLMs Still Can't Plan; Can LRMs? A Preliminary Evaluation of OpenAI's o1 on PlanBench</b></i>, Valmeekam et al., <a href="https://openreview.net/forum?id=Gcr1Lx4Koz" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.10-blue" alt="PDF Badge"></a></li>
-<li><i><b>Scaling of search and learning: A roadmap to reproduce o1 from reinforcement learning perspective</b></i>, Zeng et al., <a href="https://arxiv.org/abs/2412.14135" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>Deepseek-r1: Incentivizing reasoning capability in llms via reinforcement learning</b></i>, Guo et al., <a href="https://arxiv.org/abs/2501.12948" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-</ul>
+- **Core Idea:** By utilizing high-quality reflection data for supervised fine-tuning, the model imitates the self-correction behaviors of more advanced models, enhancing its step-by-step error correction and reflective capabilities. This is suitable for small model capability transfer and fine-grained training.
+- **Representative Works:**
+  - [rStar](https://arxiv.org/abs/2408.06195): Enhances small model self-improvement capabilities through self-play methods;
+  - [Math-Minos](https://arxiv.org/abs/2405.14024): Trains the model using step-by-step rationale labels for fine-grained reasoning;
+  - [Journey Learning](https://arxiv.org/abs/2411.16489): Combines MCTS backtracking to generate supervision signals;
+  - [MM-Verify](https://arxiv.org/abs/2502.13383): Expands the refinement mechanism to multimodal image-text reasoning.
 
+**RL-based Refinement**
 
+- **Core Idea:** Through reinforcement learning mechanisms, the model is guided to self-reflect and correct during testing or reasoning processes, emphasizing self-refinement capabilities under reward guidance, thus reducing dependence on manual supervision.
+- **Representative Works:**
+  - [SCoRe](https://arxiv.org/abs/2409.12917): Enhances the model's self-refinement ability during testing through self-generated correction trajectories and regularization;
+  - [DeepSeek-R1](https://arxiv.org/abs/2501.12948): Uses result-level reinforcement learning to activate the model's natural feedback and "aha" moments for corrections;
+  - [S$^2$R](https://arxiv.org/abs/2502.12853): Combines process-level reinforcement learning to achieve dynamic refinement in reasoning;
+  - [ReVISE](https://arxiv.org/abs/2502.14565): Introduces an internal verifier to decide when to trigger RL-guided reflective behaviors.
 
-<h3 id="exploration-scaling">4.1 Exploration Scaling</h3>
-<img src="./assets/images/exploration-scaling.png" style="width: 580pt">
-</ul>
+### 2.3 Extensive Exploration
+Extensive Exploration enables reasoning large language models (RLLMs) to explore multiple reasoning paths more deeply and comprehensively when dealing with complex problems, thereby improving problem-solving accuracy and robustness. From the perspective of exploration types, extensive exploration techniques can be divided into three categories: Exploration Scaling, Internal Exploration, and External Exploration.
 
-<ul>
-<li><i><b>Greedy Policy Search: A Simple Baseline for Learnable Test-Time Augmentation</b></i>, Lyzhov et al., <a href="https://proceedings.mlr.press/v124/lyzhov20a.html" target="_blank"><img src="https://img.shields.io/badge/PDF-2020.08-blue" alt="PDF Badge"></a></li>
-<li><i><b>Scaling scaling laws with board games</b></i>, Jones et al., <a href="https://arxiv.org/abs/2104.03113" target="_blank"><img src="https://img.shields.io/badge/arXiv-2021.04-red" alt="arXiv Badge"></a></li>
-<li><i><b>Large language monkeys: Scaling inference compute with repeated sampling</b></i>, Brown et al., <a href="https://arxiv.org/abs/2407.21787" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.07-red" alt="arXiv Badge"></a></li>
-<li><i><b>From Decoding to Meta-Generation: Inference-time Algorithms for Large Language Models</b></i>, Welleck et al., <a href="https://openreview.net/forum?id=eskQMcIbMS" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.11-blue" alt="PDF Badge"></a></li>
-<li><i><b>From medprompt to o1: Exploration of run-time strategies for medical challenge problems and beyond</b></i>, Nori et al., <a href="https://arxiv.org/abs/2411.03590" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.11-red" alt="arXiv Badge"></a></li>
-<li><i><b>ECM: A Unified Electronic Circuit Model for Explaining the Emergence of In-Context Learning and Chain-of-Thought in Large Language Model</b></i>, Chen et al., <a href="https://arxiv.org/abs/2502.03325" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>(Mis) Fitting: A Survey of Scaling Laws</b></i>, Li et al., <a href="https://arxiv.org/abs/2502.18969" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-</ul>
+#### 2.3.1 Exploration Scaling
+Exploration Scaling aims to enhance the model's ability to solve more complex problems by increasing the number or length of reasoning paths. This approach is typically suitable when the reasoning task is more complex, and a single reasoning path may not effectively lead to the correct answer.
 
-<h4 id="parallel-scaling">4.1.1 Parallel Scaling</h4>
-</ul>
+---
 
-<ul>
-<li><i><b>Self-Consistency Improves Chain of Thought Reasoning in Language Models</b></i>, Wang et al., <a href="https://openreview.net/forum?id=1PL1NIMMrw" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.02-blue" alt="PDF Badge"></a></li>
-<li><i><b>Large language monkeys: Scaling inference compute with repeated sampling</b></i>, Brown et al., <a href="https://arxiv.org/abs/2407.21787" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.07-red" alt="arXiv Badge"></a></li>
-<li><i><b>Inference scaling laws: An empirical analysis of compute-optimal inference for problem-solving with language models</b></i>, Wu et al., <a href="https://arxiv.org/abs/2408.00724" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.08-red" alt="arXiv Badge"></a></li>
-<li><i><b>Inference Scaling vs Reasoning: An Empirical Analysis of Compute-Optimal LLM Problem-Solving</b></i>, AbdElhameed et al., <a href="https://arxiv.org/abs/2412.16260" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>Metascale: Test-time scaling with evolving meta-thoughts</b></i>, Liu et al., <a href="https://arxiv.org/abs/2503.13447" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-</ul>
+**Sequential Scaling**
 
-<b>Sampling Optimization</b>
-<ul>
-<li><i><b>Cross-lingual Prompting: Improving Zero-shot Chain-of-Thought Reasoning across Languages</b></i>, Qin et al., <a href="https://aclanthology.org/2023.emnlp-main.163/" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.12-blue" alt="PDF Badge"></a></li>
-<li><i><b>Scaling llm inference with optimized sample compute allocation</b></i>, Zhang et al., <a href="https://arxiv.org/abs/2410.22480" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>Planning in Natural Language Improves LLM Search for Code Generation</b></i>, Wang et al., <a href="https://openreview.net/forum?id=B2iSfPNj49" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.10-blue" alt="PDF Badge"></a></li>
-<li><i><b>Python is Not Always the Best Choice: Embracing Multilingual Program of Thoughts</b></i>, Luo et al., <a href="https://aclanthology.org/2024.emnlp-main.408/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.11-blue" alt="PDF Badge"></a></li>
-<li><i><b>Chain-of-Reasoning: Towards Unified Mathematical Reasoning in Large Language Models via a Multi-Paradigm Perspective</b></i>, Yu et al., <a href="https://arxiv.org/abs/2501.11110" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Revisiting the Test-Time Scaling of o1-like Models: Do they Truly Possess Test-Time Scaling Capabilities?</b></i>, Zeng et al., <a href="https://arxiv.org/abs/2502.12215" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Optimizing Temperature for Language Models with Multi-Sample Inference</b></i>, Du et al., <a href="https://arxiv.org/abs/2502.05234" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Bag of Tricks for Inference-time Computation of LLM Reasoning</b></i>, Liu et al., <a href="https://arxiv.org/abs/2502.07191" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Towards Thinking-Optimal Scaling of Test-Time Compute for LLM Reasoning</b></i>, Yang et al., <a href="https://arxiv.org/abs/2502.18080" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Is Depth All You Need? An Exploration of Iterative Reasoning in LLMs</b></i>, Wu et al., <a href="https://arxiv.org/abs/2502.10858" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Do We Truly Need So Many Samples? Multi-LLM Repeated Sampling Efficiently Scale Test-Time Compute</b></i>, Chen et al., <a href="https://arxiv.org/abs/2504.00762" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.04-red" alt="arXiv Badge"></a></li>
-</ul>
+- **Core Idea:** By extending the reasoning chain of a single path, the model gradually deepens its thinking, thereby improving its understanding and handling of complex problems. This is especially applicable to tasks with Long CoT that require multi-step reasoning to draw conclusions, such as mathematical proofs, logical deductions, and multi-step planning.
+- **Representative Works:**
+  - [OpenAI-o1](https://arxiv.org/abs/2412.16720) / [Deepseek-R1](https://arxiv.org/abs/2501.12948): 
+  Extends the reasoning chain to provide detailed multi-step reasoning processes, effectively improving the ability to solve complex problems in mathematics, coding, and other areas.
+  - [ITT(Inner Thinking Transformer:)](https://arxiv.org/abs/2502.13842): redefines the layer computation in Transformer as "thinking steps," dynamically allocating computation resources to deeper reasoning on key tokens without increasing the total number of model parameters.
 
-<b>Verification Optimization</b>
-<ul>
-<li><i><b>Show Your Work: Scratchpads for Intermediate Computation with Language Models</b></i>, Nye et al., <a href="https://openreview.net/forum?id=HBlx2idbkbq" target="_blank"><img src="https://img.shields.io/badge/PDF-2022.03-blue" alt="PDF Badge"></a></li>
-<li><i><b>Making Language Models Better Reasoners with Step-Aware Verifier</b></i>, Li et al., <a href="https://aclanthology.org/2023.acl-long.291/" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.07-blue" alt="PDF Badge"></a></li>
-<li><i><b>Deductive Verification of Chain-of-Thought Reasoning</b></i>, Ling et al., <a href="https://proceedings.neurips.cc/paper_files/paper/2023/file/72393bd47a35f5b3bee4c609e7bba733-Paper-Conference.pdf" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.09-blue" alt="PDF Badge"></a></li>
-<li><i><b>Don't Trust: Verify -- Grounding LLM Quantitative Reasoning with Autoformalization</b></i>, Zhou et al., <a href="https://openreview.net/forum?id=V5tdi14ple" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.01-blue" alt="PDF Badge"></a></li>
-<li><i><b>Multi-step problem solving through a verifier: An empirical analysis on model-induced process supervision</b></i>, Wang et al., <a href="https://arxiv.org/abs/2402.02658" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Stepwise self-consistent mathematical reasoning with large language models</b></i>, Zhao et al., <a href="https://arxiv.org/abs/2402.17786" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>General purpose verification for chain of thought prompting</b></i>, Vacareanu et al., <a href="https://arxiv.org/abs/2405.00204" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.05-red" alt="arXiv Badge"></a></li>
-<li><i><b>Improve Mathematical Reasoning in Language Models by Automated Process Supervision</b></i>, Luo et al., <a href="https://arxiv.org/abs/2406.06592" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.06-red" alt="arXiv Badge"></a></li>
-<li><i><b>Scaling llm test-time compute optimally can be more effective than scaling model parameters</b></i>, Snell et al., <a href="https://arxiv.org/abs/2408.03314" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.08-red" alt="arXiv Badge"></a></li>
-<li><i><b>Inference scaling laws: An empirical analysis of compute-optimal inference for problem-solving with language models</b></i>, Wu et al., <a href="https://arxiv.org/abs/2408.00724" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.08-red" alt="arXiv Badge"></a></li>
-<li><i><b>Learning to Reason via Program Generation, Emulation, and Search</b></i>, Weir et al., <a href="https://openreview.net/forum?id=te6VagJf6G" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.09-blue" alt="PDF Badge"></a></li>
-<li><i><b>What are the essential factors in crafting effective long context multi-hop instruction datasets? insights and best practices</b></i>, Chen et al., <a href="https://arxiv.org/abs/2409.01893" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.09-red" alt="arXiv Badge"></a></li>
-<li><i><b>MAgICoRe: Multi-Agent, Iterative, Coarse-to-Fine Refinement for Reasoning</b></i>, Chen et al., <a href="https://arxiv.org/abs/2409.12147" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.09-red" alt="arXiv Badge"></a></li>
-<li><i><b>Rlef: Grounding code llms in execution feedback with reinforcement learning</b></i>, Gehring et al., <a href="https://arxiv.org/abs/2410.02089" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>Beyond examples: High-level automated reasoning paradigm in in-context learning via mcts</b></i>, Wu et al., <a href="https://arxiv.org/abs/2411.18478" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.11-red" alt="arXiv Badge"></a></li>
-<li><i><b>Wrong-of-Thought: An Integrated Reasoning Framework with Multi-Perspective Verification and Wrong Information</b></i>, Zhang et al., <a href="https://aclanthology.org/2024.findings-emnlp.388/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.11-blue" alt="PDF Badge"></a></li>
-<li><i><b>A simple and provable scaling law for the test-time compute of large language models</b></i>, Chen et al., <a href="https://arxiv.org/abs/2411.19477" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.11-red" alt="arXiv Badge"></a></li>
-<li><i><b>Lachesis: Predicting LLM Inference Accuracy using Structural Properties of Reasoning Paths</b></i>, Kim et al., <a href="https://arxiv.org/abs/2412.08281" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>Seed-cts: Unleashing the power of tree search for superior performance in competitive coding tasks</b></i>, Wang et al., <a href="https://arxiv.org/abs/2412.12544" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>From Drafts to Answers: Unlocking LLM Potential via Aggregation Fine-Tuning</b></i>, Li et al., <a href="https://arxiv.org/abs/2501.11877" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>SETS: Leveraging Self-Verification and Self-Correction for Improved Test-Time Scaling</b></i>, Chen et al., <a href="https://arxiv.org/abs/2501.19306" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Instantiation-based Formalization of Logical Reasoning Tasks using Language Models and Logical Solvers</b></i>, Raza et al., <a href="https://arxiv.org/abs/2501.16961" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>The lessons of developing process reward models in mathematical reasoning</b></i>, Zhang et al., <a href="https://arxiv.org/abs/2501.07301" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>ExACT: Teaching AI Agents to Explore with Reflective-MCTS and Exploratory Learning</b></i>, Yu et al., <a href="https://openreview.net/forum?id=GBIUbwW9D8" target="_blank"><img src="https://img.shields.io/badge/PDF-2025.01-blue" alt="PDF Badge"></a></li>
-<li><i><b>Scalable Best-of-N Selection for Large Language Models via Self-Certainty</b></i>, Kang et al., <a href="https://arxiv.org/abs/2502.18581" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Can 1B LLM Surpass 405B LLM? Rethinking Compute-Optimal Test-Time Scaling</b></i>, Liu et al., <a href="https://arxiv.org/abs/2502.06703" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>ECM: A Unified Electronic Circuit Model for Explaining the Emergence of In-Context Learning and Chain-of-Thought in Large Language Model</b></i>, Chen et al., <a href="https://arxiv.org/abs/2502.03325" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Sample, Scrutinize and Scale: Effective Inference-Time Search by Scaling Verification</b></i>, Zhao et al., <a href="https://arxiv.org/abs/2502.01839" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>TestNUC: Enhancing Test-Time Computing Approaches through Neighboring Unlabeled Data Consistency</b></i>, Zou et al., <a href="https://arxiv.org/abs/2502.19163" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Confidence Improves Self-Consistency in LLMs</b></i>, Taubenfeld et al., <a href="https://arxiv.org/abs/2502.06233" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>S*: Test Time Scaling for Code Generation</b></i>, Li et al., <a href="https://arxiv.org/abs/2502.14382" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Bridging Internal Probability and Self-Consistency for Effective and Efficient LLM Reasoning</b></i>, Zhou et al., <a href="https://arxiv.org/abs/2502.00511" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Multidimensional Consistency Improves Reasoning in Language Models</b></i>, Lai et al., <a href="https://arxiv.org/abs/2503.02670" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>Efficient test-time scaling via self-calibration</b></i>, Huang et al., <a href="https://arxiv.org/abs/2503.00031" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-</ul>
+---
 
-<h4 id="vertical-scaling">4.1.2 Vertical Scaling</h4>
-</ul>
+**Parallel Scaling**
 
-<ul>
-<li><i><b>Complexity-Based Prompting for Multi-step Reasoning</b></i>, Fu et al., <a href="https://openreview.net/forum?id=yf1icZHC-l9" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.02-blue" alt="PDF Badge"></a></li>
-<li><i><b>Openai o1 system card</b></i>, Jaech et al., <a href="https://arxiv.org/abs/2412.16720" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>s1: Simple test-time scaling</b></i>, Muennighoff et al., <a href="https://arxiv.org/abs/2501.19393" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Test-time Computing: from System-1 Thinking to System-2 Thinking</b></i>, Ji et al., <a href="https://arxiv.org/abs/2501.02497" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Scaling up Test-Time Compute with Latent Reasoning: A Recurrent Depth Approach</b></i>, Geiping et al., <a href="https://arxiv.org/abs/2502.05171" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Inner Thinking Transformer: Leveraging Dynamic Depth Scaling to Foster Adaptive Internal Thinking</b></i>, Chen et al., <a href="https://arxiv.org/abs/2502.13842" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>METAL: A Multi-Agent Framework for Chart Generation with Test-Time Scaling</b></i>, Li et al., <a href="https://arxiv.org/abs/2502.17651" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Reasoning-as-Logic-Units: Scaling Test-Time Reasoning in Large Language Models Through Logic Unit Alignment</b></i>, Li et al., <a href="https://arxiv.org/abs/2502.07803" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Think Twice: Enhancing LLM Reasoning by Scaling Multi-round Test-time Thinking</b></i>, Tian et al., <a href="https://arxiv.org/abs/2503.19855" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>What, How, Where, and How Well? A Survey on Test-Time Scaling in Large Language Models</b></i>, Zhang et al., <a href="https://arxiv.org/abs/2503.24235" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-</ul>
+- **Core Idea:** By generating multiple reasoning paths in parallel and combining, voting, or verifying their results, the model can effectively avoid the issue of a single path getting trapped in local optima or errors, thus improving robustness and accuracy in situations with high ambiguity, multiple possible solutions, or unclear outcomes.
+- **Representative Works:**
+  - [Self-Consistency](https://arxiv.org/abs/2203.11171): Proposes generating multiple reasoning paths and selecting the most frequent answer from the results, effectively improving the stability and accuracy of the final answer.
+  - [ECM(Electronic Circuit Model)](https://arxiv.org/abs/2502.03325): Borrowing the concepts of parallel and series circuits in electronics, combines reasoning paths in parallel or series, considering various possibilities and improving decision quality.
+
+---
+
+#### 2.3.2 Internal Exploration
+Internal Exploration primarily refers to large reasoning models (RLLMs) actively exploring and optimizing reasoning paths through their internal mechanisms (usually reinforcement learning strategies and reward mechanisms), allowing for more efficient and deeper solutions to complex reasoning problems. This method enables the model to autonomously adjust its reasoning strategy, reducing reliance on external guiding data.
+
+---
+
+**RL Strategies**
+- **Core Idea:** Leverage reinforcement learning (RL) algorithms to guide models in actively learning and exploring diverse reasoning paths. This approach overcomes the limitations of overly uniform patterns in reasoning processes, enhancing model performance in tasks that involve high uncertainty or heavily depend on autonomous decision-making.
+- **Representative Works:**
+  - [PPO(Proximal Policy Optimization)](https://arxiv.org/abs/1707.06347): A classic RL algorithm that efficiently optimizes a model's internal decision-making mechanism through a policy-gradient-based approach, suitable for path exploration and optimization in complex environments.
+  - [DivPO(Diverse Preference Optimization)](https://arxiv.org/abs/2501.18101): Encourages models to explore a greater variety of reasoning paths to maintain decision diversity, preventing convergence to local optima.
+  - [GRPO(Guided Reward Policy Optimization)](https://arxiv.org/pdf/2402.03300): Designs a guided reward mechanism that enables models to more effectively explore within complex logical reasoning spaces.
+
+---
+
+**Reward Strategies**
+
+- **Core Idea:** Directly guide models to explore and optimize effective reasoning paths through carefully designed reward functions, which are particularly useful in scenarios where there are explicit optimization goals or specific reasoning bottlenecks to address.
+- **Representative Works:**
+  - [Deepseek-R1](https://arxiv.org/abs/2501.12948): Proposes a specially designed reward function to incentivize models to optimize intermediate reasoning steps, aiding the model in building a high-quality internal reasoning process.
+  - [ReST-MCTS*](https://arxiv.org/abs/2406.03816): Combines Monte Carlo Tree Search (MCTS) with reward strategies, guiding the tree search algorithm through process rewards for more accurate exploration of effective reasoning paths, improving overall reasoning quality.
+
+---
+
+#### 2.3.3 External Exploration
+External exploration refers to the assistance of external tools, human knowledge, or other models in guiding the model to more effectively explore diverse reasoning paths and improve its ability to solve complex problems. This approach is often used in scenarios where fine-grained guidance or external knowledge is essential for effective problem-solving. External exploration can be subdivided into two types: Human-driven Exploration and Model-driven Exploration.
+
+---
+
+**Human-driven Exploration**
+- **Core Idea:** Utilizes human intuition, experience, or feedback to guide the model in selecting and adjusting reasoning paths, especially in situations where the model's autonomous exploration ability is limited or the reasoning task is complex and requires decomposition into multiple sub-tasks.
+- **Representative Works:**
+  - [Least-to-Most](https://arxiv.org/abs/2205.10625): Breaks down complex problems into simpler subproblems, solving each and using prior answers as inputs for subsequent steps, ultimately synthesizing a solution for the overall problem. This method was proposed to address the "difficulty generalization" bottleneck in traditional Chain-of-Thought approaches.
+  - [ToT (Tree-of-Thought)](https://arxiv.org/abs/2305.10601): Expands the traditional "left-to-right" token generation reasoning process into a "tree structure exploration," where each node represents a thought unit. This supports multi-path attempts, backtracking, forward reasoning, and self-evaluation within the reasoning process.
+
+---
+
+**Model-driven Exploration**
+
+- **Core Idea:** Uses auxiliary models or algorithms to automatically guide the current model's reasoning process, reducing the need for human intervention and allowing for the efficient search and optimization of numerous complex reasoning paths, thus improving automation and overall efficiency.
+- **Representative Works:**
+  - [PPO-MCTS](https://arxiv.org/abs/2309.15028): Integrates MCTS (Monte Carlo Tree Search) with PPO-based training to enhance reasoning. The key is to retain the value network obtained during PPO training and use it during the reasoning phase to guide the MCTS in selecting more desirable output sequences, thereby improving the quality and consistency of the generated text.
+  - [MindStar](https://arxiv.org/abs/2405.16265):  Reformulates complex reasoning problems (particularly mathematical ones) as search problems, where structured searches are performed over different reasoning paths to select the optimal one.
+  - [rStar-Math](https://arxiv.org/abs/2501.04519):  Develops a strong mathematical reasoning system through MCTS + small model reward mechanisms + self-evolution processes, enabling small models to outperform o1-preview in mathematical capabilities.
+
+---
+
+## 3. Key Phenomena and Related Principles
+
+<img src="./assets/images/analysis.jpg" style="width: 580pt">
+
+### 3.1 Reasoning Emergence Phenomenon
+
+Long CoT abilities naturally emerge after training, demonstrated by the model's ability to generate multi-step, coherent reasoning processes by internalizing logical structures and contextual examples from pretraining data, even in the absence of direct supervision. Related studies have described this phenomenon as follows:
+
+- [Wang et al.](https://aclanthology.org/2023.acl-long.153/) found that a small number of high-quality contextual examples can effectively guide RL-based language models (RLLMs) to generate clear, logically consistent reasoning chains, indicating that the model has internalized basic reasoning patterns during pretraining.
+- [Madaan et al.](https://aclanthology.org/2023.findings-emnlp.0/) demonstrated that even without specific problem entities, the model can still generate reasonable reasoning chains by retaining only the logical structure information, showcasing its inductive and transfer abilities regarding structural information.
+- [Stechly et al.](https://openreview.net/forum?id=kPBEAZU5Nm) pointed out that by adjusting decoding strategies or constructing specialized prompts, latent  CoT abilities within the model can be explicitly activated, resulting in multi-step reasoning in complex tasks.
+- [Guo et al.](https://arxiv.org/abs/2501.12948) showed that rule-based RL strategies can directly induce models to form coherent reasoning chains during pretraining, significantly improving performance in multi-step tasks.
+
+### 3.2 Reasoning Boundary Phenomenon
+
+Large language models exhibit clear performance boundaries in Long CoT: when the depth or complexity of reasoning exceeds a certain threshold, model performance significantly degrades, sometimes even resulting in logical collapse. This phenomenon suggests that current models have a "reasoning boundary," which is the upper limit of reasoning complexity that can be supported by their parameter space and computational resources. Existing research has systematically explored this phenomenon from both theoretical modeling and empirical analysis:
+
+- [Chen et al.](https://openreview.net/forum?id=pC44UMwy2v.) formally introduced the "reasoning boundary" concept, experimentally quantifying the performance critical points of models under different task complexities, and indicating that accuracy sharply declines when the reasoning task exceeds the model's capacity.
+- [Bi et al.](https://ojs.aaai.org/index.php/AAAI/article/view/29721) observed that performance deteriorates drastically when the model attempts to mimic overly complex CoT examples in code generation tasks, indicating that beyond a certain complexity, Long CoT examples become counterproductive.
+- [Feng et al.](https://arxiv.org/abs/2305.15408) proposed a mathematical model showing that models with fixed parameter sizes cannot perform numerical calculations exceeding a certain complexity, revealing a hard limit in accuracy.
+- [Zhou et al.](https://arxiv.org/abs/2502.05252) constructed the GSM-Infinite dataset and demonstrated through experiments that the upper limits of reasoning abilities vary significantly across different tasks, further emphasizing that reasoning boundaries are related to task structure.
+
+### 3.3 Overthinking Phenomenon
+
+In Long CoT, extending the reasoning chain does not always lead to performance improvement. Studies have shown that once the reasoning length exceeds the model’s capacity, accuracy decreases, a phenomenon known as "overthinking," which reflects the non-linear marginal benefits of reasoning and error accumulation in the process.
+
+- [Chen et al.](https://openreview.net/forum?id=pC44UMwy2v.) found that when the number of reasoning steps exceeds the model’s boundary, reasoning accuracy significantly drops, indicating that there is an optimal depth range for reasoning.
+- [Wolf et al.](https://arxiv.org/abs/2409.18028) emphasized that the fundamental reason for performance degradation is the amplification of errors in intermediate reasoning steps, which affects the final judgment.
+- [Xie et al.](https://arxiv.org/html/2502.14768v1) experimentally showed that reasoning length does not have a monotonic relationship with accuracy, challenging the intuition that "longer CoT leads to better reasoning."
+- [Wu et al.](https://arxiv.org/abs/2502.07266) established a mathematical model defining the "optimal reasoning length" interval under different models and task conditions, suggesting that performance reverses once the length exceeds the optimal range.
+- [Chen et al.](https://arxiv.org/abs/2502.03325) introduced the "reasoning chain Ohm’s law," analogizing the non-linear relationship between reasoning length and performance to information flow resistance in the model.
+
+### 3.4 Inference Test-Time Scaling Phenomenon
+
+The inference test-time scaling phenomenon refers to the increase in reasoning performance by extending the computational process (e.g., reasoning chain length or sample number) during inference. This phenomenon reveals the "dynamic amplification" potential of the model, but also comes with a trade-off between exploration depth and computational cost.
+
+- [Brown et al.](https://arxiv.org/abs/2407.21787) observed that by repeating multiple rounds of inference attempts, even if the initial attempt fails, the correct answer can be found within a certain number of trials, introducing the "language monkey" phenomenon.
+- [o1](https://arxiv.org/abs/2412.16720) demonstrated that simply increasing the reasoning chain length improves accuracy, particularly in complex mathematical tasks.
+- [Jin et al.](https://aclanthology.org/volumes/2024.findings-acl/) pointed out that while increasing the reasoning chain length initially leads to performance improvement, beyond a certain threshold, performance deteriorates, resulting in a typical nonlinear growth curve.
+- [Wu et al.](https://arxiv.org/abs/2408.00724) found that there is a logarithmic relationship between the number of inference samples and the lower bound of error, suggesting an asymptotic relationship between computational complexity (FLOPs) and inference performance.
+- [Chen et al.](https://arxiv.org/abs/2502.03325) established the theoretical upper-bound of parallel inference, indicating that no matter how the sample size is increased, the model’s verification performance cannot exceed its internal reasoning ceiling.
+
+### 3.5 PRM and ORM Selction Phenomenon
+
+In reinforcement learning optimization, Long CoT tasks involve supervision of the model generation process. Researchers distinguish between two main strategies: Process Reward Model (PRM), which focuses on the reasoning process itself, and Outcome Reward Model (ORM), which only concerns whether the final output is correct. The two strategies differ significantly in terms of generalization ability, learning stability, and supervision cost.
+
+- [Lampinen et al.](https://aclanthology.org/2022.findings-emnlp.38) validated the causal relationship between intermediate steps and final answers in qualitative experiments, providing theoretical support for the rationale behind process supervision.
+- [Jia et al.](https://arxiv.org/abs/2502.10581) theoretically proved that under sufficiently diverse data, ORM is not harder to optimize than PRM, with the two only differing by polynomial factors in terms of sample complexity.
+- [Guo et al.](https://arxiv.org/abs/2501.12948) showed that rule-based PRM reinforcement learning significantly improves the model's Long CoT capabilities in complex tasks but also faces the risk of reward hacking.
+- [Tan](https://aclanthology.org/2023.blackboxnlp-1.12.) emphasized the importance of reward distribution in intermediate reasoning steps for complex reasoning paths, which ORM cannot provide.
+- [Jiang et al.](https://arxiv.org/abs/2501.03124) pointed out that PRM is more costly in terms of data collection, as it requires labeling each reasoning step, limiting its large-scale application.
+
+### 3.6 Aha Moment Phenomenon
+
+The Aha Moment refers to the sudden integration of information during the reasoning process, leading to a key turning point in judgment, resembling human reflection and self-correction. This phenomenon highlights the model's dynamic cognitive adjustment abilities, but its occurrence depends on the collaboration between external stimuli and internal mechanisms.
+
+- [Guo et al.](https://arxiv.org/abs/2501.12948) first triggered the Aha Moment behavior under unsupervised conditions through rule-based rewards, with models reflecting on intermediate reasoning and self-correcting.
+- [Xie et al.](https://arxiv.org/abs/2502.14768) further demonstrated through experiments that this behavior can be replicated across multiple models, verifying that it is not an偶然 event but rather an inducible strategy.
+- [Zhou et al.](https://arxiv.org/abs/2503.05132) extended the Aha Moment phenomenon to multimodal tasks, showing that it is not specific to text-based tasks but reflects the model's broader cognitive abilities.
+- [Liu et al.](https://oatllm.notion.site/oat-zero) pointed out that in certain reinforcement learning frameworks (e.g., R1-Zero), Aha behavior may not genuinely exist, with lengthening the generation more likely a result of reward optimization rather than actual reflection.
+- [Yang et al.](https://arxiv.org/abs/2504.02956) found that the Aha behavior often involves human-like language enhancement and dynamic uncertainty regulation, with the model more inclined to use expressions like "I think" under high-pressure tasks, reflecting its coping mechanisms for task stress.
 
 
 
-<h3 id="external-exploration">4.2 External Exploration</h3>
-<img src="./assets/images/external-exploration.png" style="width: 580pt">
-<h4 id="human-driven-exploration">4.2.3 Human-driven Exploration</h4>
-</ul>
 
-<ul>
-<li><i><b>Least-to-Most Prompting Enables Complex Reasoning in Large Language Models</b></i>, Zhou et al., <a href="https://openreview.net/forum?id=WZH7099tgfM" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.02-blue" alt="PDF Badge"></a></li>
-<li><i><b>Tree of Thoughts: Deliberate Problem Solving with Large Language Models</b></i>, Yao et al., <a href="https://proceedings.neurips.cc/paper_files/paper/2023/file/271db9922b8d1f4dd7aaef84ed5ac703-Paper-Conference.pdf" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.09-blue" alt="PDF Badge"></a></li>
-<li><i><b>PATHFINDER: Guided Search over Multi-Step Reasoning Paths</b></i>, Golovneva et al., <a href="https://openreview.net/forum?id=5TsfEEwRsu" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.12-blue" alt="PDF Badge"></a></li>
-<li><i><b>Demystifying chains, trees, and graphs of thoughts</b></i>, Besta et al., <a href="https://arxiv.org/abs/2401.14295" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Graph of Thoughts: Solving Elaborate Problems with Large Language Models</b></i>, Besta et al., <a href="https://ojs.aaai.org/index.php/AAAI/article/view/29720" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.03-blue" alt="PDF Badge"></a></li>
-<li><i><b>Tree of Uncertain Thoughts Reasoning for Large Language Models</b></i>, Mo et al., <a href="https://ieeexplore.ieee.org/document/10448355" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.04-blue" alt="PDF Badge"></a></li>
-<li><i><b>GraphReason: Enhancing Reasoning Capabilities of Large Language Models through A Graph-Based Verification Approach</b></i>, Cao et al., <a href="https://aclanthology.org/2024.nlrse-1.1/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.08-blue" alt="PDF Badge"></a></li>
-<li><i><b>Toward Self-Improvement of LLMs via Imagination, Searching, and Criticizing</b></i>, Tian et al., <a href="https://proceedings.neurips.cc/paper_files/paper/2024/file/5e5853f35164e434015716a8c2a66543-Paper-Conference.pdf" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.09-blue" alt="PDF Badge"></a></li>
-<li><i><b>On the diagram of thought</b></i>, Zhang et al., <a href="https://arxiv.org/abs/2409.10038" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.09-red" alt="arXiv Badge"></a></li>
-<li><i><b>Understanding When Tree of Thoughts Succeeds: Larger Models Excel in Generation, Not Discrimination</b></i>, Chen et al., <a href="https://arxiv.org/abs/2410.17820" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>Treebon: Enhancing inference-time alignment with speculative tree-search and best-of-n sampling</b></i>, Qiu et al., <a href="https://arxiv.org/abs/2410.16033" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>Scattered Forest Search: Smarter Code Space Exploration with LLMs</b></i>, Light et al., <a href="https://arxiv.org/abs/2411.05010" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.11-red" alt="arXiv Badge"></a></li>
-<li><i><b>On the Empirical Complexity of Reasoning and Planning in LLMs</b></i>, Kang et al., <a href="https://aclanthology.org/2024.findings-emnlp.164/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.11-blue" alt="PDF Badge"></a></li>
-<li><i><b>CodeTree: Agent-guided Tree Search for Code Generation with Large Language Models</b></i>, Li et al., <a href="https://arxiv.org/abs/2411.04329" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.11-red" alt="arXiv Badge"></a></li>
-<li><i><b>SPaR: Self-Play with Tree-Search Refinement to Improve Instruction-Following in Large Language Models</b></i>, Cheng et al., <a href="https://arxiv.org/abs/2412.11605" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>Forest-of-thought: Scaling test-time compute for enhancing LLM reasoning</b></i>, Bi et al., <a href="https://arxiv.org/abs/2412.09078" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>Tree-of-Code: A Tree-Structured Exploring Framework for End-to-End Code Generation and Execution in Complex Task Handling</b></i>, Ni et al., <a href="https://arxiv.org/abs/2412.15305" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>A Roadmap to Guide the Integration of LLMs in Hierarchical Planning</b></i>, Puerta-Merino et al., <a href="https://arxiv.org/abs/2501.08068" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Atom of Thoughts for Markov LLM Test-Time Scaling</b></i>, Teng et al., <a href="https://arxiv.org/abs/2502.12018" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>START: Self-taught Reasoner with Tools</b></i>, Li et al., <a href="https://arxiv.org/abs/2503.04625" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-</ul>
+## 4. Algorithms
 
-<h4 id="model-driven-exploration">4.2.4 Model-driven Exploration</h4>
-</ul>
+### 4.1 Supervised Fine-Tuning (SFT)
 
-<b>Enhancing Exploration Logics</b>
-<ul>
-<li><i><b>Self-Evaluation Guided Beam Search for Reasoning</b></i>, Xie et al., <a href="https://openreview.net/forum?id=Bw82hwg5Q3" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.09-blue" alt="PDF Badge"></a></li>
-<li><i><b>No train still gain. unleash mathematical reasoning of large language models with monte carlo tree search guided by energy function</b></i>, Xu et al., <a href="https://arxiv.org/abs/2309.03224" target="_blank"><img src="https://img.shields.io/badge/arXiv-2023.09-red" alt="arXiv Badge"></a></li>
-<li><i><b>Mindstar: Enhancing math reasoning in pre-trained llms at inference time</b></i>, Kang et al., <a href="https://arxiv.org/abs/2405.16265" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.05-red" alt="arXiv Badge"></a></li>
-<li><i><b>Strategist: Learning Strategic Skills by LLMs via Bi-Level Tree Search</b></i>, Light et al., <a href="https://openreview.net/forum?id=UHWBmZuJPF" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.06-blue" alt="PDF Badge"></a></li>
-<li><i><b>Deductive Beam Search: Decoding Deducible Rationale for Chain-of-Thought Reasoning</b></i>, Zhu et al., <a href="https://openreview.net/forum?id=S1XnUsqwr7" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.07-blue" alt="PDF Badge"></a></li>
-<li><i><b>Beyond A*: Better Planning with Transformers via Search Dynamics Bootstrapping</b></i>, Lehnert et al., <a href="https://openreview.net/forum?id=SGoVIC0u0f" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.07-blue" alt="PDF Badge"></a></li>
-<li><i><b>Tree search for language model agents</b></i>, Koh et al., <a href="https://arxiv.org/abs/2407.01476" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.07-red" alt="arXiv Badge"></a></li>
-<li><i><b>Agent q: Advanced reasoning and learning for autonomous ai agents</b></i>, Putta et al., <a href="https://arxiv.org/abs/2408.07199" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.08-red" alt="arXiv Badge"></a></li>
-<li><i><b>RethinkMCTS: Refining Erroneous Thoughts in Monte Carlo Tree Search for Code Generation</b></i>, Li et al., <a href="https://arxiv.org/abs/2409.09584" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.09-red" alt="arXiv Badge"></a></li>
-<li><i><b>Fine-Tuning Large Vision-Language Models as Decision-Making Agents via Reinforcement Learning</b></i>, Zhai et al., <a href="https://openreview.net/forum?id=nBjmMF2IZU" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.09-blue" alt="PDF Badge"></a></li>
-<li><i><b>Aflow: Automating agentic workflow generation</b></i>, Zhang et al., <a href="https://arxiv.org/abs/2410.10762" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>Cooperative Strategic Planning Enhances Reasoning Capabilities in Large Language Models</b></i>, Wang et al., <a href="https://arxiv.org/abs/2410.20007" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>Deliberate reasoning for llms as structure-aware planning with accurate world model</b></i>, Xiong et al., <a href="https://arxiv.org/abs/2410.03136" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>Marco-o1: Towards open reasoning models for open-ended solutions</b></i>, Zhao et al., <a href="https://arxiv.org/abs/2411.14405" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.11-red" alt="arXiv Badge"></a></li>
-<li><i><b>Technical report: Enhancing llm reasoning with reward-guided tree search</b></i>, Jiang et al., <a href="https://arxiv.org/abs/2411.11694" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.11-red" alt="arXiv Badge"></a></li>
-<li><i><b>SRA-MCTS: Self-driven Reasoning Aurmentation with Monte Carlo Tree Search for Enhanced Code Generation</b></i>, Xu et al., <a href="https://arxiv.org/abs/2411.11053" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.11-red" alt="arXiv Badge"></a></li>
-<li><i><b>GPT-Guided Monte Carlo Tree Search for Symbolic Regression in Financial Fraud Detection</b></i>, Kadam et al., <a href="https://arxiv.org/abs/2411.04459" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.11-red" alt="arXiv Badge"></a></li>
-<li><i><b>MC-NEST--Enhancing Mathematical Reasoning in Large Language Models with a Monte Carlo Nash Equilibrium Self-Refine Tree</b></i>, Rabby et al., <a href="https://arxiv.org/abs/2411.15645" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.11-red" alt="arXiv Badge"></a></li>
-<li><i><b>Mulberry: Empowering mllm with o1-like reasoning and reflection via collective monte carlo tree search</b></i>, Yao et al., <a href="https://arxiv.org/abs/2412.18319" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>Towards Intrinsic Self-Correction Enhancement in Monte Carlo Tree Search Boosted Reasoning via Iterative Preference Learning</b></i>, Jiang et al., <a href="https://arxiv.org/abs/2412.17397" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>Ensembling Large Language Models with Process Reward-Guided Tree Search for Better Complex Reasoning</b></i>, Park et al., <a href="https://arxiv.org/abs/2412.15797" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>Monte Carlo Tree Search for Comprehensive Exploration in LLM-Based Automatic Heuristic Design</b></i>, Zheng et al., <a href="https://arxiv.org/abs/2501.08603" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Leveraging Constrained Monte Carlo Tree Search to Generate Reliable Long Chain-of-Thought for Mathematical Reasoning</b></i>, Lin et al., <a href="https://arxiv.org/abs/2502.11169" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Reasoning with Reinforced Functional Token Tuning</b></i>, Zhang et al., <a href="https://arxiv.org/abs/2502.13389" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>CoAT: Chain-of-Associated-Thoughts Framework for Enhancing Large Language Models Reasoning</b></i>, Pan et al., <a href="https://arxiv.org/abs/2502.02390" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>MAPoRL: Multi-Agent Post-Co-Training for Collaborative Large Language Models with Reinforcement Learning</b></i>, Park et al., <a href="https://arxiv.org/abs/2502.18439" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Better Process Supervision with Bi-directional Rewarding Signals</b></i>, Chen et al., <a href="https://arxiv.org/abs/2503.04618" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-</ul>
-
-<b>Exploration-Path Feedback</b>
-<ul>
-<li><i><b>Don't throw away your value model! Generating more preferable text with Value-Guided Monte-Carlo Tree Search decoding</b></i>, Liu et al., <a href="https://openreview.net/forum?id=kh9Zt2Ldmn" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.07-blue" alt="PDF Badge"></a></li>
-<li><i><b>Making PPO even better: Value-Guided Monte-Carlo Tree Search decoding</b></i>, Liu et al., <a href="https://openreview.net/forum?id=QaODpeRaOK" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.09-blue" alt="PDF Badge"></a></li>
-<li><i><b>Llama-berry: Pairwise optimization for o1-like olympiad-level mathematical reasoning</b></i>, Zhang et al., <a href="https://arxiv.org/abs/2410.02884" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>AtomThink: A Slow Thinking Framework for Multimodal Mathematical Reasoning</b></i>, Xiang et al., <a href="https://arxiv.org/abs/2411.11930" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.11-red" alt="arXiv Badge"></a></li>
-<li><i><b>A Probabilistic Inference Approach to Inference-Time Scaling of LLMs using Particle-Based Monte Carlo Methods</b></i>, Puri et al., <a href="https://arxiv.org/abs/2502.01618" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-</ul>
-
-<b>Unified Improvements</b>
-<ul>
-<li><i><b>Enhancing multi-step reasoning abilities of language models through direct q-function optimization</b></i>, Liu et al., <a href="https://arxiv.org/abs/2410.09302" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>Process reward model with q-value rankings</b></i>, Li et al., <a href="https://arxiv.org/abs/2410.11287" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>rStar-Math: Small LLMs Can Master Math Reasoning with Self-Evolved Deep Thinking</b></i>, Guan et al., <a href="https://arxiv.org/abs/2501.04519" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Evolving Deeper LLM Thinking</b></i>, Lee et al., <a href="https://arxiv.org/abs/2501.09891" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Hypothesis-Driven Theory-of-Mind Reasoning for Large Language Models</b></i>, Kim et al., <a href="https://arxiv.org/abs/2502.11881" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>SIFT: Grounding LLM Reasoning in Contexts via Stickers</b></i>, Zeng et al., <a href="https://arxiv.org/abs/2502.14922" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>QLASS: Boosting Language Agent Inference via Q-Guided Stepwise Search</b></i>, Lin et al., <a href="https://arxiv.org/abs/2502.02584" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>CritiQ: Mining Data Quality Criteria from Human Preferences</b></i>, Guo et al., <a href="https://arxiv.org/abs/2502.19279" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-</ul>
+In advancing large models to possess powerful Long CoT reasoning abilities, Supervised Fine-Tuning (SFT) plays a crucial role, bridging pre-training with more advanced alignment methods such as Reinforcement Learning from Human Feedback (RLHF). The core goal of SFT is to teach models how to follow instructions and initially master the ability to generate structured, step-by-step reasoning chains, thus laying the foundation for more complex reasoning tasks.
 
 
 
-<h3 id="internal-exploration">4.3 Internal Exploration</h3>
-<img src="./assets/images/internal-exploration.png" style="width: 580pt">
-</ul>
+- **In the context of deep reasoning, SFT is especially critical.**
+Although the lack of sufficient reasoning depth in RLLMs significantly reduces performance, SFT stabilizes the model’s output format through a memorization process, allowing it to learn reasoning from human-labeled or distilled data. In contrast to reinforcement learning (RL), which focuses more on generalization and self-learning, SFT plays a vital role in deep reasoning imitation. It allows RLLMs to learn complex reasoning patterns by mimicking high-quality reasoning examples generated by humans, advanced RLLMs, or enhanced RLLMs, and generalizing them to new tasks. SFT not only significantly improves the model’s reasoning performance but, in some cases, enables even a small number of high-quality samples to activate the underlying LLM's deep reasoning capabilities, allowing it to predict events outside the model's knowledge base. This makes SFT one of the key technologies for enhancing reasoning levels and generalization abilities in RLLMs.
 
-<ul>
-<li><i><b>RL on Incorrect Synthetic Data Scales the Efficiency of LLM Math Reasoning by Eight-Fold</b></i>, Setlur et al., <a href="https://proceedings.neurips.cc/paper_files/paper/2024/file/4b77d5b896c321a29277524a98a50215-Paper-Conference.pdf" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.09-blue" alt="PDF Badge"></a></li>
-<li><i><b>Sft memorizes, rl generalizes: A comparative study of foundation model post-training</b></i>, Chu et al., <a href="https://arxiv.org/abs/2501.17161" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Satori: Reinforcement Learning with Chain-of-Action-Thought Enhances LLM Reasoning via Autoregressive Search</b></i>, Shen et al., <a href="https://arxiv.org/abs/2502.02508" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Demystifying Long Chain-of-Thought Reasoning in LLMs</b></i>, Yeo et al., <a href="https://arxiv.org/abs/2502.03373" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>LLM Post-Training: A Deep Dive into Reasoning Large Language Models</b></i>, Kumar et al., <a href="https://arxiv.org/abs/2502.21321" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-</ul>
+- **For feasible reflection, SFT primarily focuses on optimization-based imitation (Refinement Imitation).**
+In reflection-based LLM reasoning, SFT is a key mechanism for enabling self-optimization and error correction in the model. Through SFT, the model can directly learn the error-correction processes of advanced LLMs, significantly enhancing its reflective abilities, such as performing self-play reasoning, iterative feedback error correction, and even justifying and reflecting on the reasoning process through incremental natural language feedback. Additionally, SFT can integrate visual and textual reasoning in multimodal scenarios, improving the model’s critical thinking and self-correction abilities. SFT enhances the reasoning accuracy of LLMs through iterative feedback and self-correction strategies, which is especially beneficial for smaller models.
 
-<h4 id="rl-strategies">4.3.5 RL Strategies</h4>
-</ul>
 
-<ul>
-<li><i><b>Policy Gradient Methods for Reinforcement Learning with Function Approximation</b></i>, Sutton et al., <a href="https://proceedings.neurips.cc/paper_files/paper/1999/file/464d828b85b0bed98e80ade0a5c43b0f-Paper.pdf" target="_blank"><img src="https://img.shields.io/badge/PDF-1999.11-blue" alt="PDF Badge"></a></li>
-<li><i><b>Proximal policy optimization algorithms</b></i>, Schulman et al., <a href="https://arxiv.org/abs/1707.06347" target="_blank"><img src="https://img.shields.io/badge/arXiv-2017.07-red" alt="arXiv Badge"></a></li>
-<li><i><b>Deepseekmath: Pushing the limits of mathematical reasoning in open language models</b></i>, Shao et al., <a href="https://arxiv.org/abs/2402.03300" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>ReMax: A Simple, Effective, and Efficient Reinforcement Learning Method for Aligning Large Language Models</b></i>, Li et al., <a href="https://openreview.net/forum?id=Stn8hXkpe6" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.05-blue" alt="PDF Badge"></a></li>
-<li><i><b>CPL: Critical Plan Step Learning Boosts LLM Generalization in Reasoning Tasks</b></i>, Wang et al., <a href="https://arxiv.org/abs/2409.08642" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.09-red" alt="arXiv Badge"></a></li>
-<li><i><b>Unpacking DPO and PPO: Disentangling Best Practices for Learning from Preference Feedback</b></i>, Ivison et al., <a href="https://openreview.net/forum?id=JMBWTlazjW" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.09-blue" alt="PDF Badge"></a></li>
-<li><i><b>A Small Step Towards Reproducing OpenAI o1: Progress Report on the Steiner Open Source Models</b></i>, Ji et al., <a href="https://medium.com/@peakji/b9a756a00855" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.10-blue" alt="PDF Badge"></a></li>
-<li><i><b>A Comprehensive Survey of Direct Preference Optimization: Datasets, Theories, Variants, and Applications</b></i>, Xiao et al., <a href="https://arxiv.org/abs/2410.15595" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>Critical Tokens Matter: Token-Level Contrastive Estimation Enhence LLM's Reasoning Capability</b></i>, Lin et al., <a href="https://arxiv.org/abs/2411.19943" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.11-red" alt="arXiv Badge"></a></li>
-<li><i><b>Improving Multi-Step Reasoning Abilities of Large Language Models with Direct Advantage Policy Optimization</b></i>, Liu et al., <a href="https://arxiv.org/abs/2412.18279" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>Offline Reinforcement Learning for LLM Multi-Step Reasoning</b></i>, Wang et al., <a href="https://arxiv.org/abs/2412.16145" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>REINFORCE++: A Simple and Efficient Approach for Aligning Large Language Models</b></i>, Hu et al., <a href="https://arxiv.org/abs/2501.03262" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Diverse Preference Optimization</b></i>, Lanchantin et al., <a href="https://arxiv.org/abs/2501.18101" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>COS (M+ O) S: Curiosity and RL-Enhanced MCTS for Exploring Story Space via Language Models</b></i>, Materzok et al., <a href="https://arxiv.org/abs/2501.17104" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>7B Model and 8K Examples: Emerging Reasoning with Reinforcement Learning is Both Effective and Efficient</b></i>, Zeng et al., <a href="https://hkust-nlp.notion.site/simplerl-reason" target="_blank"><img src="https://img.shields.io/badge/Notion-2025.01-white" alt="Notion Badge"></a></li>
-<li><i><b>LIMR: Less is More for RL Scaling</b></i>, Li et al., <a href="https://arxiv.org/abs/2502.11886" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Ignore the KL Penalty! Boosting Exploration on Critical Tokens to Enhance RL Fine-Tuning</b></i>, Vassoyan et al., <a href="https://arxiv.org/abs/2502.06533" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Lean and Mean: Decoupled Value Policy Optimization with Global Value Guidance</b></i>, Huang et al., <a href="https://arxiv.org/abs/2502.16944" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Process reinforcement through implicit rewards</b></i>, Cui et al., <a href="https://arxiv.org/abs/2502.01456" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>SPPD: Self-training with Process Preference Learning Using Dynamic Value Margin</b></i>, Yi et al., <a href="https://arxiv.org/abs/2502.13516" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Reward-aware Preference Optimization: A Unified Mathematical Framework for Model Alignment</b></i>, Sun et al., <a href="https://arxiv.org/abs/2502.00203" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Focused-DPO: Enhancing Code Generation Through Focused Preference Optimization on Error-Prone Points</b></i>, Zhang et al., <a href="https://arxiv.org/abs/2502.11475" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Reasoning with Reinforced Functional Token Tuning</b></i>, Zhang et al., <a href="https://arxiv.org/abs/2502.13389" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b></sup>Qsharp</sup>: Provably Optimal Distributional RL for LLM Post-Training</b></i>, Zhou et al., <a href="https://arxiv.org/abs/2502.20548" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Thinking Preference Optimization</b></i>, Yang et al., <a href="https://arxiv.org/abs/2502.13173" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Trajectory Balance with Asynchrony: Decoupling Exploration and Learning for Fast, Scalable LLM Post-Training</b></i>, Bartoldson et al., <a href="https://arxiv.org/abs/2503.18929" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>Dapo: An open-source llm reinforcement learning system at scale</b></i>, Yu et al., <a href="https://arxiv.org/abs/2503.14476" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>Open-Reasoner-Zero: An Open Source Approach to Scaling Up Reinforcement Learning on the Base Model</b></i>, Hu et al., <a href="https://arxiv.org/abs/2503.24290" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>Optimizing Test-Time Compute via Meta Reinforcement Finetuning</b></i>, Qu et al., <a href="https://openreview.net/forum?id=WGz4ytjo1h" target="_blank"><img src="https://img.shields.io/badge/PDF-2025.03-blue" alt="PDF Badge"></a></li>
-<li><i><b>Reinforcement Learning for Reasoning in Small LLMs: What Works and What Doesn't</b></i>, Dang et al., <a href="https://arxiv.org/abs/2503.16219" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>SWEET-RL: Training Multi-Turn LLM Agents on Collaborative Reasoning Tasks</b></i>, Zhou et al., <a href="https://arxiv.org/abs/2503.15478" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>VAPO: Efficient and Reliable Reinforcement Learning for Advanced Reasoning Tasks</b></i>, YuYue et al., <a href="https://arxiv.org/abs/2504.05118" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.04-red" alt="arXiv Badge"></a></li>
-</ul>
+#### 4.1.1 Core Technology
 
-<h4 id="reward-strategies">4.3.6 Reward Strategies</h4>
-</ul>
+SFT consists of two core concepts: **Instruction Tuning** and **Parameter-Efficient Fine-Tuning, PEFT**。
 
-<b>Model-rewarded RL</b>
-<ul>
-<li><i><b>Training verifiers to solve math word problems</b></i>, Cobbe et al., <a href="https://arxiv.org/abs/2110.14168" target="_blank"><img src="https://img.shields.io/badge/arXiv-2021.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>AlphaZero-Like Tree-Search can Guide Large Language Model Decoding and Training</b></i>, Wan et al., <a href="https://openreview.net/forum?id=C4OpREezgj" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.05-blue" alt="PDF Badge"></a></li>
-<li><i><b>ReST-MCTS*: LLM Self-Training via Process Reward Guided Tree Search</b></i>, Zhang et al., <a href="https://openreview.net/forum?id=8rcFOqEud5" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.09-blue" alt="PDF Badge"></a></li>
-<li><i><b>Advancing Language Model Reasoning through Reinforcement Learning and Inference Scaling</b></i>, Hou et al., <a href="https://arxiv.org/abs/2501.11651" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Kimi k1. 5: Scaling reinforcement learning with llms</b></i>, Team et al., <a href="https://arxiv.org/abs/2501.12599" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>DeepScaleR: Surpassing O1-Preview with a 1.5B Model by Scaling RL</b></i>, Luo et al., <a href="https://github.com/agentica-project/rllm" target="_blank"><img src="https://img.shields.io/badge/PDF-2025.02-blue" alt="PDF Badge"></a></li>
-<li><i><b>STeCa: Step-level Trajectory Calibration for LLM Agent Learning</b></i>, Wang et al., <a href="https://arxiv.org/abs/2502.14276" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Expanding RL with Verifiable Rewards Across Diverse Domains</b></i>, Su et al., <a href="https://arxiv.org/abs/2503.23829" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>R-PRM: Reasoning-Driven Process Reward Modeling</b></i>, She et al., <a href="https://arxiv.org/abs/2503.21295" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-</ul>
+**Instruction Tuning**
+-   **Core Idea:** By fine-tuning the model on a large number of instructions covering various tasks, the model’s zero-shot generalization ability on unseen tasks can be significantly enhanced. This enables the model to learn the skill of "following instructions."
+-   **Representative Works:**
+    -   [Finetuned Language Models Are Zero-Shot Learners (FLAN)](https://arxiv.org/abs/2109.01652): Google’s pioneering work demonstrating that multi-task instruction fine-tuning unlocks zero-shot capabilities in LLMs for unseen tasks.
+    -   [Instruction Tuning for Large Language Models: A Survey](https://arxiv.org/abs/2308.10792): A comprehensive survey systematically introducing methods, datasets, challenges, and future directions in instruction tuning.
 
-<b>Rule-rewarded RL</b>
-<ul>
-<li><i><b>Stepcoder: Improve code generation with reinforcement learning from compiler feedback</b></i>, Dou et al., <a href="https://arxiv.org/abs/2402.01391" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Beyond Human Data: Scaling Self-Training for Problem-Solving with Language Models</b></i>, Singh et al., <a href="https://openreview.net/pdf?id=lNAyUngGFK" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.04-blue" alt="PDF Badge"></a></li>
-<li><i><b>Building math agents with multi-turn iterative preference learning</b></i>, Xiong et al., <a href="https://arxiv.org/abs/2409.02392" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.09-red" alt="arXiv Badge"></a></li>
-<li><i><b>Unlocking the Capabilities of Thought: A Reasoning Boundary Framework to Quantify and Optimize Chain-of-Thought</b></i>, Chen et al., <a href="https://openreview.net/forum?id=pC44UMwy2v" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.09-blue" alt="PDF Badge"></a></li>
-<li><i><b>o1-coder: an o1 replication for coding</b></i>, Zhang et al., <a href="https://arxiv.org/abs/2412.00154" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>Deepseek-r1: Incentivizing reasoning capability in llms via reinforcement learning</b></i>, Guo et al., <a href="https://arxiv.org/abs/2501.12948" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Kimi k1. 5: Scaling reinforcement learning with llms</b></i>, Team et al., <a href="https://arxiv.org/abs/2501.12599" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Logic-RL: Unleashing LLM Reasoning with Rule-Based Reinforcement Learning</b></i>, Xie et al., <a href="https://arxiv.org/abs/2502.14768" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Towards Thinking-Optimal Scaling of Test-Time Compute for LLM Reasoning</b></i>, Yang et al., <a href="https://arxiv.org/abs/2502.18080" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Training Language Models to Reason Efficiently</b></i>, Arora et al., <a href="https://arxiv.org/abs/2502.04463" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Exploring the Limit of Outcome Reward for Learning Mathematical Reasoning</b></i>, Lyu et al., <a href="https://arxiv.org/abs/2502.06781" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Competitive Programming with Large Reasoning Models</b></i>, El-Kishky et al., <a href="https://arxiv.org/abs/2502.06807" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>SWE-RL: Advancing LLM Reasoning via Reinforcement Learning on Open Software Evolution</b></i>, Wei et al., <a href="https://arxiv.org/abs/2502.18449" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Inference-Time Computations for LLM Reasoning and Planning: A Benchmark and Insights</b></i>, Parashar et al., <a href="https://arxiv.org/abs/2502.12521" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Metastable Dynamics of Chain-of-Thought Reasoning: Provable Benefits of Search, RL and Distillation</b></i>, Kim et al., <a href="https://arxiv.org/abs/2502.01694" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>On the Emergence of Thinking in LLMs I: Searching for the Right Intuition</b></i>, Ye et al., <a href="https://arxiv.org/abs/2502.06773" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>The Danger of Overthinking: Examining the Reasoning-Action Dilemma in Agentic Tasks</b></i>, Cuadron et al., <a href="https://arxiv.org/abs/2502.08235" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Z1: Efficient Test-time Scaling with Code</b></i>, Yu et al., <a href="https://arxiv.org/abs/2504.00810" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.04-red" alt="arXiv Badge"></a></li>
-</ul>
-<h2 id="future-and-frontiers">5. Future and Frontiers</h2>
+
+
+**参数高效微调(PEFT)**
+
+- **Core Idea:** Given the high cost of full fine-tuning (Full Fine-tuning) for LLMs, PEFT methods have emerged. These methods achieve near-full fine-tuning effects by updating only a small subset of the model’s parameters, greatly reducing hardware requirements.
+-   **Representative Works:**
+    -   [LoRA: Low-Rank Adaptation of Large Language Models](https://arxiv.org/abs/2106.09685): A revolutionary LoRA technique proposed to efficiently fine-tune models by injecting low-rank adaptation matrices, currently one of the most widely used PEFT methods.
+    -   [QLoRA: Efficient Finetuning of Quantized LLMs](https://arxiv.org/abs/2305.14314): A further optimization of LoRA, combining 4-bit quantization, double-weight quantization, and page optimizers, making it possible to fine-tune massive models on a single consumer-grade GPU.
+    -   [Adapter Tuning](https://arxiv.org/abs/1902.00751): Inserts small neural network modules (adapters) between layers of the Transformer, updating only the parameters of these adapters during training.
+    -   [Prompt Tuning](https://arxiv.org/abs/2104.08691) / [P-Tuning](https://aclanthology.org/2022.acl-short.8/): Instead of modifying the model’s weights, it learns one or more trainable virtual tokens (soft prompts) at the input end, guiding the model to perform downstream tasks more effectively.
+
+**Technical Comparison**
+
+| Technology Type                            | Core Idea                                                                                                     | Advantages                                                                                                    | Disadvantages                                                                                                             |
+| :----------------------------------------- | :------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------------------------ |
+| **Full Fine-tuning**                       | Update all model weights.                                                                                     | Highest performance ceiling, can fully adapt to new data.                                                     | Extremely high training cost (memory, time), prone to catastrophic forgetting, requires storing the entire model.         |
+| **Parameter-Efficient Fine-tuning (PEFT)** | Freeze most of the original parameters, only update a small set of additional parameters or specific subsets. | Very low training cost, fast, resistant to forgetting, small fine-tuning products (Adapters), easy to deploy. | Performance may be slightly inferior to full fine-tuning, and its adaptation to extremely complex tasks might be limited. |
+
+#### 4.1.2 Learning Resources
+
+| Resource Name                 | Speaker/Author    | Features                                                                                                                                                          | Link                                                                                |
+| :---------------------------- | :---------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
+| Let's build GPT: from scratch | Andrej Karpathy   | A hands-on guide to building GPT from scratch, deeply understanding the fundamentals of Transformer and training processes; a prerequisite for understanding SFT. | [YouTube](https://www.youtube.com/playlist?list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ) |
+| Hugging Face SFT Course       | Hugging Face      | Official SFT series tutorial, using the Hugging Face TRL codebase for SFT code practice.                                                                          | [Course Link](https://huggingface.co/learn/llm-course/chapter11/1)                  |
+| Hugging Face SFT Trainer Doc  | Hugging Face      | Advanced documentation for Hugging Face SFTTrainer.                                                                                                               | [Documentation Link](https://huggingface.co/docs/trl/sft_trainer)                   |
+| Hugging Face PEFT Course      | Hugging Face      | Official PEFT series tutorial, explaining the theory and code practices of various efficient fine-tuning techniques like LoRA.                                    | [Course Link](https://huggingface.co/docs/peft/index)                               |
+| LLMs-from-scratch             | Sebastian Raschka | Tutorial code for the official book, "Build a Large Language Model (From Scratch)."                                                                               | [Course Link](https://github.com/rasbt/LLMs-from-scratch)                           |
+
+#### 4.1.3 Development Frameworks
+
+| Framework            | Features                                                                                                                                                               | Main Use Case                                                                                            | Resource Link                                      |
+| :------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------- | :------------------------------------------------- |
+| **Hugging Face TRL** | Official Hugging Face library, integrating various training methods like SFT, RLHF, DPO, seamlessly connecting with ecosystems (`transformers`, `peft`, `accelerate`). | Provides the standardized SFT trainer `SFTTrainer`, simplifying the training process.                    | [GitHub](https://github.com/huggingface/trl)       |
+| **LLaMA-Factory**    | One-stop LLM fine-tuning platform with a Web UI, enabling users with no coding experience to easily perform SFT, PEFT, and model evaluation.                           | Highly user-friendly, supports massive models and datasets, suitable for beginners and quick validation. | [GitHub](https://github.com/hiyouga/LLaMA-Factory) |
+
+
+
+#### 4.1.4 Best Practices and Common Pitfalls
+
+1.  **Data Quality is Far More Important than Quantity:**
+    -   **Core Principle**: It is better to use 1,000 high-quality, diverse data points than 10,000 low-quality, homogeneous ones. Low-quality data can teach the model incorrect patterns.
+    -   **Format Consistency**: Ensure that all training data follows a unified dialogue template (e.g.,[ChatML](https://huggingface.co/docs/transformers/main/en/chat_templating)), which is crucial for training the model to recognize roles and dialogue boundaries.
+2.  **Choose the Right Fine-Tuning Strategy**:
+    -   For most applications with limited resources, **QLoRA** should be prioritized as it strikes the best balance between efficiency and effectiveness.
+    -   If seeking optimal performance and with sufficient resources, **full fine-tuning** may be considered, though care should be taken to avoid the risk of overfitting.
+3.  **Tuning Key Hyperparameters**:
+    -   **Learning Rate**: SFT typically uses smaller learning rates than pretraining, usually ranging from `1e-5` to `5e-5`.
+    -   **Epochs**: Usually, 1 to 3 epochs are sufficient. Too many epochs can lead to overfitting on small datasets, causing the model to "forget" the general knowledge learned during pretraining.
+    -   **Batch Size**: Within the memory limits, increasing the batch size appropriately helps stabilize training.
+4.  **Evaluation and Iteration**:
+    -   **Comprehensive Evaluation**: Do not rely solely on the loss function. Combine it with **objective evaluation** benchmarks (such as MMLU) and subjective **human evaluation** for a more thorough assessment of model performance.
+    -   **Iterative Optimization**: SFT is an ongoing iterative process. Based on evaluation results, continuously clean the data, adjust hyperparameters, and optimize the model.
+
+#### 4.1.5 Relevant Paper Repositories
+- [LLM4NLP](https://github.com/LightChen233/Awesome-LLM-for-NLP)
+
+### 4.2 Reinforcement Learning
+
+#### 4.2.1 Reinforcement Learning
+
+- [West Lake University’s "Mathematical Principles of Reinforcement Learning"](https://www.bilibili.com/video/BV1sd4y167NS/)
+  - Features: Starts with MDP and the Bellman Equation, derived using the policy gradient theorem.
+  - Prerequisite Knowledge: Linear algebra, probability theory.
+  - Focus: The mathematical essence of value iteration and policy optimization.
+- [Book-Mathematical-Foundation-of-Reinforcement-Learning](https://github.com/MathFoundationRL/Book-Mathematical-Foundation-of-Reinforcement-Learning) (Beginner-friendly)
+
+#### 4.2.2 Core Algorithms of Reinforcement Learning
+
+**Authoritative Courses**
+
+| Course                                        | Lecturer      | Features                                                                 | Resources                                                                      |
+| --------------------------------------------- | ------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| Foundations of Deep RL                        | Pieter Abbeel | 6 concise lectures (Q-learning → PPO)                                    | [YouTube](https://youtube.com/playlist?list=PLkFD6_40KJIwhWpGazJ9VSj9CFMkb79A) |
+| UC Berkeley CS285                             | Sergey Levine | Includes SAC/Inverse Reinforcement Learning and other advanced topics    | [Course Website](http://rail.eecs.berkeley.edu/deeprlcourse/)                  |
+| Reinforcement Learning by Hung-yi Lee |  Hung-yi Lee     | In Chinese + Practical Exercises with EasyRL                             | [Bilibili](https://www.bilibili.com/video/BV1UE411G78S)                        |
+| Reinforcement Learning: An Overview           | Kevin Murphy  | Continuously updated resources on Deep Reinforcement Learning algorithms | [Arxiv](https://arxiv.org/abs/2412.05265)                                      |
+
+**Essential Basic Algorithms**
+
+- **Basic Reinforcement Learning Algorithms**
+
+  - **DQN**: The beginning of Deep Reinforcement Learning
+  - **PPO**: A key method in policy optimization, widely used in industrial applications
+  - **SAC**: Incorporates exploration entropy, robust for continuous action spaces
+  - **TD3**: Improves off-policy reinforcement learning using double delayed networks
+
+- **Model-Based Reinforcement Learning Algorithms**
+
+  - **[dreamer](https://github.com/google-research/dreamer)**: A model-based reinforcement learning algorithm
+  - **[tdmpc2](https://github.com/nicklashansen/tdmpc2)**: Significant advancement in model-based reinforcement learning algorithms
+
+- **Offline Reinforcement Learning Algorithms**
+
+  - **[CQL](https://github.com/aviralkumar2907/CQL)**: Introduces conservative constraints, foundational work in offline reinforcement learning
+  - **[decision-transformer](https://github.com/kzl/decision-transformer)**: Introduces autoregressive models into offline reinforcement learning
+
+- **Large-Scale Model Reinforcement Learning Algorithms**
+
+  - **PPO**: Applying classic PPO to large language models
+  - **DPO**: Preference optimization without rewards, an offline reinforcement learning algorithm for large models
+  - **GRPO**: Group Relative Policy Optimization, core algorithm in DeepSeek-R1
+
+**Cutting-Edge Algorithms for Large-Scale Model Reinforcement Learning**
+
+- **[DAPO](https://github.com/BytedTsinghua-SIA/DAPO)**: Four improvements on GRPO
+- **[LUFFY](https://github.com/ElliottYan/LUFFY)**: Off-policy version of GRPO, introduces high-quality external trajectories
+- **[Absolute-Zero-Reasoner](https://github.com/LeapLabTHU/Absolute-Zero-Reasoner)**: A large-scale reinforcement learning algorithm requiring no annotations
+- **[One-Shot-RLVR](https://github.com/ypwang61/One-Shot-RLVR)**: One-shot optimization for large model inference
+- **[SPIRAL](https://github.com/spiral-rl/spiral)**: Reinforcement learning in self-play game environments, successfully enhancing mathematical reasoning abilities
+- **[High-Entropy Minority Tokens Drive Effective RLVR](https://shenzhi-wang.github.io/high-entropy-minority-tokens-rlvr/)**: Reinforcement learning driven by high-entropy tokens (20%)
+- **[Spurious\_Rewards](https://github.com/ruixin31/Spurious_Rewards)**: Random rewards can also enhance LLM reasoning abilities
+- **[SwS](https://github.com/MasterVito/SwS)**: Reasoning reinforcement learning driven by self-perceived weaknesses
+
+#### 4.2.3 Development Frameworks for Reinforcement Learning
+
+**Basic Reinforcement Learning Frameworks**
+
+- **[stable-baselines3](https://github.com/DLR-RM/stable-baselines3)** (Quick experimentation, with well-established and stable baselines)
+- **[legged\_gym](https://github.com/leggedrobotics/legged_gym)** (Quadruped robot control)
+
+**Large-Scale Model Reinforcement Learning Frameworks**
+
+- **[verl](https://github.com/volcengine/verl)**: A high-performance and user-friendly open-source reinforcement learning training library based on Ray, vLLM, ZeRO-3, and HuggingFace Transformers, with features like efficient resource utilization, scalability, and production readiness. (Complex structure, highly reusable, excellent performance)
+- **[OpenRLHF](https://github.com/OpenLLMAI/OpenRLHF)**: An open-source RLHF framework released by teams such as NVIDIA, based on Ray, vLLM, ZeRO-3, and HuggingFace Transformers. It supports algorithms like PPO, GRPO, and REINFORCE++, and provides dynamic sampling and asynchronous agent mechanisms to accelerate training.
+- **[AReaL](https://github.com/inclusionAI/AReaL)**: Asynchronous reinforcement learning framework
+- **[ROLL](https://github.com/alibaba/ROLL)**: Supports training large models with 600+ billion parameters
+- **[Hugging Face TRL](https://github.com/huggingface/trl)**: An RLHF full-stack library maintained by Hugging Face, integrating SFT, GRPO, DPO, Reward Modeling, and other modules. It supports multiple model architectures and distributed scaling, making it one of the most active RLHF tools in the community. (User-friendly, quick start, active community)
+- **[RL4LMs](https://github.com/allenai/RL4LMs)**: An open-source RLHF library for language models, providing end-to-end tools for reward model construction and policy network training, helping researchers quickly build custom RLHF pipelines.
+
+Additionally, there are some interesting extension repositories:
+
+- **[Sachin19/trlp](https://github.com/Sachin19/trlp)**: An end-to-end RLHF library based on the TRL stack, supporting not only language models but also extending to Stable Diffusion models. It includes steps like SFT, reward modeling, and PPO, with example code for experimentation.
+- **[OpenRLHF-M](https://github.com/OpenRLHF/OpenRLHF-M)**: An extension of OpenRLHF, optimized for multimodal models. It leverages DeepSpeed and HuggingFace Transformers to achieve higher throughput and richer training scenarios.
+- **[HumanSignal-RLHF](https://github.com/HumanSignal/RLHF)**: An archived resource repository, gathering links and tutorials on RLHF data collection, system construction, and best practices, suitable for beginners to quickly understand the full RLHF pipeline.
+- **[MichaelEinhorn/trl-textworld](https://github.com/MichaelEinhorn/trl-textworld)**: A derivative version of TRL focused on performing RLHF experiments in the TextWorld environment, demonstrating how to train models like GPT2 using PPO to generate text that meets specific feedback requirements.
+
+
+### 4.2.4 Test Environments
+
+**Classical RL Tests**
+
+- **OpenAI Gym**: Classic Control
+
+| Environment ID   | Task Description                       | Features                                                                             |
+| ---------------- | -------------------------------------- | ------------------------------------------------------------------------------------ |
+| `CartPole-v1`    | Balance an inverted pendulum           | 4-dimensional state/discrete actions, termination if pole tilts > 12° or steps ≥ 500 |
+| `MountainCar-v0` | Swing car to the top                   | 2-dimensional state/discrete actions, requires potential energy swing                |
+| `Pendulum-v1`    | Control pendulum to stay vertical      | 3-dimensional state/continuous actions, no physical termination condition            |
+| `Acrobot-v1`     | Swing double-link to touch target line | 6-dimensional state/discrete actions, termination when target line is touched        |
+
+- **Atari 2600**: Games
+
+| Environment ID     | Game Type      | Challenges                                                 |
+| ------------------ | -------------- | ---------------------------------------------------------- |
+| `Pong-v5`          | Ping Pong      | 210×160 RGB input, requires image preprocessing            |
+| `Breakout-v5`      | Breakout       | Dense rewards, suitable for DQN training                   |
+| `SpaceInvaders-v5` | Space Invaders | Multiple enemies coordinated attack, complex reward system |
+
+- **Box2D**: Physics Simulation
+
+| Environment ID     | Physics System | Core Challenges                                                        |
+| ------------------ | -------------- | ---------------------------------------------------------------------- |
+| `LunarLander-v2`   | Lunar Lander   | 8-dimensional state/discrete actions, fuel control and precise landing |
+| `BipedalWalker-v3` | Bipedal Walker | 24-dimensional state/continuous actions, balancing on complex terrain  |
+| `CarRacing-v2`     | Car Racing     | 96×96 RGB input, vision + continuous control combined                  |
+
+- **MuJoCo**: Robotic Control
+
+| Environment ID   | Robot Model    | Task Type                                          |
+| ---------------- | -------------- | -------------------------------------------------- |
+| `HalfCheetah-v4` | Cheetah Robot  | High-speed running control (17-dimensional state)  |
+| `Ant-v4`         | Ant Robot      | Complex terrain navigation (111-dimensional state) |
+| `Humanoid-v4`    | Humanoid Robot | Bipedal balance walking (376-dimensional state)    |
+
+- **Other Special Environments**
+
+| Category      | Example Environment | Application Area                    |
+| ------------- | ------------------- | ----------------------------------- |
+| Text Game     | `TextFlappyBird-v0` | RL based on character interfaces    |
+| Multi-agent   | `PistonBall-v6`     | Multi-agent cooperation/competition |
+| 3D Navigation | `AntMaze-v4`        | Complex maze path planning          |
+
+**Extended Resources**:
+
+- **Safe RL**: `Safety-Gymnasium` (task with constraints)
+- **Autonomous Driving**: `CARLA`/`AirSim` (high fidelity simulation)
+- **Multi-agent**: `PettingZoo` (compatible with Gymnasium API)
+
+> 💡 Full environment list can be found at:
+> [Gymnasium Documentation](https://gymnasium.farama.org/) | [OpenAI Gym Wiki](https://github.com/openai/gym/wiki/Table-of-environments)
+
+**Large Model RL Tests**
+
+| Environment   | Purpose                                      |
+| ------------- | -------------------------------------------- |
+| Math-500      | Mathematical reasoning                       |
+| AIME2024/2025 | Mathematical competition                     |
+| AMC           | Mathematical competition                     |
+| GPQA          | PhD-level biophysics and chemistry reasoning |
+
+### 4.3 Agent
+
+The ability of LLM Agents to solve complex problems fundamentally relies on their reasoning and planning capabilities. The core mechanism of this ability is Long CoT, which breaks down complex tasks into smaller, logical steps. The characteristics of Long CoT, particularly its depth of inference, extensive exploration, and feasibility reflection, are not just additional features but the foundation for realizing these abilities. If an agent cannot "think longer" and engage in a "thinking-critique-improvement" cycle, its ability to make independent decisions and adapt in unfamiliar scenarios will be severely limited, causing it to revert to "predefined pipelines" or "iterative interactions with humans." Models such as o1 and DeepSeek-R1 have made breakthroughs in using Long CoT to solve complex tasks, directly proving this causal relationship: enhanced reasoning depth directly leads to an improvement in agent capabilities (autonomy in complex tasks). Therefore, the future development of AI agents will be closely linked to breakthroughs in Long CoT.
+
+**AI Agent Online Courses and Resources**
+
+- [Andrew Ng's "How to Build, Evaluate, and Iterate LLM Agents"](https://www.bilibili.com/video/BV1Ew4m1R7ju/?vd_source=a39056a294c1d415f3413ef933024e2b): A seminar by LlamaIndex and TruEra team experts (March 2024), explaining how to build LLM agents using tool frameworks like LlamaIndex and evaluate agent performance, detect hallucinations and biases using observability tools like TruLens. The video provides both Chinese and English subtitles, making it suitable for learning about agent development and evaluation methods in production environments.
+- [Coursera AI Agent Developer Specialization (Vanderbilt University)](https://www.coursera.org/specializations/ai-agents): A series of 6 courses for beginners with Python experience, focusing on building and deploying intelligent AI agents using Python, tools, memory, and reasoning. Topics include creating custom GPTs, applying prompt engineering, designing reliable AI systems, and implementing multi-agent collaboration systems.
+- [Hugging Face Agent Course](https://huggingface.co/learn/agents-course/unit0/introduction): A free online course introducing agents.
+
+**Open Source Frameworks for Building LLM AI Agents**
+
+- [LangChain](https://github.com/langchain-ai/langchain): The most widely used framework for LLM agent development, offering a modular and extensible architecture, unified LLM interfaces, pre-built agent toolkits (for CSV, JSON, SQL), Python and Pandas integration, and vector storage capabilities. It supports React-style agents and provides a memory module to maintain context.
+- [CrewAI](https://github.com/crewAIInc/crewAI): An open-source framework for orchestrating role-playing AI agents, emphasizing multi-agent collaboration through defined roles and shared goals. It is independent, streamlined, and offers deep customization, supporting "Crew" (team) and "Flow" (event-driven workflows).
+- [Dify](https://github.com/langgenius/dify): An open-source framework for LLM applications with a visual prompt orchestration interface, long context integration, API-based development, multi-model support, and RAG pipelines.
+- [OpenAI Agent Demo](https://github.com/openai/openai-cs-agents-demo): OpenAI's official platform for setting up Agent client services (visual platform, no additional code required).
+
+For more frameworks, refer to [Awesome LLM Agent Frameworks](https://github.com/kaushikb11/awesome-llm-agents/blob/main/README.md).
+
+**End-to-End RL Learning for Complex Agent Trajectories**
+
+- [Agent-R1](https://github.com/0russwest0/Agent-R1): An open-source framework aimed at accelerating research and development at the intersection of RL and agents. It uses end-to-end reinforcement learning to train agents in specific environments, allowing developers to define domain-specific tools and reward functions without complex process engineering. It supports multi-round tool calls and multi-tool coordination.
+- [RAGEN](https://github.com/RAGEN-AI/RAGEN): A framework for training LLM reasoning agents with RL in interactive, stochastic, and multi-round environments. It introduces the StarPO (State-Think-Act-Reward Policy Optimization) framework, which features staggered rollout and update phases for trajectory-level optimization.
+
+**RL-enhanced Tool Use and Search Capabilities**
+
+- [ReCall](https://github.com/Agent-RL/ReCall): A novel framework that trains LLMs for tool invocation reasoning with RL, without the need for supervised data on tool usage trajectories or reasoning steps. It is designed to enable LLMs to use and combine any user-defined tools in an agent-like manner.
+- [OpenManus-RL](https://github.com/OpenManus/OpenManus-RL): An extension of the OpenManus framework, specifically focused on enhancing AI agents via RL techniques like GRPO, to enable training across multiple environments and performance tuning for specific tasks.
+- [R1-Searcher](https://github.com/RUCAIBox/R1-Searcher), [Search-R1](github.com/PeterGriffinJin/Search-R1): Research exploring the use of RL to enhance the search capabilities of LLMs.
+
+
+**Awesome Blog**
+
+- [Neptune.ai blog](https://neptune.ai/blog/building-llm-agents-with-autogen): Provides a detailed step-by-step guide, such as "How to Build LLM Agents with AutoGen," covering components, RAG pipelines, planning, tools, and memory integration.
+- [n8n.io blog](https://blog.n8n.io/llm-agents/): Offers insights into the capabilities of LLM agents (such as strategic planning, memory, and tool integration) and includes a practical tutorial on building agents.
+- [NVIDIA Developer Blog](https://developer.nvidia.com/blog/an-easy-introduction-to-llm-reasoning-ai-agents-and-test-time-scaling/): Provides an introductory article on LLM reasoning and AI agents.
+- [Botpress blog](https://botpress.com/blog/chain-of-thought): Explains chain-of-thought prompting and discusses various AI agent frameworks.
+- [SuperAnnotate blog](https://www.superannotate.com/blog/llm-agents): Offers a comprehensive overview of LLM agents, their capabilities, and their future.
+- [Smythos blog](https://smythos.com/developers/agent-development/llm-agents/): Discusses how LLM agents are revolutionizing task automation and AI integration.
+- [Unite.ai](https://www.unite.ai/reinforcement-learning-meets-chain-of-thought-transforming-llms-into-autonomous-reasoning-agents/): Provides a detailed discussion on how reinforcement learning, combined with chain-of-thought, transforms LLMs into autonomous reasoning agents.
+- [Holistic AI blog](https://www.holisticai.com/blog/llm-agents-use-cases-risks): Delves into the architecture of LLM agents, including multimodal enhancement, tool usage, and memory.
+- [ProjectPro](https://www.projectpro.io/article/agentic-ai-design-patterns/1126) and [Lightrains blog](https://lightrains.com/blogs/ai-agent-design-patterns-cxo/): Discuss various AI agent design patterns, including reflection, tool usage, and planning patterns.
+
+**Awesome GitHub Repositories**
+
+- [Awesome-LLM-Agents](https://github.com/kaushikb11/awesome-llm-agents/blob/main/README.md): A curated list of various LLM agent frameworks, serving as a valuable starting point for exploring the ecosystem.
+- [Awesome-LLM-Agents-Scientific-Discovery](https://github.com/zhoujieli/Awesome-LLM-Agents-Scientific-Discovery): A curated list of papers focused on LLM-driven AI agents' applications in biomedical research and broader scientific discovery.
+- [Awesome-Agent-RL](https://github.com/0russwest0/Awesome-Agent-RL): A specialized collection of papers and resources focused on unleashing the potential of AI agents through reinforcement learning.
+- [Awesome-LLM-APPs](https://github.com/Shubhamsaboo/awesome-llm-apps): A curated collection of excellent LLM applications built using RAG, AI agents, multi-agent teams, MCP, speech agents, and more.
+<!-- ## 4. Behavior Analysis \& Rationale -->
+
+
+## 5. Datasets
+
+### 5.1 Benchmarks
+
+#### 5.1.1 Evaluation Frameworks
+
+- **LLM Evaluation Frameworks:**
+
+  - [OpenCompass](https://github.com/open-compass/opencompass) is a comprehensive evaluation platform for large language models (LLMs) that supports assessments of a wide range of open and closed models across over 100 datasets. It covers multiple dimensions such as language understanding, reasoning, and code generation, and supports various evaluation modes, including zero-shot, few-shot, and Chain-of-Thought (CoT), as well as distributed evaluation capabilities.
+  - [DeepEval](https://github.com/confident-ai/deepeval) is an easy-to-use, open-source LLM evaluation framework designed for evaluating and testing large language model systems. It aims to help developers efficiently assess the quality of model-generated content based on key metrics such as relevance, factual consistency, bias, and toxicity. Its usage is similar to the Python unit testing framework, Pytest.
+
+- **MLLM Evaluation Frameworks:**
+
+  - [VLMEvalKit](https://github.com/open-compass/vlmevalkit) is an open-source toolkit launched by OpenCompass specifically designed for the evaluation of large vision-language models. It supports one-click evaluations for over 220 vision-language models across more than 80 benchmark tests, covering tasks such as image question answering, image-text matching, and visual reasoning. It provides evaluation results based on both exact matching and LLM-based answer extraction.
+  - [EvalScope](https://github.com/modelscope/evalscope) is a model evaluation framework introduced by the MoTower community, supporting performance benchmarking for various types of models, including large language models, multimodal language models, embedding models, and AIGC models.
+
+- **CoT Evaluation Frameworks:**
+
+  - [ROSCOE](https://github.com/facebookresearch/ParlAI/tree/main/projects/roscoe) aims to provide a set of automated metrics to evaluate the reasoning quality of models without requiring reference answers.
+  - [ReCEval](https://github.com/archiki/ReCEval) is a reasoning chain evaluation framework proposed by Archiki Prasad and colleagues. It aims to provide a detailed analysis of the multi-step reasoning process generated by large language models through two dimensions: "correctness" and "informativeness."
+
+#### 5.1.2 Outcome Benchmarks
+
+This section focuses on evaluating the final performance of Long CoT reasoning from a holistic perspective, emphasizing whether the reasoning chain is ultimately sound and accurate.
+
+- **Complex Mathematics**
+  
+|      Name     | Number of Problems | Release Date |                                     Authors                                     |                                                                                                                                                                                               Description                                                                                                                                                                                              |                                                          Relevant Links                                                         |
+| :-----------: | :----------------: | :----------: | :-----------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------: |
+|     GSM8K     |       \~8,500      |     2021     |                                      OpenAI                                     |                                                                                                     A dataset of K-12 math word problems provided by OpenAI, each with detailed solution steps. The problems cover basic arithmetic, word problems, etc., requiring multi-step reasoning to solve.                                                                                                     |                                    🤗[dataset](https://huggingface.co/datasets/openai/gsm8k)                                    |
+|      MATH     |       12,500       |     2021     |                          Hendrycks et al. (UC Berkeley)                         |                                                                           A dataset of challenging math problems from math competitions, each accompanied by a complete step-by-step solution. It includes topics such as algebra, geometry, and probability, designed to evaluate models' mathematical reasoning abilities.                                                                           |                                        🌐[repository](https://github.com/hendrycks/math)                                        |
+|   AIME 2024   |         30         |     2024     |                               AI-MO Project Group                               |                                                                                     American Invitational Mathematics Examination 2024, a high-level high school math competition dataset, including all questions from AIME I and II of 2024. The problems focus on integer solutions and combinatorial reasoning.                                                                                    |                             🤗[dataset](https://huggingface.co/datasets/AI-MO/aimo-validation-aime)                             |
+|   AIME 2025   |         30         |     2025     |                                   OpenCompass                                   |                                                                                                                     A collection of problems from AIME 2025 I & II. The difficulty is similar to AIME 2024, assessing high school students' complex math problem-solving abilities.                                                                                                                    |                                🤗[dataset](https://huggingface.co/datasets/opencompass/AIME2025)                                |
+|    AMC 2023   |         83         |     2024     |                               AI-MO Project Group                               |                                                                                               American Mathematics Competitions 2023, a validation set consisting of 83 problems from the AMC12 competition. It includes questions from the 2022-2023 AMC12 covering topics such as algebra and geometry.                                                                                              |                              🤗[dataset](https://huggingface.co/datasets/AI-MO/aimo-validation-amc)                             |
+|   USAMO 2025  |          6         |     2025     |                          Balunović et al. (ETH Zurich)                          |                                                                                             A dataset of problems from the USA Mathematical Olympiad 2025. These are final exam questions from the USAMO, typically difficult proof-based problems that test deep mathematical reasoning and proof skills.                                                                                             |                   🌐[website](https://matharena.ai/) <br> 🌐[repository](https://github.com/eth-sri/matharena)                  |
+| OlympiadBench |        8,476       |     2024     |                     He Chaohui et al. (Tsinghua University)                     |                                                    A bilingual multimodal scientific problem dataset at the Olympiad level. It includes 8,476 problems from competitions in subjects like mathematics and physics, each with expert step-by-step solutions, used to comprehensively evaluate the model's cross-disciplinary deep reasoning ability.                                                    | 🤗[dataset](https://huggingface.co/datasets/Hothan/OlympiadBench) <br> 🌐[repository](https://github.com/OpenBMB/OlympiadBench) |
+|  OlympicArena |       11,163       |     2024     | Huang Zhen et al. (Shanghai Jiao Tong University & Shanghai Research Institute) |                                    Also known as OlympiadArena, this comprehensive benchmark covers 62 types of “Olympiad” challenges across 7 categories such as mathematics, physics, chemistry, and biology. It contains 11,163 Olympiad-level problems, categorized by subject and problem type, designed to promote general artificial intelligence reasoning.                                    |   🤗[dataset](https://huggingface.co/datasets/GAIR/OlympicArena) <br> 🌐[repository](https://gair-nlp.github.io/OlympicArena)   |
+|  Putnam-AXIOM |      236 + 52      |     2024     |                       Gulati et al. (Stanford University)                       |                                                                      A dataset from the Putnam Mathematics Competition, including 236 problems from the Putnam competition and 52 cross-problems from Putnam AIME. Each problem comes with detailed solution steps and is used to assess models' mathematical reasoning abilities.                                                                     |                                      📄[paper](https://openreview.net/forum?id=t1mAXb4Cop)                                      |
+|  FrontierMath |          -         |     2024     |                             Glazer et al. (Epoch AI)                            | A collection of frontier mathematical problems collaboratively created by dozens of mathematicians. It covers major branches of modern mathematics, from number theory and real analysis to algebraic geometry. The problems require hours or even days to solve manually. Hundreds of original high-difficulty problems are included, all of which have not been published to avoid training leakage. |                                           📄[paper](https://arxiv.org/pdf/2411.04872)                                           |
+|   ThinkBench  |        2,912       |     2025     |      Huang Shulin et al. (University of Science and Technology of Shanghai)     |                                                   A dynamic challenge set designed to evaluate the robust reasoning abilities of large language models (LLMs). It contains 2,912 reasoning tasks generated by applying out-of-distribution perturbations to existing problems, aiming to test the model's reasoning accuracy in unfamiliar contexts.                                                   |                                           📄[paper](https://arxiv.org/pdf/2502.16268)                                           |
+|  MATH-Perturb |      279 \* 2      |     2025     |                    Huang Kaixuan et al. (Princeton & Google)                    |                    A perturbation set for the most difficult problems in the MATH dataset. It selects 279 of the hardest Level 5 problems from MATH and generates 279 variants for each through "simple perturbations" and "difficult perturbations." Model performance on these perturbed problems significantly declines, reflecting its real mathematical generalization ability.                   |                                      📄[paper](https://openreview.net/forum?id=IkmD3fKBPQ)                                      |
+
+- **Complex Coding**
+
+
+|      Name     | Number of Problems | Release Date |                                     Authors                                     |                                                                                                                                                                                               Description                                                                                                                                                                                              |                                                          Relevant Links                                                         |
+|:-------:|:-----------:|:--------:|:------------------------:|:------------------------------------------------------------------------------------------:|:---------:|
+| SWE-bench     | 2,294                       | 2024         | Chen Tianle et al. (Princeton NLP)                              | Software Engineering Bench, a dataset extracted from real software project issues-patch pairs on GitHub. It collects 2,294 issues and their corresponding Pull Request fixes from 12 popular Python libraries. The dataset is used to evaluate models' ability to automatically resolve real code bugs.                                                                                          | 🤗[dataset](https://huggingface.co/datasets/SWE-bench/SWE-bench) <br> 🌐[repository](https://github.com/SWE-bench/SWE-bench)              |
+| CodeContests  | \~10,000                    | 2022         | Li et al. (DeepMind)                                            | A competitive programming dataset proposed by DeepMind for training AlphaCode. It aggregates a vast number of problems and test cases from platforms such as Codeforces and AtCoder. The dataset contains around 10,000 multilingual programming problems, useful for code generation model training and evaluation.                                                                             | 🤗[dataset](https://huggingface.co/datasets/deepmind/code_contests)                                                                       |
+| LiveCodeBench | \~400 (increasing annually) | 2024         | Jain et al. (UC Berkeley & MIT)                                 | A "live" benchmark for code. Continuously collects the latest publicly available problems from LeetCode, AtCoder, and Codeforces, totaling around 400 high-quality programming problems. In addition to code generation, it also evaluates models' abilities in code debugging, self-repair, and unit test generation.                                                                           | 🤗[dataset](https://huggingface.co/livecodebench) <br> 🌐[repository](https://github.com/LiveCodeBench/LiveCodeBench)                     |
+| MHPP          | 210                         | 2025         | Dai Jianbo et al.                                               | Mostly Hard Python Problems, a human-designed collection of difficult Python programming tasks. The dataset contains 210 problems across seven challenge categories, each requiring multi-step reasoning or complex algorithms to solve. It is used to assess the limits of LLMs in code reasoning efficiency and accuracy.                                                                      | 📄[paper](https://openreview.net/forum?id=TVFVx8TUbN)                                                                                     |
+| ProBench      | -                           | 2025         | Yang Lei et al. (Shanghai University of Science and Technology) | A benchmark designed specifically for competitive programming. It collects contest problems from Codeforces, Luogu, and Nowcoder platforms in the second half of 2024, with unified difficulty and algorithm tags. The dataset contains several hundred problems, filling the gap in advanced code reasoning evaluation.                                                                         | 🤗[dataset](https://huggingface.co/datasets/yl-9/probench) <br> 🌐[repository](https://github.com/YL-9/probench)                          |
+| HumanEval Pro | 164                         | 2024         | Yu Zhaojian et al. (Microsoft AI Research)                      | An enhanced version of the OpenAI HumanEval dataset. For the original 164 programming problems, an additional "sub-question" is added, requiring the model to first solve a simpler sub-problem before using the result to solve the more complex problem. Compared to the original HumanEval, the Pro version reduces model accuracy by about 20%.                                              | 🤗[dataset](https://huggingface.co/datasets/CodeEval-Pro/humaneval-pro) <br> 🌐[repository](https://github.com/CodeEval-Pro/CodeEval-Pro) |
+| MBPP Pro      | 378                         | 2024         | Yu Zhaojian et al. (Microsoft AI Research)                      | An advanced version of the Google MBPP programming problem dataset. It selects 378 problems from the MBPP test set and constructs additional questions similar to those in HumanEval Pro, making the problems more hierarchical and comprehensive. It is used for a more stringent evaluation of models' multi-step reasoning abilities in basic programming tasks.                              | 🤗[dataset](https://huggingface.co/datasets/CodeEval-Pro/mbpp-pro) <br> 🌐[repository](https://github.com/CodeEval-Pro/CodeEval-Pro)      |
+| EquiBench     | 2,400                       | 2025         | Wei Anjiang et al. (Stanford & NYU)                             | A code semantic understanding benchmark. It evaluates LLMs' understanding of program execution semantics through equivalence verification tasks. The dataset provides 2,400 pairs of functionally equivalent/inequivalent programs in four programming languages. Models are required to determine if the outputs of two programs are identical, testing their understanding of deep code logic. | 🤗[dataset](https://huggingface.co/datasets/anjiangwei/EquiBench-Datasets) <br> 🌐[repository](https://github.com/Anjiang-Wei/EquiBench)  |
+
+
+- **Commonsense Puzzles**
+
+Here is the translation of the table into academic English:
+
+|      Name     | Number of Problems | Release Date |                                     Authors                                     |                                                                                                                                                                                               Description                                                                                                                                                                                              |                                                          Relevant Links                                                         |
+| :------------------: | :-----------------------------: | :----------: | :-----------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+|       LiveBench      |          Dynamic Update         |     2025     |   White et al. (NYU & Meta AI)  |                                                                             An online updating comprehensive evaluation framework for LLMs. New tasks are added monthly to ensure the test set is not contaminated by the model's training data. Tasks cover areas like mathematics, logic, programming, and common sense QA. It uses automated scoring and verifiable standard answers to ensure unbiased and objective evaluation.                                                                             | 🤗[dataset](https://huggingface.co/collections/livebench/livebench-67eaef9bb68b45b17a197a98) <br> 🌐[repository](https://github.com/livebench/livebench) <br> 🌐[website](https://livebench.ai/) |
+| BIG-Bench Hard (BBH) | 23 Tasks (Over 2,000 Questions) |     2023     | Suzgun et al. (Google Research) |                                        A collection of 23 of the most challenging tasks selected from the BIG-Bench large-scale general benchmark. These tasks show much lower performance on models like GPT-3 compared to human average levels and cover areas like boolean expression evaluation, causal reasoning, date understanding, and complex common sense/logic problems. It is commonly used as a benchmark for chain-of-thought (CoT) enhancement experiments.                                       |                               🤗[dataset](https://huggingface.co/datasets/maveriq/bigbenchhard) <br> 🌐[repository](https://github.com/suzgunmirac/BIG-Bench-Hard)                               |
+|      ZebraLogic      |                -                |     2024     |        Lin et al. (HKUST)       |                                                                                                        A logic reasoning dataset inspired by “zebra puzzles.” It contains a set of complex deductive reasoning problems, often involving non-monotonic reasoning scenarios, generated by models and manually verified. It is used to test the model’s consistency in reasoning under purely logical cues.                                                                                                        |  🤗[dataset](https://huggingface.co/datasets/WildEval/ZebraLogic) <br> 🌐[repository](https://github.com/WildEval/ZeroEval) <br> 🌐[website](https://huggingface.co/spaces/WildEval/ZebraLogic)  |
+|          ARC         |              10,377             |     2018     |        Clark et al. (AI2)       |                                   AI2 Reasoning Challenge, a multiple-choice dataset for natural common sense and science questions. The questions are sourced from US K-12 science exams and are divided into easy and hard sections. It includes 7,787 training questions and 2,590 challenge questions. GPT-4 still struggles to surpass elimination-round performance on the ARC challenge set, making it a common benchmark for general common sense intelligence testing.                                  |                                                                   🤗[dataset](https://huggingface.co/datasets/allenai/ai2_arc)                                                                   |
+|       JustLogic      |              4,900              |     2024     |    Michael Chen et al. (USYD)   |                            A pure deductive logic reasoning benchmark. It includes 4,900 propositional logic reasoning problems automatically generated by a synthetic algorithm, which do not rely on any common sense knowledge, focusing solely on testing the model’s ability to perform formal logical deductions. Each task provides a set of premises and a proposition conclusion, and the model must determine the truth value of the conclusion: true, false, or uncertain.                            |                                🤗[dataset](https://huggingface.co/datasets/WildEval/ZebraLogic) <br> 🌐[repository](https://github.com/michaelchen-lab/JustLogic)                                |
+|      QuestBench      |              \~600              |     2025     |       Li et al. (DeepMind)      | Information retrieval reasoning evaluation released by DeepMind. It contains four types of "incomplete problems": logic, planning, mathematics (GSM), and formula problems, where each question is missing one key condition. The model must identify the most critical clarifying question to ask and use that information to answer the original question. It includes around 600 such common sense/reasoning problems, designed to evaluate the ability of LLMs to identify and ask for critical information. |                                                                   🌐[repository](https://github.com/google-deepmind/questbench)                                                                  |
+
+
+- **Scientific Reasoning**
+
+| Name | Number of Problems | Release Date | Authors | Description | Relevant Links |
+|:-------:|:-----------:|:--------:|:------------------------:|:------------------------------------------------------------------------------------------:|:---------:|
+| GPQA Diamond               | 198                 | 2024         | Rein et al. (NYU)                   | A highly difficult subset of Graduate-level Physics/Biology/Chemistry Q\&A. The GPQA dataset filters out 198 questions that are answered correctly by experts but incorrectly by laypersons. These "diamond-level" problems are almost at the graduate level and require models to possess cross-disciplinary deep reasoning abilities.                                                                      | 🤗[dataset](https://huggingface.co/datasets/Idavidrein/gpqa) <br> 🌐[repository](https://github.com/idavidrein/gpqa)                                       |
+| MMLU-Pro                   | \~12,000            | 2024         | Wang Yubo et al.                    | An enhanced version of the original MMLU benchmark. It includes 12,000 high-quality academic exam questions from 14 major fields (with the number of answer options expanded from 4 to 10), focusing on comprehensive knowledge and complex reasoning. Compared to the original MMLU, the Pro version significantly increases the difficulty, with the model's accuracy dropping by an average of about 20%. | 🤗[dataset](https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro) <br> 🌐[repository](https://github.com/TIGER-AI-Lab/MMLU-Pro)                              |
+| SuperGPQA                  | 26,529              | 2025         | Doubao (Seed) Team                  | A large-scale graduate-level knowledge reasoning benchmark. Covering 285 academic disciplines, it contains 26,529 high-difficulty professional exam questions. Over 42% of the questions require mathematical calculations or formal reasoning, aiming to test the model's reasoning limits in long-tail disciplines.                                                                                        | 🤗[dataset](https://huggingface.co/datasets/m-a-p/SuperGPQA) <br> 🌐[repository](https://github.com/SuperGPQA/SuperGPQA)                                   |
+| Humanity’s Last Exam (HLE) | 2,500               | 2025         | CAIS & Scale AI                     | "Humanity's Last Exam," designed as the final closed-book test of human knowledge. It includes 2,500 multiple-choice or short-answer questions across dozens of fields such as mathematics, natural sciences, and humanities. Created collaboratively by global experts, it exceeds the difficulty of all previous benchmarks and is considered the most difficult comprehensive exam AI currently faces.    | 🤗[dataset](https://huggingface.co/datasets/cais/hle) <br> 🌐[repository](https://github.com/centerforaisafety/hle) <br> 🌐[website](https://lastexam.ai/) |
+| TPBench                    | -                   | 2024         | Daniel J.H. Chung et al. (DeepMind) | A Theoretical Physics Benchmark designed to assess models' ability to solve advanced theoretical physics problems. Proposed by Chung et al., this benchmark collects a set of theoretical physics problems requiring advanced knowledge and complex derivations, testing the model's limits in reasoning about physical laws and equation derivations.                                                       | 🤗[dataset](https://huggingface.co/datasets/ZhiqiGao/TPBench) <br> 🌐[website](https://tpbench.org/)                                                       |
+
+
+- **Medical Reasoning**
+
+| Name | Number of Problems | Release Date | Authors | Description | Relevant Links |
+|:-------:|:-----------:|:--------:|:------------------------:|:------------------------------------------------------------------------------------------:|:---------:|
+|          MedQA          |       12,723       |     2020     |    Jin et al. (Tsinghua University)    | A medical exam question-answer dataset. Collected from the United States Medical Licensing Examination (USMLE) multiple-choice questions, covering subjects such as anatomy, physiology, pathology, etc. Includes English (12,723 questions) and simplified/traditional Chinese versions (approximately 50,000 questions in total). Used to evaluate models' ability to apply medical knowledge and diagnostic reasoning. |                    🌐[Google Drive](https://drive.google.com/file/d/1ImYUSLk9JbgHXOemfvyiDiirluZHPeQw/view) <br> 🌐[Repository](https://github.com/jind11/MedQA)                   |
+| JAMA Clinical Challenge |        1,524       |     2024     | Chen et al. (Johns Hopkins University) |             The Clinical Challenge Case Set from the Journal of the American Medical Association (JAMA). Compiles 1,524 challenging clinical cases published by the journal, each with detailed case descriptions, questions, four options, and professional explanations. Focuses on assessing the model’s diagnostic decision-making ability and interpretability in real-world, complex clinical scenarios.            |                                                      🌐[Website](https://jamanetwork.com/collections/44038/clinical-challenge)                                                     |
+|        Medbullets       |         308        |     2024     | Chen et al. (Johns Hopkins University) |    A simulated clinical Q\&A dataset. Composed of 308 multiple-choice questions in the USMLE Step 2/3 style, collected from the Twitter medical Q\&A account. Each question includes a case scenario, five options, and detailed explanations. While based on common clinical scenarios, the questions remain challenging and are used to evaluate model performance in clinical decision-making and interpretability.    |                                                           🌐[Website](https://github.com/HanjieChen/ChallengeClinicalQA)                                                           |
+|        MedXpertQA       |        4,460       |     2024     |            Tsinghua C3I Team           |                                    A comprehensive benchmark for “expert-level” medical reasoning. Consists of 4,460 high-difficulty clinical knowledge Q\&A covering 17 specialties and 11 body systems. Available in both pure-text (case + Q\&A) and multimodal (including medical images) formats, used to evaluate models’ joint reasoning ability over medical texts and images.                                    | 🤗[Dataset](https://huggingface.co/datasets/TsinghuaC3I/MedXpertQA) <br> 🌐[Repository](https://github.com/TsinghuaC3I/MedXpertQA) <br> 🌐[Website](https://medxpertqa.github.io/) |
+
+#### 5.1.3 Capability Benchmarks
+The focus is on the local perspective or the individual abilities of the model during the Long CoT reasoning process, examining finer granularity by investigating whether each step of the model's reasoning is correct and logical. For instance, whether it can correctly identify errors and correct them, or whether it can complete complex tasks step by step.
+
+- **Deep Reasoning**
+
+| Name | Number of Problems | Release Date | Authors | Description | Relevant Links |
+|:-------:|:-----------:|:--------:|:------------------------:|:------------------------------------------------------------------------------------------:|:---------:|
+| ZebraLogic |       \~1,000      |     2024     |     Bill Yuchen Lin et al.     |                               ZebraLogic is an AI benchmark focusing on logical reasoning, containing complex mathematical and linguistic reasoning problems used to assess advanced reasoning abilities of models. Its problem design is similar to the "Zebra Puzzle," challenging models to perform logical reasoning and problem-solving under constraints.                              | 🤗[dataset](https://huggingface.co/spaces/allenai/ZebraLogic) <br> 🌐[repository](https://github.com/WildEval/ZeroEval) <br> 🌐[website](https://huggingface.co/blog/yuchenlin/zebra-logic) |
+|   BigGSM   |         610        |     2025     | Qiguang Chen et al. (HIT-SCIR) |                                  A mathematical reasoning benchmark designed to evaluate the performance of large language models on multi-step mathematical problems. It extends the classic GSM8K dataset and includes more challenging mathematical application problems that require models to perform more complex logical reasoning and computations.                                  |                          🤗[dataset](https://huggingface.co/datasets/LightChen2333/BigGSM) <br> 🌐[repository](https://github.com/LightChen233/reasoning-boundary)                          |
+| GSM-Ranges |        30.1k       |     2025     |   Safal Shrestha et al. (NYU)  | GSM-Ranges is a dataset generator built upon the GSM8K benchmark. It systematically modifies numerical values in mathematical word problems to assess the robustness of large language models across a wide range of numerical scales. By introducing numerical perturbations, GSM-Ranges evaluates the ability of LLMs to reason mathematically with numbers beyond the distribution range. |                              🤗[dataset](https://huggingface.co/datasets/guactastesgood/GSM-Ranges) <br> 🌐[repository](https://github.com/minwukim/GSM-Ranges)                             |
+
+
+- **Exploration Benchmarks**
+
+| Name | Number of Problems | Release Date | Authors | Description | Relevant Links |
+|:-------:|:-----------:|:--------:|:------------------------:|:------------------------------------------------------------------------------------------:|:---------:|
+|  Sys2Bench  |          -         |     2025     |         Shubham Parashar et al.        | Sys2Bench is designed to systematically test large language models across various reasoning and planning tasks. The benchmark covers five major types of reasoning: algorithmic reasoning, planning, arithmetic reasoning, logical reasoning, and common-sense reasoning, consisting of 11 sub-tasks ranging from NP-hard problems (such as Rubik's Cube and Bin Packing) to multi-step math problems (such as GSM8K). Sys2Bench places special emphasis on intermediate steps in the reasoning process, highlighting the quality and efficiency of the reasoning path. Additionally, the project introduces AutoHD (Automated Heuristics Discovery) methods, allowing models to autonomously generate heuristic functions during the reasoning process to improve complex task planning capabilities. | 🤗[dataset](https://huggingface.co/datasets/dive-lab/Sys2Bench) <br> 🌐[repository](https://github.com/divelab/sys2bench) |
+| BanditBench |          -         |     2025     | Allen Nie et al. (Stanford University) |            BanditBench is designed to evaluate the exploration and decision-making abilities of large language models in multi-armed bandit (MAB) and contextual bandit (CB) environments. The benchmark simulates LLMs as agents, relying solely on contextual information for multi-round interactions without updating parameters, to measure their performance in uncertain environments. BanditBench provides various task scenarios, including movie recommendation tasks based on the MovieLens dataset, covering different action numbers and reward distribution types (e.g., Gaussian and Bernoulli distributions). Additionally, researchers have introduced algorithm-guided reasoning support and algorithm distillation methods to enhance the exploration efficiency of LLMs.           |                           🌐[repository](https://github.com/allenanie/EVOLvE?tab=readme-ov-file)                          |
+
+- **Reflection Benchmarks**
+
+| Name | Number of Problems | Release Date | Authors | Description | Relevant Links |
+|:-------:|:-----------:|:--------:|:------------------------:|:------------------------------------------------------------------------------------------:|:---------:|
+|  RewardBench |          2,958         |       2024       |                Nathan Lambert et al. (AI2)               |                                                                                                                                RewardBench is the first systematic reward model evaluation benchmark, jointly released by AI2 and the University of Washington, designed to analyze and compare the performance of reward models under different training methods across alignment quality, reasoning ability, safety, and instruction following, providing a unified evaluation framework.                                                                                                                               |       🤗[dataset](https://huggingface.co/datasets/allenai/reward-bench) <br> 🌐[repository](https://github.com/allenai/reward-bench) <br> 🌐[website](https://huggingface.co/spaces/allenai/reward-bench)       |
+| ProcessBench |          3,400         |       2024       |              Zheng Chujie et al. (Qwen Team)             | ProcessBench is a mathematical reasoning process evaluation benchmark proposed by Alibaba’s Qwen Team, consisting of 3,400 Olympiad-level problems with step-by-step solutions, where each step is manually annotated for errors. The benchmark requires models to identify the earliest error step in the reasoning process, focusing on process supervision rather than solely on the final answer. Evaluation results show that general language models (e.g., QwQ-32B-Preview) outperform specially trained process reward models (PRMs) in step-by-step critique tasks, approaching the performance level of GPT-4o. |                                            🤗[dataset](https://huggingface.co/datasets/Qwen/ProcessBench) <br> 🌐[repository](https://github.com/QwenLM/ProcessBench)                                           |
+|   PRMBench   |          6,216         |       2025       | Mingyang Song et al. (Fudan University, Shanghai AI Lab) |                                                                PRMBench aims to fill the gap in existing benchmarks that primarily focus on step correctness and lack systematic evaluation of PRMs, offering a unified framework for evaluation across multiple dimensions including conciseness, robustness, and sensitivity. Each sample in the benchmark includes a question, a reasoning process with errors, annotations of erroneous steps, and the causes of the errors, aiming to evaluate the fine-grained error detection capabilities of PRMs.                                                                |                   🤗[dataset](https://huggingface.co/datasets/hitsmy/PRMBench_Preview) <br> 🌐[repository](https://github.com/ssmisya/PRMBench) <br> 🌐[website](https://prmbench.github.io/)                   |
+|  CriticBench |         \~3,800        |       2024       |           Lan Tian et al. (Tsinghua University)          |                        CriticBench, proposed by Tsinghua University and other institutions, is a comprehensive benchmark for evaluating the critique and correction abilities of large language models. It covers five major reasoning areas: mathematics, commonsense, symbolism, programming, and algorithms, integrating 15 datasets to assess 17 LLMs in the stages of generation, critique, and correction. The study finds that models trained specifically for critique perform better in the Generate-Critique-Correct (GQC) task, and that larger models show higher critique consistency.                       |               🤗[dataset](https://huggingface.co/datasets/llm-agents/CriticBench) <br> 🌐[repository](https://github.com/CriticBench/CriticBench) <br> 🌐[website](https://criticbench.github.io/)              |
+|  DeltaBench  |          1,236         |       2025       |                      OpenStellarTeam                     |                                                                              DeltaBench, released by the OpenStellar Team, is a benchmark designed to assess large language models' error detection capabilities in Long CoT (Chain of Thought) reasoning tasks. It includes 1,236 samples across areas such as mathematics, programming, physical-chemical-biological (PCB) reasoning, and general reasoning. Each sample is annotated with detailed manual labels identifying erroneous steps, strategy shifts, and reflection efficiency.                                                                              |    🤗[dataset](https://huggingface.co/datasets/OpenStellarTeam/DeltaBench) <br> 🌐[repository](https://github.com/OpenStellarTeam/DeltaBench) <br> 🌐[website](https://openstellarteam.github.io/DeltaBench/)   |
+|  ErrorRadar  |          2,500         |       2024       |               Yan Yibo et al. (Squirrel AI)              |                                                                 ErrorRadar is a multimodal mathematical reasoning error detection benchmark designed to evaluate multimodal large language models' ability to identify and classify errors in student problem-solving processes. The benchmark contains 2,500 K-12 mathematics problems from real educational scenarios, incorporating both textual and image information, and annotating erroneous steps and error types. Evaluation tasks include error step localization and error type classification.                                                                | 🤗[dataset](https://huggingface.co/datasets/ErrorRadar/ErrorRadar) <br> 🌐[repository](https://anonymous.4open.science/r/Error-Radar/readme.md) <br> 🌐[website](https://anonymous.4open.science/r/Error-Radar) |
+|     MEDEC    |          3,848         |       2024       |            Ben Abacha Asma et al. (Microsoft)            |                                                                                                                              MEDEC is the first public benchmark for medical error detection and correction, jointly released by Microsoft and the University of Washington. It contains 3,848 clinical texts, covering five types of errors, including diagnosis, treatment, and medication, providing a crucial tool for improving the accuracy and safety of medical document generation.                                                                                                                              |                                                                                 🌐[repository](https://github.com/abachaa/MEDEC)                                                                                |
+
+#### 5.1.4 Advanced Benchmarks
+Benchmarks designed specifically to evaluate large language models' capabilities in complex reasoning, cross-domain knowledge integration, and multimodal understanding. As basic evaluations are gradually saturated by top-tier models, researchers have started developing more challenging benchmarks to more accurately measure models' performance on real-world complex tasks.
+
+
+
+- **Agentic & Embodied Reasoning**
+
+| Name | Number of Problems | Release Date | Authors | Description | Relevant Links |
+|:-------:|:-----------:|:--------:|:------------------------:|:------------------------------------------------------------------------------------------:|:---------:|
+|  ToolComp  |                  485                 |       2025       |          Vaskar Nath et al. (Scale AI)          |                                               ToolComp is designed to assess large language models' reasoning and process supervision capabilities in complex multi-step tool usage tasks. The benchmark consists of 485 manually edited and verified prompts, involving the use of 11 different tools, and 1,731 step-by-step supervision labels, offering a comprehensive assessment of models' performance in multi-tool reasoning tasks.                                               |   🌐[website](https://scale.com/research/toolcomp-a-multi-tool-reasoning-and-process-supervision-benchmark)   |
+|   OSWorld  |                  369                 |       2025       |   Xie Tianbao et al. (University of Hong Kong)  |                                        OSWorld is a multimodal agent evaluation benchmark jointly released by the University of Hong Kong, Salesforce Research, and other institutions, aiming to test AI's ability to complete open-ended tasks in real computer environments. The benchmark consists of 369 tasks across file operations, web browsing, office software usage, and other scenarios, supporting Ubuntu, Windows, and macOS systems.                                       |       🌐[repository](https://github.com/xlang-ai/OSWorld) <br> 🌐[website](https://os-world.github.io/)       |
+|   WebShop  | 12,087 Instructions / 1.18M Products |       2022       |     Yao Shunyu et al. (Princeton University)    | WebShop simulates an e-commerce website environment and is designed to evaluate large language models' abilities in real web interactions. The benchmark includes 1.18 million real products and 12,087 user instructions, requiring agents to browse webpages, search, filter, and complete purchase tasks based on natural language instructions. WebShop focuses on evaluating models' performance in understanding complex instructions, handling web noise, and exploring strategies. |   🌐[repository](https://github.com/princeton-nlp/WebShop) <br> 🌐[website](https://webshop-pnlp.github.io/)  |
+|  WebArena  |                  812                 |       2024       | Zhou Shuyan et al. (Carnegie Mellon University) |                                              WebArena is a high-fidelity web environment released by Carnegie Mellon University, designed to evaluate large language models' agent capabilities in real web tasks. The benchmark consists of 812 tasks covering e-commerce, social forums, content management, and collaborative development, requiring models to complete multi-step web interactions through natural language instructions.                                              |        🌐[repository](https://github.com/web-arena-x/webarena) <br> 🌐[website](https://webarena.dev/)        |
+|  WebGames  |                  50+                 |       2025       |      Thomas George et al. (Convergence AI)      |                                                                                         WebGames is a web browsing agent benchmark, covering basic browsing operations, complex input handling, cognitive tasks, and workflow automation. WebGames provides a lightweight, verifiable test environment supporting rapid iteration and evaluation, suitable for developing more powerful web agents.                                                                                        | 🌐[repository](https://github.com/convergence-ai/webgames) <br> 🌐[website](https://webgames.convergence.ai/) |
+| Text2World |                  103                 |       2025       |   Mengkang Hu et al. (University of Hong Kong)  |                                  Text2World is a benchmark proposed by the University of Hong Kong and other institutions, aiming to evaluate large language models' ability to generate symbolic world models from natural language. The benchmark is based on the Planning Domain Definition Language (PDDL) and covers hundreds of diverse domains, employing a multi-criteria, execution-based evaluation method to provide a more robust assessment.                                  |   🌐[repository](https://github.com/Aaron617/text2world) <br> 🌐[website](https://text-to-world.github.io/)   |
+
+- **Multimodal Reasoning**
+    - **Complex Mathematics:**
+
+    | Name | Number of Problems | Release Date | Authors | Description | Relevant Links |
+    |:-------:|:-----------:|:--------:|:------------------------:|:------------------------------------------------------------------------------------------:|:---------:|
+    |  MathVista |        6,141       |     2023     |               Pan Lu et al. (UCLA)               |                                                                                                                                                                              MathVista is a multimodal mathematical reasoning evaluation benchmark jointly released by UCLA, the University of Washington, and Microsoft Research. It is designed to systematically assess the mathematical reasoning capabilities of large language models and multimodal models within a visual context.                                                                                                                                                                              |    🤗[dataset](https://huggingface.co/datasets/AI4Math/MathVista) <br> 🌐[repository](https://github.com/lupantech/MathVista) <br> 🌐[website](https://mathvista.github.io/)    |
+    | MathVision |        3,040       |     2024     | Ke Wang et al. (Chinese University of Hong Kong) |                                                                                                         MathVision (MATH-V) is a multimodal mathematical reasoning evaluation benchmark released by the Chinese University of Hong Kong, among others. It aims to systematically evaluate the mathematical reasoning abilities of large vision-language models within visual contexts. The benchmark includes 3,040 problems across 16 mathematical disciplines, divided into five difficulty levels, with problems sourced from real mathematics competitions.                                                                                                         | 🤗[dataset](https://huggingface.co/datasets/MathLLMs/MathVision) <br> 🌐[repository](https://github.com/mathllm/MATH-V) <br> 🌐[website](https://mathllm.github.io/mathvision/) |
+    |  MathVerse |      \~15,000      |     2024     | Zimu Lu et al. (Chinese University of Hong Kong) | MathVerse is a multimodal mathematical reasoning evaluation benchmark jointly released by MMLab at the Chinese University of Hong Kong and the Shanghai AI Lab. It is designed to comprehensively assess multimodal large language models' ability to understand mathematical diagrams. The benchmark includes 2,612 problems spanning areas such as plane geometry, solid geometry, and functions, annotated by experts. It generates six versions of multimodal information, totaling approximately 15,000 test samples. MathVerse introduces a Chain-of-Thought (CoT) evaluation strategy, leveraging GPT-4V for fine-grained analysis of model reasoning processes. |                          🤗[dataset](https://huggingface.co/datasets/luzimu/WebGen-Bench) <br> 🌐[repository](https://github.com/mnluzimu/WebGen-Bench)                         |
+
+    - **Complex Code:**
+
+    | Name | Number of Problems | Release Date | Authors | Description | Relevant Links |
+    |:-------:|:-----------:|:--------:|:------------------------:|:------------------------------------------------------------------------------------------:|:---------:|
+    | HumanEval-V |         253        |     2024     | Fengji Zhang et al. (City University of Hong Kong) |                                                                        HumanEval-V is a multimodal code generation evaluation benchmark proposed by the University of Hong Kong, aiming to test the capabilities of large multimodal models in complex diagram understanding and code generation tasks. This benchmark includes 253 Python programming tasks, each accompanied by key diagrams and function signatures, requiring the model to generate executable code based on visual information.                                                                        | 🤗[dataset](https://huggingface.co/datasets/HumanEval-V/HumanEval-V-Benchmark) <br> 🌐[repository](https://github.com/HumanEval-V/HumanEval-V-Benchmark) <br> 🌐[website](https://humaneval-v.github.io/) |
+    | Code-Vision |       1,000+       |     2025     |       Hanbin Wang et al. (Peking University)       |                                  Code-Vision is a multimodal code generation evaluation benchmark jointly released by Peking University, Northeastern University, and the University of Hong Kong. It aims to test the ability of multimodal large language models to understand flowcharts and generate corresponding code. This benchmark fills the gap in existing benchmarks, which mainly focus on textual reasoning and lack a systematic evaluation of code generation in visual contexts, providing a unified evaluation framework.                                 |                                     🌐[repository](https://github.com/wanghanbinpanda/CodeVision) <br> 🌐[website](https://pingshengren0901.github.io/codevision.io/)                                     |
+    |  ChartMimic |        4,800       |     2024     |       Cheng Yang et al. (Tsinghua University)      | ChartMimic is a multimodal code generation evaluation benchmark jointly released by Tsinghua University, Tencent AI Lab, and other institutions. It aims to evaluate the cross-modal reasoning abilities of large multimodal models in chart understanding and code generation, addressing the gap in existing benchmarks that focus mainly on textual reasoning and lack systematic evaluation of chart understanding and code generation. It includes two task types: Direct Mimic and Customized Mimic, with data sourced from scientific papers across multiple fields. |              🤗[dataset](https://huggingface.co/datasets/ChartMimic/ChartMimic) <br> 🌐[repository](https://github.com/ChartMimic/ChartMimic) <br> 🌐[website](https://chartmimic.github.io/)             |
+
+    - **Complex Science:**
+
+    | Name | Number of Problems | Release Date | Authors | Description | Relevant Links |
+    |:-------:|:-----------:|:--------:|:------------------------:|:------------------------------------------------------------------------------------------:|:---------:|
+    | ScienceQA |       21,208       |     2022     |        Pan Lu et al. (UCLA)        |                                                                        ScienceQA is a multimodal multiple-choice dataset consisting of 21,208 problems across natural sciences, language sciences, and social sciences, designed for K-12 grade levels. The dataset provides context with images and text, explanations, and detailed answers, supporting Chain-of-Thought (CoT) reasoning, aiming to assess and enhance the multi-step reasoning abilities and interpretability of AI models.                                                                       |         🤗[dataset](https://huggingface.co/datasets/TheMrguiller/ScienceQA) <br> 🌐[repository](https://github.com/lupantech/ScienceQA) <br> 🌐[website](https://scienceqa.github.io/)        |
+    |   M3CoT   |       11,459       |     2024     | Qiguang Chen et al. (HIT-SCIR Lab) | M3CoT is a multimodal, multi-domain, multi-step reasoning dataset built upon ScienceQA, designed to assess the capabilities of AI models in complex reasoning tasks. Compared to ScienceQA, M3CoT-Science has an average reasoning step increase from 2.5 to 10.9, and the average text length grows from 48 to 294, significantly increasing task complexity. The dataset spans science, common sense, and mathematics, emphasizing cross-reasoning between image and text information, challenging the reasoning capabilities of existing multimodal large models. | 🤗[dataset](https://huggingface.co/datasets/LightChen2333/M3CoT) <br> 🌐[repository](https://github.com/LightChen233/M3CoT) <br> 🌐[website](https://lightchen233.github.io/m3cot.github.io/) |
+    | MolPuzzle |         234        |     2024     |          Kehan Guo et al.          |                       MolPuzzle is a multimodal, multi-step reasoning dataset designed to evaluate large language models in molecular structure analysis tasks. The dataset involves various spectrometric data types, including infrared spectroscopy (IR), mass spectrometry (MS), and nuclear magnetic resonance (1H-NMR and 13C-NMR), as well as molecular formula information. Tasks are divided into three stages: molecular understanding, spectral analysis, and molecular construction, simulating real chemical reasoning processes.                       |   🤗[dataset](https://huggingface.co/datasets/kguo2/MolPuzzle_data) <br> 🌐[repository](https://github.com/KehanGuo2/MolPuzzle) <br> 🌐[website](https://kehanguo2.github.io/Molpuzzle.io/)   |
+
+    - **Commonsense Puzzle:**
+
+    | Name | Number of Problems | Release Date | Authors | Description | Relevant Links |
+    |:-------:|:-----------:|:--------:|:------------------------:|:------------------------------------------------------------------------------------------:|:---------:|
+    |   PuzzleVQA  |        2,000       |     2024     |          Yew Ken Chia et al.         | PuzzleVQA is a multimodal reasoning dataset consisting of 2,000 abstract graphic puzzles, designed to evaluate the visual perception, induction, and deduction abilities of large multimodal models in basic concepts such as color, numbers, shapes, and sizes. Experiments show that even advanced models like GPT-4V achieve an average accuracy of only 46.4% on single-concept puzzles, significantly lower than human performance, exposing limitations in abstract pattern recognition and multi-step reasoning. | 🤗[dataset](https://huggingface.co/datasets/declare-lab/PuzzleVQA) <br> 🌐[repository](https://github.com/declare-lab/LLM-PuzzleTest/tree/master/PuzzleVQA) <br> 🌐[website](https://puzzlevqa.github.io/) |
+    | LEGO-Puzzles |        1,100       |     2025     | Kexian Tang et al. (Shanghai AI Lab) |                                                                                                  LEGO-Puzzles aims to evaluate the capability of large multimodal language models in multi-step spatial reasoning tasks. The dataset contains 1,100 visual question answering (VQA) tasks based on LEGO bricks, covering 11 task types, including spatial understanding, single-step and multi-step sequence reasoning.                                                                                                 |      🤗[dataset](https://huggingface.co/datasets/KexianTang/LEGO-Puzzles) <br> 🌐[repository](https://github.com/Tangkexian/LEGO-Puzzles) <br> 🌐[website](https://tangkexian.github.io/LEGO-Puzzles/)     |
+    |     CVQA     |       10,374       |     2024     |     David Romero et al. (MBZUAI)     |                                                                                                         CVQA is a multimodal visual question answering dataset designed to assess models' abilities to integrate multiple visual cues for combined reasoning. The dataset includes three task types requiring models to extract and synthesize key information from multiple images to answer complex questions.                                                                                                        |                                                    🤗[dataset](https://huggingface.co/datasets/afaji/cvqa) <br> 🌐[website](https://cvqa-benchmark.org/)                                                   |
+
+- **AI4Research:**
+
+| Name | Number of Problems | Release Date | Authors | Description | Relevant Links |
+|:-------:|:-----------:|:--------:|:------------------------:|:------------------------------------------------------------------------------------------:|:---------:|
+|    SciWorld   | 30 tasks / 6,000+ instances |     2022     |                           Ruoyao Wang et al.                           |                                                                                                                                                                                                      SciWorld aims to evaluate the understanding and reasoning abilities of large multimodal models in complex scientific scenarios. The dataset integrates images, text, and structured data, covering multiple scientific domains and designed with multi-step reasoning tasks, challenging models' abilities to integrate multi-source information, perform causal reasoning, and provide interpretable answers. It consists of 30 tasks, each with multiple variants, totaling over 6,000 instances. The introduction of SciWorld has propelled the application of multimodal models in scientific education and research.                                                                                                                                                                                                     |           🌐[repository](https://github.com/allenai/ScienceWorld) <br> 🌐[website](https://sciworld.apps.allenai.org/)           |
+|     HardML    |             100             |     2025     |                           Tidor-Vlad Pricope                           | HardML is a benchmark dataset designed specifically to evaluate AI's knowledge and reasoning abilities in the fields of data science and machine learning. Created by independent machine learning engineer Tidor-Vlad Pricope, it contains 100 carefully crafted multiple-choice questions covering topics such as natural language processing, computer vision, statistical modeling, and classical machine learning algorithms. These questions are so challenging that even seasoned machine learning engineers struggle to answer them all correctly. To avoid data contamination, most of the questions are original, reflecting recent advancements in machine learning over the past two years. Current state-of-the-art AI models have an error rate of about 30% on HardML, which is three times higher than on MMLU-ML, demonstrating HardML's effectiveness in distinguishing model capabilities. Additionally, the author has released the slightly easier EasyML dataset, designed for models with fewer parameters. |                                            📄[paper](https://arxiv.org/pdf/2501.15627)                                           |
+|   MLE-BENCH   |              75             |     2024     |                                 OpenAI                                 |                                                                                                                                                            MLE-bench is a benchmark dataset released by OpenAI, designed to evaluate AI agents' practical capabilities in machine learning engineering (MLE) tasks. The benchmark selects 75 diverse competition tasks from Kaggle, covering fields such as natural language processing, computer vision, signal processing, and more, testing models' engineering skills in data preprocessing, model training, and experimental execution. In the evaluation, OpenAI's o1-preview model, combined with the AIDE framework, achieved Kaggle bronze-level performance on 16.9% of tasks. The research also explores the impact of resource scaling on performance and issues related to pre-training data contamination.                                                                                                                                                           |            🌐[repository](https://github.com/openai/mle-bench/) <br> 🌐[website](https://openai.com/index/mle-bench/)            |
+| SolutionBench |            1,053            |     2025     | Zhuoqun Li et al. (Institute of Software, Chinese Academy of Sciences) |                                                                                                                                                                                                                                                           SolutionBench is a benchmark dataset designed to evaluate the capabilities of AI systems in complex engineering solution design. It aims to fill the gap in current retrieval-augmented generation (RAG) methods in handling multi-constraint engineering problems, characterized by real data sources and structured data. Additionally, the authors introduced a system named SolutionRAG, which, by combining tree search and dual-point thinking mechanisms, achieved leading performance on SolutionBench.                                                                                                                                                                                                                                                          | 🤗[dataset](https://huggingface.co/datasets/lzq2021/SolutionBench) <br> 🌐[repository](https://github.com/icip-cas/DeepSolution) |
+
+### 5.2 Training Datasets
+
+To build and enhance models with strong Long CoT capabilities, numerous open-source training datasets have emerged. These datasets provide foundational supervision signals for various domains such as mathematics, science, medicine, programming, and general reasoning. Based on their construction methods, we classify the datasets into four major categories: Manual Annotation, Direct Distillation, Search-based Distillation, and Validated Distillation.
+
+In this section, we systematically list representative datasets under each category, covering key information such as their sources, modalities, applicable domains, and data scale, providing researchers and developers seeking suitable training resources with a comprehensive guide and convenient reference.
+
+#### 5.2.1 Manual Annotation
+
+These datasets are created through manual annotation or rule-based construction, typically offering high-quality samples with interpretable reasoning paths. While smaller in scale, they are critical for guiding the alignment and evaluation of initial models.
+
+- [R1-OneVision](https://huggingface.co/datasets/Fancy-MLLM/R1-Onevision) combines high-quality data from LLaVA-OneVision with datasets from specific domains. It bridges the gap between visual and textual understanding, providing rich, context-aware reasoning tasks across natural scenes, science, mathematics, OCR-based content, and complex graphs.
+- [M3CoT](https://github.com/LightChen233/M3CoT) lays the foundational work for multi-domain, multi-step, multi-modal chain-of-thought research.
+- [Big-Math-RL-Verified](https://huggingface.co/datasets/SynthLabsAI/Big-Math-RL-Verified) is designed for RL training with large language models (LLMs) such as [PPO](https://arxiv.org/abs/1707.06347), [GRPO](https://arxiv.org/abs/2402.03300), etc.
+- [GSM8K](https://github.com/openai/grade-school-math) is a high-quality, linguistically diverse dataset of elementary school math word problems.
+
+| Name                 | Category             | Source | Modality      | Quantity |
+| :------------------- | :------------------- | :----- | :------------ | :------- |
+| R1-OneVision         | Mathematics, Science | Rule   | Vision + Lang | 119K     |
+| M3CoT                | Mathematics, Science | Human  | Vision + Lang | 11K      |
+| Big-Math-RL-Verified | Mathematics          | Human  | Lang          | 251K     |
+| GSM8K                | Mathematics          | Human  | Lang          | 8K       |
+
+#### 5.2.2 Direct Distillation
+
+The method utilizes large language models to generate training data through prompt-based or chain-of-thought reasoning. These datasets can be scaled up to millions of examples, covering a wide range of domains.
+
+- [NaturalReasoning](https://arxiv.org/abs/2502.13124) validates through knowledge distillation experiments that NaturalReasoning can effectively extract and transfer reasoning capabilities from powerful teacher models. It is equally effective for unsupervised self-training using external reward models or self-rewarding.
+- [NuminaMath-CoT](https://huggingface.co/datasets/AI-MO/NuminaMath-CoT) employs a chain-of-thought (CoT) format for solving each problem. The dataset covers Chinese high school math exercises, US and international Mathematical Olympiad problems, etc., collected from online exam PDFs and math forums. Processing steps include: (a) OCR recognition of the original PDFs; (b) segmentation into problem-solution pairs; (c) translation into English; (d) rearranging to generate chain-of-thought reasoning formats; and (e) final answer formatting.
+- [NuminaMath-TIR](https://huggingface.co/datasets/AI-MO/NuminaMath-TIR) focuses on problems that produce numerical outputs selected from the NuminaMath-CoT dataset. A pipeline was constructed using GPT-4 to generate reasoning paths similar to TORA, execute code, and produce results until the final solution is completed, filtering out solutions where the final answer differs from the reference answer.
+- [DART-Math-uniform](https://huggingface.co/datasets/hkust-nlp/dart-math-uniform) constructs datasets through the application of DARS-Uniform.
+- [DART-Math-hard](https://huggingface.co/datasets/hkust-nlp/dart-math-hard) is a mathematical question-answer pair sample constructed using query sets from the DARS-Prop2DiffMATH and GSK8K training datasets. It achieves SOTA results on many challenging mathematical reasoning benchmarks, introducing a deliberate preference for hard queries, in contrast to traditional rejection sampling.
+- [DART-Math-pool-math](https://huggingface.co/datasets/hkust-nlp/dart-math-pool-math) is a data pool synthesized from query sets of the MATH training dataset, including all samples with correct answers and additional metadata generated during the process. DART-Math-\- datasets are extracted from the DART-Math-pool-\- data pools.
+- [DART-Math-pool-gsm8k](https://huggingface.co/datasets/hkust-nlp/dart-math-pool-gsm8k) is a data pool synthesized from query sets of the GSM8K training dataset, including all samples with correct answers and additional metadata. DART-Math-\- datasets are extracted from the DART-Math-pool-\- data pools.
+- [OpenO1-SFT](https://huggingface.co/datasets/O1-OPEN/OpenO1-SFT) is a dataset for fine-tuning language models on chain-of-thought activations using SFT.
+- [OpenO1-SFT-Pro](https://huggingface.co/datasets/O1-OPEN/OpenO1-SFT-Pro) is a dataset for fine-tuning language models on chain-of-thought activations using SFT.
+- [OpenO1-SFT-Ultra](https://huggingface.co/datasets/O1-OPEN/OpenO1-SFT-Ultra) is synthesized based on existing open-source datasets using the openo1-qwen-sft model.
+- [Medical-o1](https://huggingface.co/datasets/FreedomIntelligence/medical-o1-reasoning-SFT) is an SFT medical reasoning dataset constructed based on medically verifiable questions and an LLM verifier.
+- [AoPS-Instruc](https://huggingface.co/datasets/DeepStudentLlama/AoPS-Instruct) is a large-scale high-quality question-answer pair dataset for advanced mathematical reasoning created and maintained using a scalable approach.
+- [Orca-Math](https://arxiv.org/abs/2402.14830) is a high-quality synthetic dataset of 200,000 math problems created in a multi-agent setup where agents collaborate to generate the data.
+- [MATH-plus](https://huggingface.co/datasets/TIGER-Lab/WebInstructSub) collects 10 million naturally occurring instruction data from pre-trained network corpora.
+- [UltraInteract-SFT](https://huggingface.co/collections/openbmb/eurus-660bc40bec5376b3adc9d1c5) is designed for complex reasoning tasks and helps explore preference learning in reasoning tasks. It is applicable for supervised fine-tuning and preference learning. Each instruction includes a preference tree consisting of: (1) reasoning chains with multiple planning strategies and consistent formats; (2) multi-round interaction trajectories with the environment and comments; and (3) paired data for facilitating preference learning.
+- [MathCodeInstruct](https://huggingface.co/datasets/MathLLMs/MathCodeInstruct) is a novel high-quality dataset containing mathematical problems and their code-based solutions.
+- MathCodeInstruct-Plus [$Paper¹](https://arxiv.org/abs/2310.03731), [²$](https://arxiv.org/abs/2308.07921) is a novel high-quality dataset containing mathematical problems and their code-based solutions.
+- OpenMathInstruct-1[\[HuggingFace\]](https://huggingface.co/datasets/nvidia/OpenMathInstruct-1) is a math instruction adjustment dataset, generating 1.8 million problem-solution pairs using the Mixtral-8x7B model. The problems are sourced from the GSM8K and MATH training subsets; solutions are synthesized by the Mixtral model using text reasoning and Python interpreter-executed code blocks.
+- [OpenMathInstruct-2](https://github.com/NVIDIA/NeMo-Skills) is a large-scale math reasoning dataset for training large language models (LLM).
+- [AceMath-Instruct](https://huggingface.co/collections/nvidia/acemath-678917d12f09885479d549fe) is a training dataset for cutting-edge mathematical reasoning models in AceMath.
+- [QwQ-LongCoT](https://huggingface.co/datasets/PowerInfer/QWQ-LONGCOT-500K) integrates prompts from multiple high-quality sources to create diverse and comprehensive training data.
+- [SCP-116K](https://huggingface.co/datasets/EricLu/SCP-116K) is a high-quality set of scientific question-answer pairs automatically extracted from web-scraped documents. Each question is accompanied by a matching solution extracted from the source material, along with responses and reasoning processes generated by advanced language models.
+- [R1-Distill-SFT](https://huggingface.co/datasets/ServiceNow-AI/R1-Distill-SFT) is distilled using DeepSeek-R1-32b; generated using Numina-math and Tulu; each prompt samples a response.
+- [Sky-T1-Data](https://huggingface.co/datasets/NovaSky-AI/Sky-T1_data_17k) contains 5k encoded data from APPs and TACO, as well as 10k math data from the AIME, MATH, and Olympiads subsets of the NuminaMATH dataset. It also maintains 1k science and puzzle data from STILL-2.
+- [Bespoke-Stratos-17k](https://huggingface.co/datasets/bespokelabs/Bespoke-Stratos-17k) is a reasoning dataset that includes questions, reasoning traces, and answers. It replicates and improves upon the Berkeley Sky-T1 data pipeline using SFT distilled data from DeepSeek-R1.
+- [s1K](https://huggingface.co/datasets/simplescaling/s1K) contains 1,000 diverse, high-quality, and difficult problem examples (from Gemini Thinking), refining reasoning paths and solutions.
+- MedThoughts-8K
+- [SYNTHETIC-1](https://www.primeintellect.ai/blog/synthetic-1-release) is the largest open reasoning dataset generated by Deepseek-R1, covering reasoning trajectories for tasks in mathematics, programming, science, etc., with correctness verified by task-specific validators.
+- [Medical-R1-Distill-Data](https://huggingface.co/datasets/FreedomIntelligence/Medical-R1-Distill-Data) is an SFT dataset distilled from Deepseek-R1 (Full Power Version), based on HuatuoGPT-o1’s medically verifiable questions.
+- [Medical-R1-Distill-Data-Chinese](https://huggingface.co/datasets/FreedomIntelligence/Medical-R1-Distill-Data-Chinese) is an SFT Chinese version dataset distilled from Deepseek-R1 (Full Power Version), based on HuatuoGPT-o1’s medically verifiable questions.
+- [RLVR-GSM-MATH](https://github.com/allenai/open-instruct) is used to train the Tulu3 model.
+- [LIMO](https://huggingface.co/datasets/GAIR/LIMO) Less is More for Reasoning.
+- [OpenThoughts-114k](https://huggingface.co/datasets/open-thoughts/OpenThoughts-114k) is an open synthetic reasoning dataset containing 114k high-quality examples covering math, science, code, and puzzles.
+- [Magpie-Reasoning-V2](https://github.com/magpie-align/magpie) generates high-quality alignment data by aligning LLMs using pre-query template prompts.
+- [Dolphin-R1](https://huggingface.co/datasets/cognitivecomputations/dolphin-r1) is an 800k sample dataset similar in composition to the datasets used for training the DeepSeek-R1 Distill model.
+
+
+| Name                            | Category                           | Source                            | Modality | Quantity |
+| :------------------------------ | :--------------------------------- | :-------------------------------- | :------- | :------- |
+| NaturalReasoning                | Science, General                   | Llama3.3-70B                      | Lang     | 1M       |
+| NuminaMath-CoT                  | Mathematics                        | GPT-4o                            | Lang     | 860K     |
+| NuminaMath-TIR                  | Mathematics                        | GPT-4o                            | Lang     | 73K      |
+| DART-Math-uniform               | Mathematics                        | DeepSeekMath-7B-RL                | Lang     | 591K     |
+| DART-Math-hard                  | Mathematics                        | DeepSeekMath-7B-RL                | Lang     | 585K     |
+| DART-Math-pool-math             | Mathematics                        | DeepSeekMath-7B-RL                | Lang     | 1.6M     |
+| DART-Math-pool-gsm8k            | Mathematics                        | DeepSeekMath-7B-RL                | Lang     | 2.7M     |
+| OpenO1-SFT                      | Mathematics, Science, General      | -                                 | Lang     | 78K      |
+| OpenO1-SFT-Pro                  | Mathematics, Science, General      | -                                 | Lang     | 126K     |
+| OpenO1-SFT-Ultra                | Mathematics, Science, General      | -                                 | Lang     | 28M      |
+| Medical-o1                      | Medicine                           | DeepSeek R1                       | Lang     | 50K      |
+| AoPS-Instruct                   | Mathematics                        | Qwen2.5-72B                       | Lang     | 647K     |
+| Orca-Math                       | Mathematics                        | GPT-4                             | Lang     | 200K     |
+| MATH-plus                       | Mathematics                        | GPT-4                             | Lang     | 894K     |
+| UltraInteract-SFT               | Mathematics, Code, Logic           | GPT-4 CoT + PoT                   | Lang     | 289K     |
+| MathCodeInstruct                | Mathematics                        | GPT-4 + Codellama PoT             | Lang     | 79K      |
+| MathCodeInstruct-Plus           | Mathematics                        | -                                 | Lang     | 88K      |
+| OpenMathInstruct-1              | Mathematics                        | Mixtral-8x7B PoT                  | Lang     | 5M       |
+| OpenMathInstruct-2              | Mathematics                        | Llama3.1-405B                     | Lang     | 14M      |
+| AceMath-Instruct                | Mathematics, General               | Qwen2.5-Math-72B + GPT-4o-mini    | Lang     | 5M       |
+| QwQ-LongCoT                     | General                            | QwQ                               | Lang     | 286K     |
+| SCP-116K                        | Science                            | QwQ + O1-mini                     | Lang     | 117K     |
+| R1-Distill-SFT                  | Mathematics                        | DeepSeek-R1-32B                   | Lang     | 172K     |
+| Sky-T1-Data                     | Mathematics, Code, Science, Puzzle | QwQ                               | Lang     | 17K      |
+| Bespoke-Stratos-17k             | Mathematics, Code, Science, Puzzle | DeepSeek R1                       | Lang     | 17K      |
+| s1K                             | Mathematics                        | DeepSeek R1                       | Lang     | 1K       |
+| MedThoughts-8K                  | Medicine                           | DeepSeek R1                       | Lang     | 8K       |
+| SYNTHETIC-1                     | Mathematics, Code, Science         | DeepSeek R1                       | Lang     | 894K     |
+| Medical-R1-Distill-Data         | Medicine                           | DeepSeek R1                       | Lang     | 22K      |
+| Medical-R1-Distill-Data-Chinese | -                                  | -                                 | Lang     | 17K      |
+| RLVR-GSM-MATH                   | Mathematics                        | -                                 | Lang     | 30K      |
+| LIMO                            | Mathematics                        | Human + DeepSeek R1 + Qwen2.5-32B | Lang     | 817      |
+| OpenThoughts-114k               | Mathematics, Code, Science, Puzzle | -                                 | Lang     | 114K     |
+| Magpie-Reasoning-V2             | Mathematics, Code                  | DeepSeek-R1 + Llama-70B           | Lang     | 250K     |
+| Dolphin-R1                      | Mathematics, Science               | DeepSeek R1 + Gemini2 + Dolphin   | Lang     | 814K     |
+
+#### 5.2.3 Search-based Distillation
+
+The dataset based on search is constructed through an automated search algorithm, which explores the reasoning tree to generate the optimal reasoning trajectory. Although the scale is limited, these datasets typically generate high-quality and deep reasoning samples.
+
+- [STILL-1](https://arxiv.org/abs/2411.11694) enhances the reasoning capabilities of large language models (LLMs) through a reward-guided tree search algorithm.
+
+| Name    | Category                           | Source                       | Modality | Quantity |
+| :------ | :--------------------------------- | :--------------------------- | :------- | :------- |
+| STILL-1 | Mathematics, Code, Science, Puzzle | LLaMA-3.1-8B-Instruct + MCTS | Lang     | 5K       |
+
+#### 5.2.4 Validated Distillation
+The validated datasets contain rule-based filtering, test case verification, or LLM validation to ensure quality. These datasets strike a balance between scalability and reliability.
+
+- [KodCode-V1](https://huggingface.co/datasets/KodCode/KodCode-V1) provides verifiable solutions and tests for coding tasks; specifically designed for supervised fine-tuning (SFT) and reinforcement learning (RL) optimization; covering various domains (from algorithms to domain-specific software knowledge) and difficulty levels (from basic coding exercises to interview and competitive programming challenges).
+- [KodCode-V1-SFT-R1](https://huggingface.co/datasets/KodCode/KodCode-V1-SFT-R1) provides verifiable solutions and tests for coding tasks; specifically designed for supervised fine-tuning (SFT) and reinforcement learning (RL) optimization; covering various domains (from algorithms to domain-specific software knowledge) and difficulty levels (from basic coding exercises to interview and competitive programming challenges).
+- [OpenR1-Math](https://huggingface.co/datasets/open-r1/OpenR1-Math-220k) is a large-scale mathematics reasoning dataset, generated by DeepSeek R1 for NuminaMath version 1.5 problems, with two to four reasoning trajectories per question.
+- [Chinese-DeepSeek-R1-Distill-Data](https://huggingface.co/datasets/Congliu/Chinese-DeepSeek-R1-Distill-data-110k) is a Chinese open-source distilled dataset from DeepSeek-R1, containing not only math data but also a significant amount of general-type data.
+- [AM-DeepSeek-R1-Distilled](https://huggingface.co/datasets/a-m-team/AM-DeepSeek-R1-Distilled-1.4M) includes problems from numerous open-source datasets, which have been semantically deduplicated and cleaned to eliminate test set contamination. The answers are extracted from reasoning models (primarily DeepSeek-R1) and undergo rigorous validation: mathematical problems are verified through answer checking, coding problems through test case validation, and other tasks through reward model evaluation.
+
+
+| Name                             | Category                      | Source                               | Modality | Quantity |
+| :------------------------------- | :---------------------------- | :----------------------------------- | :------- | :------- |
+| KodCode-V1                       | -                             | GPT-4 + Test case validation         | Lang     | 447K     |
+| KodCode-V1-SFT-R1                | Code                          | DeepSeek R1 + Test case validation   | Lang     | 443K     |
+| OpenR1-Math                      | Mathematics                   | DeepSeek R1 + Rule & LLM Validation  | Lang     | 225K     |
+| Chinese-DeepSeek-R1-Distill-Data | Mathematics, Science, General | DeepSeek R1 + Rule & LLM Validation  | Lang     | 110K     |
+| AM-DeepSeek-R1-Distilled         | Mathematics, Code, General    | Reward Model + Rule & LLM Validation | Lang     | 1.4M     |
+
+
+## 7. Paper Lists \& Awesome Resources
+- [Awesome-Long-Chain-of-Thought-Reasoning](pages/paper.md) (Our Official Paper List, 1000+ papers)
+
+- [Awesome-System2-Reasoning-LLM](https://github.com/zzli2022/Awesome-System2-Reasoning-LLM)
 
 <img src="./assets/images/future.jpg" style="width: 580pt">
 
 
-
-<h3 id="agentic-embodied-long-cot">5.1 Agentic & Embodied Long CoT</h3>
-<ul>
-<li><i><b>Solving Math Word Problems via Cooperative Reasoning induced Language Models</b></i>, Zhu et al., <a href="https://aclanthology.org/2023.acl-long.245/" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.07-blue" alt="PDF Badge"></a></li>
-<li><i><b>Reasoning with Language Model is Planning with World Model</b></i>, Hao et al., <a href="https://aclanthology.org/2023.emnlp-main.507/" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.12-blue" alt="PDF Badge"></a></li>
-<li><i><b>Large language models as commonsense knowledge for large-scale task planning</b></i>, Zhao et al., <a href="https://openreview.net/pdf?id=tED747HURfX" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.12-blue" alt="PDF Badge"></a></li>
-<li><i><b>Robotic Control via Embodied Chain-of-Thought Reasoning</b></i>, Zawalski et al., <a href="https://openreview.net/forum?id=S70MgnIA0v" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.00-blue" alt="PDF Badge"></a></li>
-<li><i><b>Tree-Planner: Efficient Close-loop Task Planning with Large Language Models</b></i>, Hu et al., <a href="https://openreview.net/forum?id=Glcsog6zOe" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.01-blue" alt="PDF Badge"></a></li>
-<li><i><b>Language Agent Tree Search Unifies Reasoning, Acting, and Planning in Language Models</b></i>, Zhou et al., <a href="https://openreview.net/forum?id=njwv9BsGHF" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.05-blue" alt="PDF Badge"></a></li>
-<li><i><b>Strategist: Learning Strategic Skills by LLMs via Bi-Level Tree Search</b></i>, Light et al., <a href="https://openreview.net/forum?id=UHWBmZuJPF" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.06-blue" alt="PDF Badge"></a></li>
-<li><i><b>Mixture-of-agents enhances large language model capabilities</b></i>, Wang et al., <a href="https://arxiv.org/abs/2406.04692" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.06-red" alt="arXiv Badge"></a></li>
-<li><i><b>ADaPT: As-Needed Decomposition and Planning with Language Models</b></i>, Prasad et al., <a href="https://aclanthology.org/2024.findings-naacl.264/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.06-blue" alt="PDF Badge"></a></li>
-<li><i><b>Tree search for language model agents</b></i>, Koh et al., <a href="https://arxiv.org/abs/2407.01476" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.07-red" alt="arXiv Badge"></a></li>
-<li><i><b>Hiagent: Hierarchical working memory management for solving long-horizon agent tasks with large language model</b></i>, Hu et al., <a href="https://arxiv.org/abs/2408.09559" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.08-red" alt="arXiv Badge"></a></li>
-<li><i><b>S3 agent: Unlocking the power of VLLM for zero-shot multi-modal sarcasm detection</b></i>, Wang et al., <a href="https://dl.acm.org/doi/10.1145/3690642" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.08-blue" alt="PDF Badge"></a></li>
-<li><i><b>MACM: Utilizing a Multi-Agent System for Condition Mining in Solving Complex Mathematical Problems</b></i>, Lei et al., <a href="https://openreview.net/forum?id=VR2RdSxtzs" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.09-blue" alt="PDF Badge"></a></li>
-<li><i><b>Fine-Tuning Large Vision-Language Models as Decision-Making Agents via Reinforcement Learning</b></i>, Zhai et al., <a href="https://openreview.net/forum?id=nBjmMF2IZU" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.09-blue" alt="PDF Badge"></a></li>
-<li><i><b>EVOLvE: Evaluating and Optimizing LLMs For Exploration</b></i>, Nie et al., <a href="https://arxiv.org/abs/2410.06238" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>Agents Thinking Fast and Slow: A Talker-Reasoner Architecture</b></i>, Christakopoulou et al., <a href="https://openreview.net/forum?id=xPhcP6rbI4" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.10-blue" alt="PDF Badge"></a></li>
-<li><i><b>Robotic Programmer: Video Instructed Policy Code Generation for Robotic Manipulation</b></i>, Xie et al., <a href="https://arxiv.org/abs/2501.04268" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Titans: Learning to memorize at test time</b></i>, Behrouz et al., <a href="https://arxiv.org/abs/2501.00663" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Fine-Tuning Vision-Language-Action Models: Optimizing Speed and Success</b></i>, Kim et al., <a href="https://arxiv.org/abs/2502.19645" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>World Modeling Makes a Better Planner: Dual Preference Optimization for Embodied Task Planning</b></i>, Wang et al., <a href="https://arxiv.org/abs/2503.10480" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>Embodied-Reasoner: Synergizing Visual Search, Reasoning, and Action for Embodied Interactive Tasks</b></i>, Zhang et al., <a href="https://arxiv.org/abs/2503.21696" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>Cosmos-reason1: From physical common sense to embodied reasoning</b></i>, Azzolini et al., <a href="https://arxiv.org/abs/2503.15558" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>Improving Retrospective Language Agents via Joint Policy Gradient Optimization</b></i>, Feng et al., <a href="https://arxiv.org/abs/2503.01490" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>Haste Makes Waste: Evaluating Planning Abilities of LLMs for Efficient and Feasible Multitasking with Time Constraints Between Actions</b></i>, Wu et al., <a href="https://arxiv.org/abs/2503.02238" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>MultiAgentBench: Evaluating the Collaboration and Competition of LLM agents</b></i>, Zhu et al., <a href="https://arxiv.org/abs/2503.01935" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>ReMA: Learning to Meta-think for LLMs with Multi-Agent Reinforcement Learning</b></i>, Wan et al., <a href="https://arxiv.org/abs/2503.09501" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>MAS-GPT: Training LLMs To Build LLM-Based Multi-Agent Systems</b></i>, Ye et al., <a href="https://openreview.net/forum?id=TqHoQIlumy" target="_blank"><img src="https://img.shields.io/badge/PDF-2025.03-blue" alt="PDF Badge"></a></li>
-<li><i><b>Advances and Challenges in Foundation Agents: From Brain-Inspired Intelligence to Evolutionary, Collaborative, and Safe Systems</b></i>, Liu et al., <a href="https://arxiv.org/abs/2504.01990" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.04-red" alt="arXiv Badge"></a></li>
-</ul>
-
-
-
-<h3 id="efficient-long-cot">5.2 Efficient Long CoT</h3>
-</ul>
-
-<ul>
-<li><i><b>Guiding language model reasoning with planning tokens</b></i>, Wang et al., <a href="https://arxiv.org/abs/2310.05707" target="_blank"><img src="https://img.shields.io/badge/arXiv-2023.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>Synergy-of-thoughts: Eliciting efficient reasoning in hybrid language models</b></i>, Shang et al., <a href="https://arxiv.org/abs/2402.02563" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Distilling system 2 into system 1</b></i>, Yu et al., <a href="https://arxiv.org/abs/2407.06023" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.07-red" alt="arXiv Badge"></a></li>
-<li><i><b>Concise thoughts: Impact of output length on llm reasoning and cost</b></i>, Nayab et al., <a href="https://arxiv.org/abs/2407.19825" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.07-red" alt="arXiv Badge"></a></li>
-<li><i><b>Litesearch: Efficacious tree search for llm</b></i>, Wang et al., <a href="https://arxiv.org/abs/2407.00320" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.07-red" alt="arXiv Badge"></a></li>
-<li><i><b>Uncertainty-Guided Optimization on Large Language Model Search Trees</b></i>, Grosse et al., <a href="https://arxiv.org/abs/2407.03951" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.07-red" alt="arXiv Badge"></a></li>
-<li><i><b>CPL: Critical Plan Step Learning Boosts LLM Generalization in Reasoning Tasks</b></i>, Wang et al., <a href="https://arxiv.org/abs/2409.08642" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.09-red" alt="arXiv Badge"></a></li>
-<li><i><b>Unlocking the Capabilities of Thought: A Reasoning Boundary Framework to Quantify and Optimize Chain-of-Thought</b></i>, Chen et al., <a href="https://openreview.net/forum?id=pC44UMwy2v" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.09-blue" alt="PDF Badge"></a></li>
-<li><i><b>Kvsharer: Efficient inference via layer-wise dissimilar KV cache sharing</b></i>, Yang et al., <a href="https://arxiv.org/abs/2410.18517" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>Interpretable contrastive monte carlo tree search reasoning</b></i>, Gao et al., <a href="https://arxiv.org/abs/2410.01707" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>Dualformer: Controllable fast and slow thinking by learning with randomized reasoning traces</b></i>, Su et al., <a href="https://arxiv.org/abs/2410.09918" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>DynaThink: Fast or Slow? A Dynamic Decision-Making Framework for Large Language Models</b></i>, Pan et al., <a href="https://aclanthology.org/2024.emnlp-main.814/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.11-blue" alt="PDF Badge"></a></li>
-<li><i><b>Language models are hidden reasoners: Unlocking latent reasoning capabilities via self-rewarding</b></i>, Chen et al., <a href="https://arxiv.org/abs/2411.04282" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.11-red" alt="arXiv Badge"></a></li>
-<li><i><b>Token-budget-aware llm reasoning</b></i>, Han et al., <a href="https://arxiv.org/abs/2412.18547" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>B-STaR: Monitoring and Balancing Exploration and Exploitation in Self-Taught Reasoners</b></i>, Zeng et al., <a href="https://arxiv.org/abs/2412.17256" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>C3oT: Generating Shorter Chain-of-Thought without Compromising Effectiveness</b></i>, Kang et al., <a href="https://arxiv.org/abs/2412.11664" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>Training large language models to reason in a continuous latent space</b></i>, Hao et al., <a href="https://arxiv.org/abs/2412.06769" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>CoMT: A Novel Benchmark for Chain of Multi-modal Thought on Large Vision-Language Models</b></i>, Cheng et al., <a href="https://arxiv.org/abs/2412.12932" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>Kimi k1. 5: Scaling reinforcement learning with llms</b></i>, Team et al., <a href="https://arxiv.org/abs/2501.12599" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>O1-Pruner: Length-Harmonizing Fine-Tuning for O1-Like Reasoning Pruning</b></i>, Luo et al., <a href="https://arxiv.org/abs/2501.12570" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Reward-Guided Speculative Decoding for Efficient LLM Reasoning</b></i>, Liao et al., <a href="https://arxiv.org/abs/2501.19324" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Think Smarter not Harder: Adaptive Reasoning with Inference Aware Optimization</b></i>, Yu et al., <a href="https://arxiv.org/abs/2501.17974" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Efficient Reasoning with Hidden Thinking</b></i>, Shen et al., <a href="https://arxiv.org/abs/2501.19201" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>On the Query Complexity of Verifier-Assisted Language Generation</b></i>, Botta et al., <a href="https://arxiv.org/abs/2502.12123" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>TokenSkip: Controllable Chain-of-Thought Compression in LLMs</b></i>, Xia et al., <a href="https://arxiv.org/abs/2502.12067" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Boost, Disentangle, and Customize: A Robust System2-to-System1 Pipeline for Code Generation</b></i>, Du et al., <a href="https://arxiv.org/abs/2502.12492" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Jakiro: Boosting Speculative Decoding with Decoupled Multi-Head via MoE</b></i>, Huang et al., <a href="https://arxiv.org/abs/2502.06282" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Towards Reasoning Ability of Small Language Models</b></i>, Srivastava et al., <a href="https://arxiv.org/abs/2502.11569" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Towards Economical Inference: Enabling DeepSeek's Multi-Head Latent Attention in Any Transformer-based LLMs</b></i>, Ji et al., <a href="https://arxiv.org/abs/2502.14837" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Portable Reward Tuning: Towards Reusable Fine-Tuning across Different Pretrained Models</b></i>, Chijiwa et al., <a href="https://arxiv.org/abs/2502.12776" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>MM-Verify: Enhancing Multimodal Reasoning with Chain-of-Thought Verification</b></i>, Sun et al., <a href="https://arxiv.org/abs/2502.13383" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Language Models Can Predict Their Own Behavior</b></i>, Ashok et al., <a href="https://arxiv.org/abs/2502.13329" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>On the Convergence Rate of MCTS for the Optimal Value Estimation in Markov Decision Processes</b></i>, Chang et al., <a href="https://ieeexplore.ieee.org/document/10870057" target="_blank"><img src="https://img.shields.io/badge/PDF-2025.02-blue" alt="PDF Badge"></a></li>
-<li><i><b>CoT-Valve: Length-Compressible Chain-of-Thought Tuning</b></i>, Ma et al., <a href="https://arxiv.org/abs/2502.09601" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Training Language Models to Reason Efficiently</b></i>, Arora et al., <a href="https://arxiv.org/abs/2502.04463" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Chain of Draft: Thinking Faster by Writing Less</b></i>, Xu et al., <a href="https://arxiv.org/abs/2502.18600" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Learning to Stop Overthinking at Test Time</b></i>, Bao et al., <a href="https://arxiv.org/abs/2502.10954" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Self-Training Elicits Concise Reasoning in Large Language Models</b></i>, Munkhbat et al., <a href="https://arxiv.org/abs/2502.20122" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Length-Controlled Margin-Based Preference Optimization without Reference Model</b></i>, Li et al., <a href="https://arxiv.org/abs/2502.14643" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Reasoning on a Spectrum: Aligning LLMs to System 1 and System 2 Thinking</b></i>, Ziabari et al., <a href="https://arxiv.org/abs/2502.12470" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Dynamic Parallel Tree Search for Efficient LLM Reasoning</b></i>, Ding et al., <a href="https://arxiv.org/abs/2502.16235" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Stepwise Perplexity-Guided Refinement for Efficient Chain-of-Thought Reasoning in Large Language Models</b></i>, Cui et al., <a href="https://arxiv.org/abs/2502.13260" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Dynamic Chain-of-Thought: Towards Adaptive Deep Reasoning</b></i>, Wang et al., <a href="https://arxiv.org/abs/2502.10428" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>SoftCoT: Soft Chain-of-Thought for Efficient Reasoning with LLMs</b></i>, Xu et al., <a href="https://arxiv.org/abs/2502.12134" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>LightThinker: Thinking Step-by-Step Compression</b></i>, Zhang et al., <a href="https://arxiv.org/abs/2502.15589" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Position: Multimodal Large Language Models Can Significantly Advance Scientific Reasoning</b></i>, Yan et al., <a href="https://arxiv.org/abs/2502.02871" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Stepwise Informativeness Search for Improving LLM Reasoning</b></i>, Wang et al., <a href="https://arxiv.org/abs/2502.15335" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Adaptive Group Policy Optimization: Towards Stable Training and Token-Efficient Reasoning</b></i>, Li et al., <a href="https://arxiv.org/abs/2503.15952" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>Innate Reasoning is Not Enough: In-Context Learning Enhances Reasoning Large Language Models with Less Overthinking</b></i>, Ge et al., <a href="https://arxiv.org/abs/2503.19602" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>Understanding r1-zero-like training: A critical perspective</b></i>, Liu et al., <a href="https://arxiv.org/abs/2503.20783" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>The First Few Tokens Are All You Need: An Efficient and Effective Unsupervised Prefix Fine-Tuning Method for Reasoning Models</b></i>, Ji et al., <a href="https://arxiv.org/abs/2503.02875" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>L1: Controlling How Long A Reasoning Model Thinks With Reinforcement Learning</b></i>, Aggarwal et al., <a href="https://arxiv.org/abs/2503.04697" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>DAST: Difficulty-Adaptive Slow-Thinking for Large Reasoning Models</b></i>, Shen et al., <a href="https://arxiv.org/abs/2503.04472" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>ThinkPrune: Pruning Long Chain-of-Thought of LLMs via Reinforcement Learning</b></i>, Hou et al., <a href="https://arxiv.org/abs/2504.01296" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.04-red" alt="arXiv Badge"></a></li>
-<li><i><b>Long-Short Chain-of-Thought Mixture Supervised Fine-Tuning Eliciting Efficient Reasoning in Large Language Models</b></i>, Yu et al., <a href="https://arxiv.org/abs/2505.03469" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.05-red" alt="arXiv Badge"></a></li>
-<li><i><b>Can Pruning Improve Reasoning? Revisiting Long-CoT Compression with Capability in Mind for Better Reasoning</b></i>, Shang et al., <a href="https://arxiv.org/abs/2505.14582" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.05-red" alt="arXiv Badge"></a></li>
-<li><i><b>Accelerated Test-Time Scaling with Model-Free Speculative Sampling</b></i>, Song et al., <a href="https://arxiv.org/abs/2506.04708" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.06-red" alt="arXiv Badge"></a></li>
-</ul>
-
-
-
-<h3 id="knowledge-augmented-long-cot">5.3 Knowledge-Augmented Long CoT</h3>
-</ul>
-
-<ul>
-<li><i><b>Best of Both Worlds: Harmonizing LLM Capabilities in Decision-Making and Question-Answering for Treatment Regimes</b></i>, Liu et al., <a href="https://openreview.net/forum?id=afu9qhp7md" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.00-blue" alt="PDF Badge"></a></li>
-<li><i><b>Understanding Reasoning Ability of Language Models From the Perspective of Reasoning Paths Aggregation</b></i>, Wang et al., <a href="https://proceedings.mlr.press/v235/wang24a.html" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.07-blue" alt="PDF Badge"></a></li>
-<li><i><b>Stream of search (sos): Learning to search in language</b></i>, Gandhi et al., <a href="https://openreview.net/pdf?id=2cop2jmQVL" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.07-blue" alt="PDF Badge"></a></li>
-<li><i><b>CoPS: Empowering LLM Agents with Provable Cross-Task Experience Sharing</b></i>, Yang et al., <a href="https://arxiv.org/abs/2410.16670" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>Disentangling memory and reasoning ability in large language models</b></i>, Jin et al., <a href="https://arxiv.org/abs/2411.13504" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.11-red" alt="arXiv Badge"></a></li>
-<li><i><b>Huatuogpt-o1, towards medical complex reasoning with llms</b></i>, Chen et al., <a href="https://arxiv.org/abs/2412.18925" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>RAG-Star: Enhancing Deliberative Reasoning with Retrieval Augmented Verification and Refinement</b></i>, Jiang et al., <a href="https://arxiv.org/abs/2412.12881" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>O1 Replication Journey--Part 3: Inference-time Scaling for Medical Reasoning</b></i>, Huang et al., <a href="https://arxiv.org/abs/2501.06458" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>MedS <sup>3</sup>: Towards Medical Small Language Models with Self-Evolved Slow Thinking</b></i>, Jiang et al., <a href="https://arxiv.org/abs/2501.12051" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Search-o1: Agentic search-enhanced large reasoning models</b></i>, Li et al., <a href="https://arxiv.org/abs/2501.05366" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Chain-of-Retrieval Augmented Generation</b></i>, Wang et al., <a href="https://arxiv.org/abs/2501.14342" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Evaluating Large Language Models through Role-Guide and Self-Reflection: A Comparative Study</b></i>, Zhao et al., <a href="https://openreview.net/forum?id=E36NHwe7Zc" target="_blank"><img src="https://img.shields.io/badge/PDF-2025.01-blue" alt="PDF Badge"></a></li>
-<li><i><b>Citrus: Leveraging Expert Cognitive Pathways in a Medical Language Model for Advanced Medical Decision Support</b></i>, Wang et al., <a href="https://arxiv.org/abs/2502.18274" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>ECM: A Unified Electronic Circuit Model for Explaining the Emergence of In-Context Learning and Chain-of-Thought in Large Language Model</b></i>, Chen et al., <a href="https://arxiv.org/abs/2502.03325" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Large Language Models for Recommendation with Deliberative User Preference Alignment</b></i>, Fang et al., <a href="https://arxiv.org/abs/2502.02061" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>ChineseEcomQA: A Scalable E-commerce Concept Evaluation Benchmark for Large Language Models</b></i>, Chen et al., <a href="https://arxiv.org/abs/2502.20196" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>DeepRAG: Thinking to Retrieval Step by Step for Large Language Models</b></i>, Guan et al., <a href="https://arxiv.org/abs/2502.01142" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Open Deep Research</b></i>, Team et al., <a href="https://github.com/nickscamara/open-deep-research" target="_blank"><img src="https://img.shields.io/badge/Github-2025.02-white" alt="Github Badge"></a></li>
-<li><i><b>HopRAG: Multi-Hop Reasoning for Logic-Aware Retrieval-Augmented Generation</b></i>, Liu et al., <a href="https://arxiv.org/abs/2502.12442" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>O1 Embedder: Let Retrievers Think Before Action</b></i>, Yan et al., <a href="https://arxiv.org/abs/2502.07555" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>MedVLM-R1: Incentivizing Medical Reasoning Capability of Vision-Language Models (VLMs) via Reinforcement Learning</b></i>, Pan et al., <a href="https://arxiv.org/abs/2502.19634" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Towards Robust Legal Reasoning: Harnessing Logical LLMs in Law</b></i>, Kant et al., <a href="https://arxiv.org/abs/2502.17638" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>OctoTools: An Agentic Framework with Extensible Tools for Complex Reasoning</b></i>, Lu et al., <a href="https://arxiv.org/abs/2502.11271" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>R1-Searcher: Incentivizing the Search Capability in LLMs via Reinforcement Learning</b></i>, Song et al., <a href="https://arxiv.org/abs/2503.05592" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>RARE: Retrieval-Augmented Reasoning Modeling</b></i>, Wang et al., <a href="https://arxiv.org/abs/2503.23513" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>Graph-Augmented Reasoning: Evolving Step-by-Step Knowledge Graph Retrieval for LLM Reasoning</b></i>, Wu et al., <a href="https://arxiv.org/abs/2503.01642" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>Learning to Reason with Search for LLMs via Reinforcement Learning</b></i>, Chen et al., <a href="https://arxiv.org/abs/2503.19470" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>Fin-R1: A Large Language Model for Financial Reasoning through Reinforcement Learning</b></i>, Liu et al., <a href="https://arxiv.org/abs/2503.16252" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>m1: Unleash the Potential of Test-Time Scaling for Medical Reasoning with Large Language Models</b></i>, Huang et al., <a href="https://arxiv.org/abs/2504.00869" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.04-red" alt="arXiv Badge"></a></li>
-</ul>
-
-
-
-<h3 id="multilingual-long-cot">5.4 Multilingual Long CoT</h3>
-</ul>
-
-<ul>
-<li><i><b>Cross-lingual Prompting: Improving Zero-shot Chain-of-Thought Reasoning across Languages</b></i>, Qin et al., <a href="https://aclanthology.org/2023.emnlp-main.163/" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.12-blue" alt="PDF Badge"></a></li>
-<li><i><b>Not All Languages Are Created Equal in LLMs: Improving Multilingual Capability by Cross-Lingual-Thought Prompting</b></i>, Huang et al., <a href="https://aclanthology.org/2023.findings-emnlp.826/" target="_blank"><img src="https://img.shields.io/badge/PDF-2023.12-blue" alt="PDF Badge"></a></li>
-<li><i><b>xcot: Cross-lingual instruction tuning for cross-lingual chain-of-thought reasoning</b></i>, Chai et al., <a href="https://arxiv.org/abs/2401.07037" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Multilingual large language model: A survey of resources, taxonomy and frontiers</b></i>, Qin et al., <a href="https://arxiv.org/abs/2404.04925" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.04-red" alt="arXiv Badge"></a></li>
-<li><i><b>A Tree-of-Thoughts to Broaden Multi-step Reasoning across Languages</b></i>, Ranaldi et al., <a href="https://aclanthology.org/2024.findings-naacl.78/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.06-blue" alt="PDF Badge"></a></li>
-<li><i><b>AutoCAP: Towards Automatic Cross-lingual Alignment Planning for Zero-shot Chain-of-Thought</b></i>, Zhang et al., <a href="https://aclanthology.org/2024.findings-acl.546/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.08-blue" alt="PDF Badge"></a></li>
-<li><i><b>Enhancing Advanced Visual Reasoning Ability of Large Language Models</b></i>, Li et al., <a href="https://aclanthology.org/2024.emnlp-main.114/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.11-blue" alt="PDF Badge"></a></li>
-<li><i><b>DRT-o1: Optimized Deep Reasoning Translation via Long Chain-of-Thought</b></i>, Wang et al., <a href="https://arxiv.org/abs/2412.17498" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>A survey of multilingual large language models</b></i>, Qin et al., <a href="https://www.cell.com/patterns/fulltext/S2666-3899(24)00290-3" target="_blank"><img src="https://img.shields.io/badge/PDF-2025.01-blue" alt="PDF Badge"></a></li>
-<li><i><b>Demystifying Multilingual Chain-of-Thought in Process Reward Modeling</b></i>, Wang et al., <a href="https://arxiv.org/abs/2502.12663" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>The Multilingual Mind: A Survey of Multilingual Reasoning in Language Models</b></i>, Ghosh et al., <a href="https://arxiv.org/abs/2502.09457" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-</ul>
-
-
-
-<h3 id="multimodal-long-cot">5.5 Multimodal Long CoT</h3>
-</ul>
-
-<ul>
-<li><i><b>Large Language Models Can Self-Correct with Minimal Effort</b></i>, Wu et al., <a href="https://openreview.net/forum?id=mmZLMs4l3d" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.05-blue" alt="PDF Badge"></a></li>
-<li><i><b>Multimodal Chain-of-Thought Reasoning in Language Models</b></i>, Zhang et al., <a href="https://openreview.net/forum?id=y1pPWFVfvR" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.06-blue" alt="PDF Badge"></a></li>
-<li><i><b>Q*: Improving multi-step reasoning for llms with deliberative planning</b></i>, Wang et al., <a href="https://arxiv.org/abs/2406.14283" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.06-red" alt="arXiv Badge"></a></li>
-<li><i><b>M<sup>3</sup>CoT: A Novel Benchmark for Multi-Domain Multi-step Multi-modal Chain-of-Thought</b></i>, Chen et al., <a href="https://aclanthology.org/2024.acl-long.446/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.08-blue" alt="PDF Badge"></a></li>
-<li><i><b>A survey on evaluation of multimodal large language models</b></i>, Huang et al., <a href="https://arxiv.org/abs/2408.15769" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.08-red" alt="arXiv Badge"></a></li>
-<li><i><b>Fine-Tuning Large Vision-Language Models as Decision-Making Agents via Reinforcement Learning</b></i>, Zhai et al., <a href="https://openreview.net/forum?id=nBjmMF2IZU" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.09-blue" alt="PDF Badge"></a></li>
-<li><i><b>What factors affect multi-modal in-context learning? an in-depth exploration</b></i>, Qin et al., <a href="https://arxiv.org/abs/2410.20482" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>Enhancing Advanced Visual Reasoning Ability of Large Language Models</b></i>, Li et al., <a href="https://aclanthology.org/2024.emnlp-main.114/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.11-blue" alt="PDF Badge"></a></li>
-<li><i><b>Insight-v: Exploring long-chain visual reasoning with multimodal large language models</b></i>, Dong et al., <a href="https://arxiv.org/abs/2411.14432" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.11-red" alt="arXiv Badge"></a></li>
-<li><i><b>Llava-o1: Let vision language models reason step-by-step</b></i>, Xu et al., <a href="https://arxiv.org/abs/2411.10440" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.11-red" alt="arXiv Badge"></a></li>
-<li><i><b>AtomThink: A Slow Thinking Framework for Multimodal Mathematical Reasoning</b></i>, Xiang et al., <a href="https://arxiv.org/abs/2411.11930" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.11-red" alt="arXiv Badge"></a></li>
-<li><i><b>ARES: Alternating Reinforcement Learning and Supervised Fine-Tuning for Enhanced Multi-Modal Chain-of-Thought Reasoning Through Diverse AI Feedback</b></i>, Byun et al., <a href="https://aclanthology.org/2024.emnlp-main.252/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.11-blue" alt="PDF Badge"></a></li>
-<li><i><b>Enhancing the reasoning ability of multimodal large language models via mixed preference optimization</b></i>, Wang et al., <a href="https://arxiv.org/abs/2411.10442" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.11-red" alt="arXiv Badge"></a></li>
-<li><i><b>Slow Perception: Let's Perceive Geometric Figures Step-by-step</b></i>, Wei et al., <a href="https://arxiv.org/abs/2412.20631" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>Diving into Self-Evolving Training for Multimodal Reasoning</b></i>, Liu et al., <a href="https://arxiv.org/abs/2412.17451" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>Scaling inference-time search with vision value model for improved visual comprehension</b></i>, Xiyao et al., <a href="https://arxiv.org/abs/2412.03704" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>CoMT: A Novel Benchmark for Chain of Multi-modal Thought on Large Vision-Language Models</b></i>, Cheng et al., <a href="https://arxiv.org/abs/2412.12932" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>Inference Retrieval-Augmented Multi-Modal Chain-of-Thoughts Reasoning for Language Models</b></i>, He et al., <a href="https://openreview.net/pdf/9a7e7a9787d14ac8302215f8e4ef959606b78a94.pdf" target="_blank"><img src="https://img.shields.io/badge/PDF-2025.00-blue" alt="PDF Badge"></a></li>
-<li><i><b>Audio-CoT: Exploring Chain-of-Thought Reasoning in Large Audio Language Model</b></i>, Ma et al., <a href="https://arxiv.org/abs/2501.07246" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>BoostStep: Boosting mathematical capability of Large Language Models via improved single-step reasoning</b></i>, Zhang et al., <a href="https://arxiv.org/abs/2501.03226" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>InternLM-XComposer2.5-Reward: A Simple Yet Effective Multi-Modal Reward Model</b></i>, Zang et al., <a href="https://arxiv.org/abs/2501.12368" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Can MLLMs Reason in Multimodality? EMMA: An Enhanced MultiModal ReAsoning Benchmark</b></i>, Hao et al., <a href="https://arxiv.org/abs/2501.05444" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Visual Agents as Fast and Slow Thinkers</b></i>, Sun et al., <a href="https://openreview.net/forum?id=ncCuiD3KJQ" target="_blank"><img src="https://img.shields.io/badge/PDF-2025.01-blue" alt="PDF Badge"></a></li>
-<li><i><b>Virgo: A Preliminary Exploration on Reproducing o1-like MLLM</b></i>, Du et al., <a href="https://arxiv.org/abs/2501.01904" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Llamav-o1: Rethinking step-by-step visual reasoning in llms</b></i>, Thawakar et al., <a href="https://arxiv.org/abs/2501.06186" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Inference-time scaling for diffusion models beyond scaling denoising steps</b></i>, Ma et al., <a href="https://arxiv.org/abs/2501.09732" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Can We Generate Images with CoT? Let's Verify and Reinforce Image Generation Step by Step</b></i>, Guo et al., <a href="https://arxiv.org/abs/2501.13926" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Imagine while Reasoning in Space: Multimodal Visualization-of-Thought</b></i>, Li et al., <a href="https://arxiv.org/abs/2501.07542" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Monte Carlo Tree Diffusion for System 2 Planning</b></i>, Yoon et al., <a href="https://arxiv.org/abs/2502.07202" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Boosting Multimodal Reasoning with MCTS-Automated Structured Thinking</b></i>, Wu et al., <a href="https://arxiv.org/abs/2502.02339" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Audio-Reasoner: Improving Reasoning Capability in Large Audio Language Models</b></i>, Xie et al., <a href="https://arxiv.org/abs/2503.02318" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>Visual-RFT: Visual Reinforcement Fine-Tuning</b></i>, Liu et al., <a href="https://arxiv.org/abs/2503.01785" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>Qwen2. 5-Omni Technical Report</b></i>, Xu et al., <a href="https://arxiv.org/abs/2503.20215" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>Vision-r1: Incentivizing reasoning capability in multimodal large language models</b></i>, Huang et al., <a href="https://arxiv.org/abs/2503.06749" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>Lmm-r1: Empowering 3b lmms with strong reasoning abilities through two-stage rule-based rl</b></i>, Peng et al., <a href="https://arxiv.org/abs/2503.07536" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>Reason-RFT: Reinforcement Fine-Tuning for Visual Reasoning</b></i>, Tan et al., <a href="https://arxiv.org/abs/2503.20752" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>OThink-MR1: Stimulating multimodal generalized reasoning capabilities through dynamic reinforcement learning</b></i>, Liu et al., <a href="https://arxiv.org/abs/2503.16081" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>Grounded Chain-of-Thought for Multimodal Large Language Models</b></i>, Wu et al., <a href="https://arxiv.org/abs/2503.12799" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>Test-Time View Selection for Multi-Modal Decision Making</b></i>, Jain et al., <a href="https://openreview.net/forum?id=aNmZ9s6BZV" target="_blank"><img src="https://img.shields.io/badge/PDF-2025.03-blue" alt="PDF Badge"></a></li>
-<li><i><b>Rethinking RL Scaling for Vision Language Models: A Transparent, From-Scratch Framework and Comprehensive Evaluation Scheme</b></i>, Ma et al., <a href="https://arxiv.org/abs/2504.02587" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.04-red" alt="arXiv Badge"></a></li>
-</ul>
-
-
-
-<h3 id="safety-and-stability-for-long-cot">5.6 Safety and Stability for Long CoT</h3>
-</ul>
-
-<ul>
-<li><i><b>Larger and more instructable language models become less reliable</b></i>, Zhou et al., <a href="https://www.nature.com/articles/s41586-024-07930-y" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.00-blue" alt="PDF Badge"></a></li>
-<li><i><b>On the Hardness of Faithful Chain-of-Thought Reasoning in Large Language Models</b></i>, Tanneru et al., <a href="https://arxiv.org/abs/2406.10625" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.06-red" alt="arXiv Badge"></a></li>
-<li><i><b>The Impact of Reasoning Step Length on Large Language Models</b></i>, Jin et al., <a href="https://aclanthology.org/2024.findings-acl.108/" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.08-blue" alt="PDF Badge"></a></li>
-<li><i><b>Unlocking the Capabilities of Thought: A Reasoning Boundary Framework to Quantify and Optimize Chain-of-Thought</b></i>, Chen et al., <a href="https://openreview.net/forum?id=pC44UMwy2v" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.09-blue" alt="PDF Badge"></a></li>
-<li><i><b>Can Large Language Models Understand You Better? An MBTI Personality Detection Dataset Aligned with Population Traits</b></i>, Li et al., <a href="https://arxiv.org/abs/2412.12510" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.12-red" alt="arXiv Badge"></a></li>
-<li><i><b>o3-mini vs DeepSeek-R1: Which One is Safer?</b></i>, Arrieta et al., <a href="https://arxiv.org/abs/2501.18438" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Efficient Reasoning with Hidden Thinking</b></i>, Shen et al., <a href="https://arxiv.org/abs/2501.19201" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Think More, Hallucinate Less: Mitigating Hallucinations via Dual Process of Fast and Slow Thinking</b></i>, Cheng et al., <a href="https://arxiv.org/abs/2501.01306" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Explicit vs. Implicit: Investigating Social Bias in Large Language Models through Self-Reflection</b></i>, Zhao et al., <a href="https://arxiv.org/abs/2501.02295" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Challenges in Ensuring AI Safety in DeepSeek-R1 Models: The Shortcomings of Reinforcement Learning Strategies</b></i>, Parmar et al., <a href="https://arxiv.org/abs/2501.17030" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>Early External Safety Testing of OpenAI's o3-mini: Insights from the Pre-Deployment Evaluation</b></i>, Arrieta et al., <a href="https://arxiv.org/abs/2501.17749" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>International AI Safety Report</b></i>, Bengio et al., <a href="https://arxiv.org/abs/2501.17805" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>GuardReasoner: Towards Reasoning-based LLM Safeguards</b></i>, Liu et al., <a href="https://arxiv.org/abs/2501.18492" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.01-red" alt="arXiv Badge"></a></li>
-<li><i><b>OVERTHINKING: Slowdown Attacks on Reasoning LLMs</b></i>, Kumar et al., <a href="https://arxiv.org/abs/2502.02542" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>A Mousetrap: Fooling Large Reasoning Models for Jailbreak with Chain of Iterative Chaos</b></i>, Yao et al., <a href="https://arxiv.org/abs/2502.15806" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>MetaSC: Test-Time Safety Specification Optimization for Language Models</b></i>, Gallego et al., <a href="https://arxiv.org/abs/2502.07985" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Leveraging Reasoning with Guidelines to Elicit and Utilize Knowledge for Enhancing Safety Alignment</b></i>, Wang et al., <a href="https://arxiv.org/abs/2502.04040" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>The Hidden Risks of Large Reasoning Models: A Safety Assessment of R1</b></i>, Zhou et al., <a href="https://arxiv.org/abs/2502.12659" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Reasoning and the Trusting Behavior of DeepSeek and GPT: An Experiment Revealing Hidden Fault Lines in Large Language Models</b></i>, Lu et al., <a href="https://arxiv.org/abs/2502.12825" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Superintelligent Agents Pose Catastrophic Risks: Can Scientist AI Offer a Safer Path?</b></i>, Bengio et al., <a href="https://arxiv.org/abs/2502.15657" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Emergent Response Planning in LLM</b></i>, Dong et al., <a href="https://arxiv.org/abs/2502.06258" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Investigating the Impact of Quantization Methods on the Safety and Reliability of Large Language Models</b></i>, Kharinaev et al., <a href="https://arxiv.org/abs/2502.15799" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Safety Evaluation of DeepSeek Models in Chinese Contexts</b></i>, Zhang et al., <a href="https://arxiv.org/abs/2502.11137" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Reasoning Does Not Necessarily Improve Role-Playing Ability</b></i>, Feng et al., <a href="https://arxiv.org/abs/2502.16940" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>H-CoT: Hijacking the Chain-of-Thought Safety Reasoning Mechanism to Jailbreak Large Reasoning Models, Including OpenAI o1/o3, DeepSeek-R1, and Gemini 2.0 Flash Thinking</b></i>, Kuo et al., <a href="https://arxiv.org/abs/2502.12893" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>BoT: Breaking Long Thought Processes of o1-like Large Language Models through Backdoor Attack</b></i>, Zhu et al., <a href="https://arxiv.org/abs/2502.12202" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>" Nuclear Deployed!": Analyzing Catastrophic Risks in Decision-making of Autonomous LLM Agents</b></i>, Xu et al., <a href="https://arxiv.org/abs/2502.11355" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>SafeChain: Safety of Language Models with Long Chain-of-Thought Reasoning Capabilities</b></i>, Jiang et al., <a href="https://arxiv.org/abs/2502.12025" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Reasoning-to-Defend: Safety-Aware Reasoning Can Defend Large Language Models from Jailbreaking</b></i>, Zhu et al., <a href="https://arxiv.org/abs/2502.12970" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>CER: Confidence Enhanced Reasoning in LLMs</b></i>, Razghandi et al., <a href="https://arxiv.org/abs/2502.14634" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Measuring Faithfulness of Chains of Thought by Unlearning Reasoning Steps</b></i>, Tutek et al., <a href="https://arxiv.org/abs/2502.14829" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>The Hidden Dimensions of LLM Alignment: A Multi-Dimensional Safety Analysis</b></i>, Pan et al., <a href="https://arxiv.org/abs/2502.09674" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>Policy Frameworks for Transparent Chain-of-Thought Reasoning in Large Language Models</b></i>, Chen et al., <a href="https://arxiv.org/abs/2503.14521" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>Do Chains-of-Thoughts of Large Language Models Suffer from Hallucinations, Cognitive Biases, or Phobias in Bayesian Reasoning?</b></i>, Araya et al., <a href="https://arxiv.org/abs/2503.15268" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>Process or Result? Manipulated Ending Tokens Can Mislead Reasoning LLMs to Ignore the Correct Reasoning Steps</b></i>, Cui et al., <a href="https://arxiv.org/abs/2503.19326" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>Safety Tax: Safety Alignment Makes Your Large Reasoning Models Less Reasonable</b></i>, Huang et al., <a href="https://arxiv.org/abs/2503.00555" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>Recitation over Reasoning: How Cutting-Edge Language Models Can Fail on Elementary School-Level Reasoning Problems?</b></i>, Yan et al., <a href="https://arxiv.org/abs/2504.00509" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.04-red" alt="arXiv Badge"></a></li>
-<li><i><b>Reasoning Models Don’t Always Say What They Think</b></i>, Chen et al., <a href="https://www.anthropic.com/research/reasoning-models-dont-say-think" target="_blank"><img src="https://img.shields.io/badge/PDF-2025.04-blue" alt="PDF Badge"></a></li>
-</ul>
-<h2 id="resources">6. Resources</h2>
-
-
-<h3 id="open-sourced-training-framework">6.1 Open-Sourced Training Framework</h3>
-<ul>
-<li><i><b>OpenRLHF: An Easy-to-use, Scalable and High-performance RLHF Framework</b></i>, Hu et al., <a href="https://arxiv.org/abs/2405.11143" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.05-red" alt="arXiv Badge"></a></li>
-<li><i><b>LLM Reasoners: New Evaluation, Library, and Analysis of Step-by-Step Reasoning with Large Language Models</b></i>, Hao et al., <a href="https://openreview.net/forum?id=b0y6fbSUG0" target="_blank"><img src="https://img.shields.io/badge/PDF-2024.07-blue" alt="PDF Badge"></a></li>
-<li><i><b>OpenR: An Open Source Framework for Advanced Reasoning with Large Language Models</b></i>, Wang et al., <a href="https://arxiv.org/abs/2410.09671" target="_blank"><img src="https://img.shields.io/badge/arXiv-2024.10-red" alt="arXiv Badge"></a></li>
-<li><i><b>TinyZero</b></i>, Pan et al., <a href="https://github.com/Jiayi-Pan/TinyZero" target="_blank"><img src="https://img.shields.io/badge/Github-2025.00-white" alt="Github Badge"></a></li>
-<li><i><b>R1-V: Reinforcing Super Generalization Ability in Vision-Language Models with Less Than </sup>3</b></i>, Chen et al., <a href="https://github.com/Deep-Agent/R1-V" target="_blank"><img src="https://img.shields.io/badge/Github-2025.00-white" alt="Github Badge"></a></li>
-<li><i><b>VL-Thinking: An R1-Derived Visual Instruction Tuning Dataset for Thinkable LVLMs</b></i>, Chen et al., <a href="https://github.com/UCSC-VLAA/VL-Thinking" target="_blank"><img src="https://img.shields.io/badge/Github-2025.00-white" alt="Github Badge"></a></li>
-<li><i><b>VLM-R1: A stable and generalizable R1-style Large Vision-Language Model</b></i>, Shen et al., <a href="https://github.com/om-ai-lab/VLM-R1" target="_blank"><img src="https://img.shields.io/badge/Github-2025.00-white" alt="Github Badge"></a></li>
-<li><i><b>7B Model and 8K Examples: Emerging Reasoning with Reinforcement Learning is Both Effective and Efficient</b></i>, Zeng et al., <a href="https://hkust-nlp.notion.site/simplerl-reason" target="_blank"><img src="https://img.shields.io/badge/Notion-2025.01-white" alt="Notion Badge"></a></li>
-<li><i><b>Open R1</b></i>, Team et al., <a href="https://github.com/huggingface/open-r1" target="_blank"><img src="https://img.shields.io/badge/Github-2025.01-white" alt="Github Badge"></a></li>
-<li><i><b>DeepScaleR: Surpassing O1-Preview with a 1.5B Model by Scaling RL</b></i>, Luo et al., <a href="https://github.com/agentica-project/rllm" target="_blank"><img src="https://img.shields.io/badge/PDF-2025.02-blue" alt="PDF Badge"></a></li>
-<li><i><b>X-R1</b></i>, Team et al., <a href="https://github.com/dhcode-cpp/X-R1" target="_blank"><img src="https://img.shields.io/badge/Github-2025.02-white" alt="Github Badge"></a></li>
-<li><i><b>Open-Reasoner-Zero: An Open Source Approach to Scaling Reinforcement Learning on the Base Model</b></i>, Jingcheng Hu and Yinmin Zhang and Qi Han and Daxin Jiang and Xiangyu Zhang et al., <a href="https://github.com/Open-Reasoner-Zero/Open-Reasoner-Zero" target="_blank"><img src="https://img.shields.io/badge/Github-2025.02-white" alt="Github Badge"></a></li>
-<li><i><b>Logic-RL: Unleashing LLM Reasoning with Rule-Based Reinforcement Learning</b></i>, Xie et al., <a href="https://arxiv.org/abs/2502.14768" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.02-red" alt="arXiv Badge"></a></li>
-<li><i><b>R1-Multimodal-Journey</b></i>, Shao et al., <a href="https://github.com/FanqingM/R1-Multimodal-Journey" target="_blank"><img src="https://img.shields.io/badge/Github-2025.02-white" alt="Github Badge"></a></li>
-<li><i><b>Open-R1-Multimodal</b></i>, Lab et al., <a href="https://github.com/EvolvingLMMs-Lab/open-r1-multimodal" target="_blank"><img src="https://img.shields.io/badge/Github-2025.02-white" alt="Github Badge"></a></li>
-<li><i><b>Video-R1</b></i>, Team et al., <a href="https://github.com/tulerfeng/Video-R1" target="_blank"><img src="https://img.shields.io/badge/Github-2025.02-white" alt="Github Badge"></a></li>
-<li><i><b>Dapo: An open-source llm reinforcement learning system at scale</b></i>, Yu et al., <a href="https://arxiv.org/abs/2503.14476" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.03-red" alt="arXiv Badge"></a></li>
-<li><i><b>VAPO: Efficient and Reliable Reinforcement Learning for Advanced Reasoning Tasks</b></i>, YuYue et al., <a href="https://arxiv.org/abs/2504.05118" target="_blank"><img src="https://img.shields.io/badge/arXiv-2025.04-red" alt="arXiv Badge"></a></li>
-</ul>
-
-
-
-## 🎁 Citation
+# 🎁 Citation
 If you find this work useful, welcome to cite us.
 ```bib
 @misc{chen2025reasoning,
@@ -1332,8 +1009,14 @@ If you find this work useful, welcome to cite us.
 }
 ```
 
+
+# Contribution
+For any interesting news about Long CoT, you can also @[Qiguang_Chen](https://twitter.com/QiguangChen) on Twitter or email me at [charleschen2333@gmail.com](mailto:charleschen2333@gmail.com) to follow and update it at our GitHub repo.
+
+Hope everyone enjoy the Long CoT era :)
+
 <!-- omit in toc -->
-## ⭐ Star History
+# ⭐ Star History
 
 <a href="https://star-history.com/#LightChen233/Awesome-Long-Chain-of-Thought-Reasoning&Date">
  <picture>
@@ -1342,3 +1025,4 @@ If you find this work useful, welcome to cite us.
    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=LightChen233/Awesome-Long-Chain-of-Thought-Reasoning&type=Date" />
  </picture>
 </a>
+
