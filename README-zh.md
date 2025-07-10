@@ -11,15 +11,15 @@
 ![image](./assets/images/overall.png)
 
 <!-- omit in toc -->
-# 🔥 新闻
-- **2025.07**: 🎉🎉🎉  我们将审阅论文数量更新至超过1000篇。此外，我们还优化了本代码库，添加了双语部分，使其更加适合Long-CoT初学者使用。
-- **2025.04**: 🎉🎉🎉  我们已将审阅论文数量更新至超过900篇。此外，我们增强了展示效果，添加了更具吸引力的展示图。
+# 🔥 更新
+- **2025.07**: 🎉🎉🎉  我们将综述的论文数量更新至超过1000篇。此外，我们还优化了本代码库，添加了双语部分，使其更加适合Long-CoT初学者使用。
+- **2025.04**: 🎉🎉🎉  我们已将综述的论文数量更新至超过900篇。此外，我们增强了展示效果，添加了更具吸引力的展示图。
 - **2025.03**: 🎉🎉🎉 我们发布了一篇题为 "[Towards Reasoning Era: A Survey of Long Chain-of-Thought for Reasoning Large Language Models](https://arxiv.org/pdf/2503.09567)"的综述论文。欢迎引用或提交pull request，分享您的精彩研究。
 
 <!-- omit in toc -->
 # 🌟 简介
 
-欢迎来到与我们调查论文《Towards Reasoning Era: A Survey of Long Chain-of-Thought for Reasoning Large Language Models》相关的代码库。该代码库包含了与我们正在进行的长链推理（Long CoT）研究相关的**资源和更新**。详细介绍请参阅我们的 [综述论文](https://arxiv.org/pdf/2503.09567).
+欢迎来到与我们综述论文《Towards Reasoning Era: A Survey of Long Chain-of-Thought for Reasoning Large Language Models》相关的代码库。该代码库包含了与我们正在进行的长链推理（Long CoT）研究相关的**资源和更新**。详细介绍请参阅我们的 [综述论文](https://arxiv.org/pdf/2503.09567).
 
 近年来，OpenAI-O1和DeepSeek-R1等大型语言模型在推理任务中的最新进展，展示了它们在数学、编程等复杂领域中的卓越能力。它们成功的关键因素之一是应用了长思维链（Long CoT）特性，这些特性增强了推理能力，并使得解决复杂问题成为可能。
 
@@ -50,13 +50,13 @@
   - 可以关注的微信公众号: 机器之心, 新智元, 量子位, Paper Weekly, MLNLP...
   - 可以关注的Twitter: [AK](https://x.com/_akhaliq), [elvis](https://x.com/omarsar0), [Philipp Schmid](https://x.com/_philschmid), ...
 - **前沿课程:** [CS336](https://stanford-cs336.github.io/spring2025/)
-- **社区分享:** [MLNLP](https://space.bilibili.com/168887299), [机器之心官方](https://space.bilibili.com/73414544), [NICE学术](https://space.bilibili.com/507524288)
+- **社区分享:** [MLNLP](https://space.bilibili.com/168887299), [机器之心官方](https://space.bilibili.com/73414544), [智源社区](https://hub.baai.ac.cn/), [NICE学术](https://space.bilibili.com/507524288)
 
 ## 1. 经典的Reasoning Model
 - [OpenAI-o1 / o3 / o4](https://platform.openai.com/docs/models/#o3): 最早探索长思维链的推理模型，OpenAI开发的第一梯队的模型。
 - [Gemini](https://github.com/google-gemini): Google开发第一梯队的模型。
 - [Deepseek-r1](https://github.com/deepseek-ai/DeepSeek-R1): 最早开源的大规模长思维链推理模型。
-- - [QwQ](https://qwenlm.github.io/zh/blog/qwq-32b-preview/): 最早开源的长思维链推理模型。
+- [QwQ](https://qwenlm.github.io/zh/blog/qwq-32b-preview/): 最早开源的长思维链推理模型。
 - [Qwen3](https://github.com/QwenLM/Qwen3): 最常用的阿里开源的长思维链的推理系列模型。
 - [Seed-Thinking-v1.5](https://github.com/ByteDance-Seed/Seed-Thinking-v1.5/blob/main/seed-thinking-v1.5.pdf): 字节开源的长思维链的推理模型。
 - [Kimi-k1.5](https://github.com/MoonshotAI/Kimi-k1.5): Moonshoot开发的最早的多模态长思维链的推理模型。

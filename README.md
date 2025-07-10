@@ -51,7 +51,7 @@ We are a team of beginners in reasoning large models, and we hope that through o
   - Recommended WeChat Public Accounts: JIQIZHIXIN, Paper Weekly, MLNLP...
   - Recommended Twitter Accounts: [AK](https://x.com/_akhaliq), [elvis](https://x.com/omarsar0), [Philipp Schmid](https://x.com/_philschmid), ...
 - **Cutting-edge Courses:** [CS336](https://stanford-cs336.github.io/spring2025/)
-- **Community Sharing:** [MLNLP](https://space.bilibili.com/168887299), [JIQIZHIXIN](https://space.bilibili.com/73414544), [NICE Academic](https://space.bilibili.com/507524288)
+- **Community Sharing:** [MLNLP](https://space.bilibili.com/168887299), [JIQIZHIXIN](https://space.bilibili.com/73414544), [BAAI](https://hub.baai.ac.cn/), [NICE Academic](https://space.bilibili.com/507524288)
 
 ## 1. Classical Reasoning Model
 - [OpenAI-o1 / o3 / o4](https://platform.openai.com/docs/models/#o3): The earliest reasoning large language models exploring Long CoT, developed by OpenAI’s first-tier models.
