@@ -992,6 +992,8 @@ The validated datasets contain rule-based filtering, test case verification, or 
 
 - [Awesome-System2-Reasoning-LLM](https://github.com/zzli2022/Awesome-System2-Reasoning-LLM)
 
+- [Awesome Latent Refinement](https://github.com/matinaghaei/awesome-latent-refinement): A curated list of research on iterative latent reasoning and inference-time compute beyond explicit long CoT.
+
 <img src="./assets/images/future.jpg" style="width: 580pt">
 
 
