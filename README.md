@@ -366,6 +366,7 @@ In Long CoT, extending the reasoning chain does not always lead to performance i
 - [Xie et al.](https://arxiv.org/html/2502.14768v1) experimentally showed that reasoning length does not have a monotonic relationship with accuracy, challenging the intuition that "longer CoT leads to better reasoning."
 - [Wu et al.](https://arxiv.org/abs/2502.07266) established a mathematical model defining the "optimal reasoning length" interval under different models and task conditions, suggesting that performance reverses once the length exceeds the optimal range.
 - [Chen et al.](https://arxiv.org/abs/2502.03325) introduced the "reasoning chain Ohm’s law," analogizing the non-linear relationship between reasoning length and performance to information flow resistance in the model.
+- [Min et al.](https://arxiv.org/abs/2605.17672) (PUMA) showed that across five representative LRMs, 41–52% of reasoning tokens are generated *after* the model has already reached its final answer, and proposed a plug-and-play early-exit framework that uses reasoning-level semantic redundancy (rather than answer-level confidence or consistency) to detect when the reasoning trajectory has converged, achieving 26.2% average token reduction on MATH-500 / AIME24-25 / OlympiadBench / GPQA-Diamond while preserving final-answer accuracy and the semantic coherence of the retained CoT. [[Code]](https://github.com/giovanni-vaccarino/PUMA)
 
 ### 3.4 Inference Test-Time Scaling Phenomenon
 
