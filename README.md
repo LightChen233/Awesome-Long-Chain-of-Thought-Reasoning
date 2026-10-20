@@ -688,6 +688,8 @@ For more frameworks, refer to [Awesome LLM Agent Frameworks](https://github.com/
   - [OpenCompass](https://github.com/open-compass/opencompass) is a comprehensive evaluation platform for large language models (LLMs) that supports assessments of a wide range of open and closed models across over 100 datasets. It covers multiple dimensions such as language understanding, reasoning, and code generation, and supports various evaluation modes, including zero-shot, few-shot, and Chain-of-Thought (CoT), as well as distributed evaluation capabilities.
   - [DeepEval](https://github.com/confident-ai/deepeval) is an easy-to-use, open-source LLM evaluation framework designed for evaluating and testing large language model systems. It aims to help developers efficiently assess the quality of model-generated content based on key metrics such as relevance, factual consistency, bias, and toxicity. Its usage is similar to the Python unit testing framework, Pytest.
 
+  - [Scorio](https://github.com/mohsenhariri/scorio) analyzes recorded outcomes from repeated reasoning trials. It computes Bayes@N performance estimates and uncertainty from binary or graded outcomes, with weighted rubrics. [[Paper](https://arxiv.org/abs/2510.04265)]
+
 - **MLLM Evaluation Frameworks:**
 
   - [VLMEvalKit](https://github.com/open-compass/vlmevalkit) is an open-source toolkit launched by OpenCompass specifically designed for the evaluation of large vision-language models. It supports one-click evaluations for over 220 vision-language models across more than 80 benchmark tests, covering tasks such as image question answering, image-text matching, and visual reasoning. It provides evaluation results based on both exact matching and LLM-based answer extraction.

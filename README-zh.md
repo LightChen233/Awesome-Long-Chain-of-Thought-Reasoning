@@ -713,6 +713,7 @@ LLM Agent解决复杂问题的能力，本质上依赖于其推理和规划能�
     - [OpenCompass](https://github.com/open-compass/opencompass) 是一个全面的大语言模型测评平台，支持对多种开、闭模型在超过 100 个数据集上的评估，涵盖语言理解、推理、代码生成等多个维度，支持zero-shot、few-shot、CoT等多种评估模式和分布式评估功能。
     - [DeepEval](https://github.com/confident-ai/deepeval) 是一个简单易用的开源 LLM 评估框架，用于评估和测试大型语言模型系统。它旨在帮助开发者高效评估模型生成内容的质量，包括相关性、事实一致性、无偏见性、无毒性等关键指标。使用方式类似 Python 单元测试框架 Pytest。
 - MLLMs测评框架: 
+    - [Scorio](https://github.com/mohsenhariri/scorio) 是一个统计评估库，输入多次推理试验的分类结果和评分权重，输出 Bayes@N 性能估计及其不确定性，支持二元和分级评分。[[论文](https://arxiv.org/abs/2510.04265)]
     - [VLMEvalKit](https://github.com/open-compass/vlmevalkit)是由OpenCompass推出的专为大型视觉语言模型评测而设计的开源工具包，支持对220多个视觉语言模型在80多个基准测试上的一键评估，涵盖图像问答、图文匹配、视觉推理等任务，它提供基于精确匹配与基于 LLM 的答案提取两种评测结果。
     - [EvalScope](https://github.com/modelscope/evalscope)是由魔塔社区推出的模型评测框架，支持大语言模型、多模态语言模型、Embedding模型、AIGC模型等各种类型模型的性能基准测试。
 
